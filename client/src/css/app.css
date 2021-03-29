@@ -50,6 +50,7 @@ body {
     font-family: Arial, Helvetica, Verdana, sans-serif;
     letter-spacing: 1.3px;
     font-weight: bolder;
+    color: black;
 }
 .submit-button:hover {
     background-color: tomato;

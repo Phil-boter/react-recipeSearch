@@ -7,7 +7,7 @@ import RecipeComponent from "../Components/RecipeComponent";
 import NavigationComponent from "../Components/NavigationComponent";
 
 export default function DisplayRecipe() {
-    console.log("DisplayRecipe component");
+    console.log("DisplayRecipe route");
 
     return (
         <>

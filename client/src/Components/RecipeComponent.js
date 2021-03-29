@@ -7,8 +7,10 @@ import "../css/RecipeComponent.css";
 import SingleRecipe from "./SingleRecipe";
 
 export default function RecipeComponent() {
+    console.log("RecipeComponent mounted");
+
     const recipes = useSelector((state) => {
-        console.log("state in displayRecipe", state);
+        console.log("state in RecipeComponent", state);
         return state.recipes;
     });
 
@@ -35,7 +37,3 @@ export default function RecipeComponent() {
         </>
     );
 }
-
-//
-
-//

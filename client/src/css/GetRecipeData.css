@@ -1,5 +1,4 @@
 .recipedata-container {
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,12 +11,23 @@
     width: 500px;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
 }
 
 @media only screen and (max-width: 850px) {
+    .recipedata-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        padding: 2rem 0 2rem 0;
+    }
+
     .recipedata-input {
         height: 2.5rem;
-        width: 350px;
+        width: 300px;
         font-size: 1.4rem;
     }
 }
