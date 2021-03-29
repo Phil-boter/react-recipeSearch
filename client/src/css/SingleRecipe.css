@@ -1,8 +1,21 @@
 .single-recipe-container {
     width: 350px;
+    margin-bottom: 2rem;
 }
 .recipe-information {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.restaurant-address {
+    display: flex;
+    justify-content: space-between;
+}
+.restaurant-address li {
+    display: flex;
+    list-style-type: none;
+}
+.restaurant-address p {
+    display: flex;
+    flex-direction: column;
 }
