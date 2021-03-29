@@ -1,0 +1,76 @@
+.recipe-modal-container {
+    padding-top: 3rem;
+    display: flex;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    color: black;
+}
+
+.recipe-modal-content {
+    justify-content: center;
+    display: flex;
+    margin: 4rem auto;
+    width: 45vw;
+    background-color: white;
+    border-radius: 15px;
+    animation: appear 2s;
+    overflow: auto;
+    padding: 1rem;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.recipe-modal-image {
+    width: 300px;
+    object-fit: cover;
+    margin: 1rem auto;
+    display: flex;
+}
+
+.recipe-close-modal {
+    position: relative;
+
+    margin: 0.5rem;
+
+    text-decoration: none;
+    color: black;
+    z-index: 300;
+    cursor: pointer;
+}
+
+.recipe-close-modal p {
+    position: relative;
+    left: 0.3rem;
+    top: 0.3rem;
+    margin: 0.5rem;
+}
+
+@media only screen and (max-width: 850px) {
+    .recipe-modal-content {
+        margin-top: 2rem;
+        width: 80vw;
+        min-width: 25vw;
+        background-color: white;
+        border-radius: 10px;
+        animation: appear 2s;
+    }
+    .recipe-modal-image {
+        width: 250px;
+        object-fit: cover;
+    }
+}

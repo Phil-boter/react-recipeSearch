@@ -1,0 +1,71 @@
+.navigation {
+    /* border: 3px solid yellow; */
+    position: relative;
+    background-color: rgb(37, 37, 37);
+    top: 0;
+    height: 3.5rem;
+    width: 100%;
+    z-index: 1;
+}
+
+.navigation-burger {
+    color: white;
+    font-size: 2rem;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+}
+.navigation-close {
+    color: black;
+    font-size: 2rem;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+}
+
+.navigation-container {
+    /* border: 1px solid yellowgreen; */
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 3;
+}
+.navigation-modal {
+    position: absolute;
+    display: block;
+    height: 100vh;
+    width: 30vw;
+    background-color: white;
+    animation: slide-in 2s;
+}
+
+@keyframes slide-in {
+    from {
+        width: 0;
+    }
+    to {
+        width: 30vw;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .navigation {
+        /* border: 1px solid yellowgreen; */
+        height: 3.5rem;
+    }
+
+    .navigation-modal {
+        width: 60vw;
+    }
+    .navigation-burger {
+        font-size: 2rem;
+    }
+    @keyframes slide-in {
+        from {
+            width: 0;
+        }
+        to {
+            width: 60vw;
+        }
+    }
+}
