@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import "../css/NavigationComponent.css";
 
 export default function NavigationComponent() {
+    const user = useSelector((state) => {
+        console.log("state in login", state);
+        return state.user;
+    });
     const [visible, setIsVisible] = useState(false);
 
     const toggleNavbar = () => {
@@ -18,6 +22,7 @@ export default function NavigationComponent() {
         setIsVisible(false);
     };
     console.log("visible", visible);
+    console.log("user in navigationComp", user);
 
     return (
         <>
@@ -31,19 +36,38 @@ export default function NavigationComponent() {
                             >
                                 X
                             </p>
-
-                            <div className="navigation-link">
-                                <Link to="/login">My Account</Link>
-                            </div>
-                            <div className="navigation-link">
-                                <Link to="/Login">My Account</Link>
-                            </div>
-                            <div className="navigation-link">
-                                <Link to="/Login">My Account</Link>
-                            </div>
-                            <div className="navigation-link">
-                                <Link to="/Login">My Account</Link>
-                            </div>
+                            {!user ? (
+                                <div className="navigation-link">
+                                    <Link to="/login">My Account</Link>
+                                </div>
+                            ) : (
+                                <></>
+                            )}
+                            {user ? (
+                                <div className="navigation-link">
+                                    <Link to="/favouriteRecipe">
+                                        My Recipes
+                                    </Link>
+                                </div>
+                            ) : (
+                                <></>
+                            )}
+                            {user ? (
+                                <div className="navigation-link">
+                                    <Link to="/favouriteRestaurant">
+                                        My Restaurants
+                                    </Link>
+                                </div>
+                            ) : (
+                                <></>
+                            )}
+                            {user ? (
+                                <div className="navigation-link logout">
+                                    <a href="/logout">Logout</a>
+                                </div>
+                            ) : (
+                                <></>
+                            )}
                         </div>
                     </div>
                 ) : (

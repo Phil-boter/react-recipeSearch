@@ -1,11 +1,21 @@
 .back-to-main-page {
+    margin-top: 1rem;
     width: 100vw;
     height: 3rem;
     text-align: center;
     font-size: 2rem;
-    padding: 1rem;
+    padding: 0.5rem;
     color: black;
     cursor: pointer;
+    font-family: "Roboto";
+    letter-spacing: -2px;
+    border-bottom: 1px solid rgba(37, 37, 37, 0.5);
+}
+.margin {
+    margin-bottom: 3rem;
+}
+.back-to-main-page a {
+    color: black;
 }
 @media only screen and (max-width: 850px) {
     .back-to-main-page {

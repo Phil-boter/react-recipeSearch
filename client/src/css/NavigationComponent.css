@@ -48,9 +48,14 @@
     padding: 2rem;
 }
 .navigation-link a {
+    font-size: 2rem;
     cursor: pointer;
     color: black;
 }
+/* .navigation-link > .logout {
+    position: absolute;
+    bottom: 4rem;
+} */
 @keyframes slide-in {
     from {
         width: 0;

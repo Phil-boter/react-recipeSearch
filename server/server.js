@@ -96,7 +96,6 @@ app.post("/login", (req, res) => {
                                 last: rows[0].last,
                                 image: rows[0].image,
                                 bio: rows[0].bio,
-                                success: true,
                             });
                         } else {
                             console.log("error in compare getHashedPassword");
@@ -142,7 +141,7 @@ app.get("/logout", (req, res) => {
     console.log("userId logout before", req.session.userId);
     req.session = null;
     console.log("userId logout after", req.session);
-    res.redirect("/welcome");
+    res.redirect("/");
 });
 // ------  api call dont touch--------------------------------------------------------------------------
 
