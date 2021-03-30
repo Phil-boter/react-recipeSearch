@@ -1,5 +1,7 @@
 import { Link, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getUser } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 import "../css/NavigationComponent.css";
 
@@ -29,6 +31,19 @@ export default function NavigationComponent() {
                             >
                                 X
                             </p>
+
+                            <div className="navigation-link">
+                                <Link to="/login">My Account</Link>
+                            </div>
+                            <div className="navigation-link">
+                                <Link to="/Login">My Account</Link>
+                            </div>
+                            <div className="navigation-link">
+                                <Link to="/Login">My Account</Link>
+                            </div>
+                            <div className="navigation-link">
+                                <Link to="/Login">My Account</Link>
+                            </div>
                         </div>
                     </div>
                 ) : (

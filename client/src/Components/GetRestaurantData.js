@@ -37,7 +37,7 @@ export default function GetRestaurantData() {
                 <input
                     className="recipedata-input"
                     type="text"
-                    placeholder="Where you are?"
+                    placeholder="Where are you?"
                     onChange={(e) => handleCity(e)}
                 />
             </div>

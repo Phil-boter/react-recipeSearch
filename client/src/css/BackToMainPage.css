@@ -1,0 +1,20 @@
+.back-to-main-page {
+    width: 100vw;
+    height: 3rem;
+    text-align: center;
+    font-size: 2rem;
+    padding: 1rem;
+    color: black;
+    cursor: pointer;
+}
+@media only screen and (max-width: 850px) {
+    .back-to-main-page {
+        width: 100vw;
+        height: 3rem;
+        text-align: center;
+        font-size: 1.4rem;
+        padding: 0.8rem;
+        color: black;
+        cursor: pointer;
+    }
+}

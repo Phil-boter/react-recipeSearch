@@ -8,6 +8,7 @@ import DisplayRestaurant from "./routes/DisplayRestaurant";
 import "../src/css/app.css";
 import GetRecipeData from "./Components/GetRecipeData";
 import GetRestaurantData from "./Components/GetRestaurantData";
+import Login from "./Components/Login";
 
 export default function App() {
     return (
@@ -23,6 +24,7 @@ export default function App() {
                 path="/displayRestaurant"
                 render={() => <DisplayRestaurant />}
             />
+            <Route path="/login" render={() => <Login />} />
         </BrowserRouter>
     );
 }

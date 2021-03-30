@@ -4,7 +4,7 @@ import "../css/TopLinks.css";
 
 export default function TopLinks() {
     return (
-        <div className="link-container">
+        <div className="topLink-container">
             <Link to="/displayRecipe">
                 <button className="link-button">
                     <h1 className="route-link">Shopping list</h1>

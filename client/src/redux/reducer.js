@@ -16,5 +16,21 @@ export default function (state = {}, action) {
             restaurants: action.restaurants,
         };
     }
+
+    if (action.type == "GET_USER") {
+        console.log("state in reducer USER", state);
+        state = {
+            ...state,
+            user: action.user,
+        };
+    }
+
+    if (action.type == "GET_LOGIN") {
+        console.log("state reducer login", state);
+        state = {
+            ...state,
+            user: action.user,
+        };
+    }
     return state;
 }

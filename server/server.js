@@ -6,6 +6,7 @@ const db = require("./database/db.js");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const { default: axios } = require("axios");
+const { hash, compare } = require("./bc");
 
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
@@ -46,6 +47,103 @@ if (process.env.NODE_ENV == "production") {
 
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
+app.post("/registration", (req, res) => {
+    console.log("req.body /register: ", req.body);
+    const { first, last, email, password } = req.body;
+    console.log("first", first, last);
+    hash(password)
+        .then((hashed_password) => {
+            db.addUser(first, last, email, hashed_password)
+                .then(({ rows }) => {
+                    console.log("userdata is stored");
+                    req.session.userId = rows[0].id;
+                    res.json({ success: true });
+                })
+                .catch((error) => {
+                    console.log("error registration", error);
+                    // res.redirect("/registration");
+                    res.json({ success: false });
+                });
+        })
+        .catch((error) => {
+            console.log("error registration", error);
+            // res.redirect("/registration");
+            res.json({ success: false });
+        });
+});
+
+app.post("/login", (req, res) => {
+    console.log("get login");
+    console.log("req in login", req.body);
+    if (req.body.email == "") {
+        res.json({ success: false });
+    } else if (req.body.password == "") {
+        res.json({ success: false });
+    } else if (req.body.password != "") {
+        let email = req.body.email;
+        db.getHashedPassword(email)
+            .then(({ rows }) => {
+                let userId = rows[0].id;
+                compare(req.body.password, rows[0].password)
+                    .then((result) => {
+                        if (result) {
+                            console.log("user is logged in");
+                            req.session.userId = userId;
+                            res.json({
+                                success: true,
+                                id: rows[0].id,
+                                first: rows[0].first,
+                                last: rows[0].last,
+                                image: rows[0].image,
+                                bio: rows[0].bio,
+                                success: true,
+                            });
+                        } else {
+                            console.log("error in compare getHashedPassword");
+                            res.json({ success: false });
+                        }
+                    })
+                    .catch((error) => {
+                        console.log("error match", error);
+                        res.json({ success: false });
+                    });
+            })
+            .catch((error) => {
+                console.log("error match", error);
+                res.json({ success: false });
+            });
+    } else {
+        console.log("error in logIn post");
+        res.json({ success: false });
+    }
+});
+
+app.get("/user", (req, res) => {
+    console.log("get user");
+    // console.log("req session", req.session);
+    db.getUserData(req.session.userId)
+        .then(({ rows }) => {
+            res.json({
+                success: true,
+                id: rows[0].id,
+                first: rows[0].first,
+                last: rows[0].last,
+                image: rows[0].image,
+                bio: rows[0].bio,
+            });
+        })
+        .catch((error) => {
+            console.log("error in getUserData", error);
+            res.json({ success: false });
+        });
+});
+
+app.get("/logout", (req, res) => {
+    console.log("userId logout before", req.session.userId);
+    req.session = null;
+    console.log("userId logout after", req.session);
+    res.redirect("/welcome");
+});
 // ------  api call dont touch--------------------------------------------------------------------------
 
 app.get("/api/getRecipe/:input", (req, res) => {

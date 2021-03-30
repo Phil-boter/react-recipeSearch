@@ -31,3 +31,46 @@ export async function getRestaurant(term, location) {
         };
     }
 }
+
+export async function login(email, password) {
+    console.log("actions in login", email, password);
+
+    const { data } = await axios.post("/login", {
+        email: email,
+        password: password,
+    });
+    console.log("data in actions login", data);
+    if (data.success) {
+        return {
+            type: "GET_LOGIN",
+            user: data,
+        };
+    }
+}
+
+export async function registration(first, last, email, password) {
+    const { data } = await axios.post("/registration", {
+        first: first,
+        last: last,
+        email: email,
+        password: password,
+    });
+    console.log("data in actions register", data);
+    if (data.success) {
+        return {
+            type: "GET_REGISTRATION",
+            user: data,
+        };
+    }
+}
+
+export async function getUser() {
+    const { data } = await axios.get("/user");
+    console.log("data in getUser", data);
+    if (data.success) {
+        return {
+            type: "GET_USER",
+            user: data,
+        };
+    }
+}
