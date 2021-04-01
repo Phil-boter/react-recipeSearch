@@ -143,6 +143,123 @@ app.get("/logout", (req, res) => {
     console.log("userId logout after", req.session);
     res.redirect("/");
 });
+
+app.post("/deleteAccount", (req, res) => {
+    console.log("post delete Account");
+    console.log("req session", req.session);
+    const { userId } = req.session;
+    db.deleteFavs(userId)
+        .then((res) => {
+            return db.deleteAccount(userId);
+        })
+        .then((response) => {
+            console.log("delete User resolved", response);
+            res.json({ success: true });
+        })
+        .catch((error) => {
+            console.log("error in deleteAccount", error);
+            res.json({ success: false });
+        });
+});
+
+app.post("/saveRestaurant", (req, res) => {
+    console.log("post saveRestaurant");
+    console.log("req.body.recipe", req.body.restaurant);
+    console.log("req query", req.query);
+    console.log("req.session:", req.session.userId);
+    const { uri, label, url, source, image, yield } = req.body.recipe;
+    let userId = req.session.userId;
+    db.saveFavoriteRecipe(
+        uri,
+        label,
+        url,
+        source,
+        image,
+        req.body.ingredient,
+        yield,
+        req.body.healthLabels,
+        req.body.cautions,
+        userId
+    )
+        .then(() => {
+            res.json({
+                success: true,
+            });
+        })
+        .catch((error) => {
+            console.log("error in saveFavoriteRecipe", error);
+            res.json({ success: false });
+        });
+});
+
+app.post("/saveRecipe", (req, res) => {
+    console.log("post saveRecipe");
+    console.log("req.body.recipe", req.body.recipe);
+    console.log("req.body.ingredientLine", req.body.ingredient);
+    console.log("req.body.ingredient", req.body.healthLabels);
+    console.log("req.body.ingredient", req.body.cautions);
+    console.log("req query", req.query);
+    console.log("req.session:", req.session.userId);
+    const { uri, label, url, source, image, yield } = req.body.recipe;
+    let userId = req.session.userId;
+    db.saveFavoriteRecipe(
+        uri,
+        label,
+        url,
+        source,
+        image,
+        req.body.ingredient,
+        yield,
+        req.body.healthLabels,
+        req.body.cautions,
+        userId
+    )
+        .then(() => {
+            res.json({
+                success: true,
+            });
+        })
+        .catch((error) => {
+            console.log("error in saveFavoriteRecipe", error);
+            res.json({ success: false });
+        });
+});
+
+app.get("/getFavoriteRecipe", (req, res) => {
+    console.log("getRecipe");
+    let userId = req.session.userId;
+    db.getFavoriteRecipe(userId)
+        .then(({ rows }) => {
+            console.log("rows", rows);
+            res.json({
+                success: true,
+                favoriteRecipe: rows,
+            });
+        })
+        .catch((error) => {
+            console.log("error in getFavoriteRecipe", error);
+            res.json({ success: false });
+        });
+});
+
+app.post("/deleteFavRecipe", (req, res) => {
+    // console.log("post deleteFavRecipe");
+    // console.log("req params", req.params);
+    // console.log("req body", req.body);
+    // console.log("req query", req.query);
+    // console.log("req session", req.session);
+    const { id } = req.body;
+    const { userId } = req.session;
+    db.deleteRecipe(id, userId)
+        .then(() => {
+            res.json({ success: true });
+        })
+        .catch((error) => {
+            console.log("error in deleteFavRecipe", error);
+            res.json({ success: false });
+        });
+});
+
 // ------  api call dont touch--------------------------------------------------------------------------
 
 app.get("/api/getRecipe/:input", (req, res) => {

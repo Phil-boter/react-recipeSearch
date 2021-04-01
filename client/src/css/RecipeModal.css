@@ -44,9 +44,7 @@
 
 .recipe-close-modal {
     position: relative;
-
     margin: 0.5rem;
-
     text-decoration: none;
     color: black;
     z-index: 300;
@@ -58,6 +56,12 @@
     left: 0.3rem;
     top: 0.3rem;
     margin: 0.5rem;
+}
+
+.save-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 2rem 0;
 }
 
 @media only screen and (max-width: 850px) {

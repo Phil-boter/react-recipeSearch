@@ -1,8 +1,4 @@
-import { Link, Route } from "react-router-dom";
-
-import GetRecipeData from "../Components/GetRecipeData";
-import GetRestarantData from "../Components/GetRestaurantData";
-import TopLinks from "../Components/TopLinks";
+import { Link } from "react-router-dom";
 
 import "../css/MainComponent.css";
 

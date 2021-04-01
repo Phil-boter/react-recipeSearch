@@ -11,10 +11,6 @@ module.exports = () => ({
     output: {
         path: path.join(__dirname, "client", "public"),
         filename: "bundle.js",
-        output: {
-            path: path.join(__dirname, "client", "public"),
-            filename: "bundle.js",
-        },
     },
     performance: {
         hints: false,

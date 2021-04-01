@@ -6,11 +6,11 @@ import IsLoadingComponent from "../Components/IsLoadingComponent";
 import "../css/RecipeComponent.css";
 import SingleRecipe from "./SingleRecipe";
 
-export default function RecipeComponent() {
+export default function RecipeComponent({ userId }) {
     console.log("RecipeComponent mounted");
 
     const recipes = useSelector((state) => {
-        console.log("state in RecipeComponent", state);
+        console.log("state in RecipeComponent");
         return state.recipes;
     });
 

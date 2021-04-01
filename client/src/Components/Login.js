@@ -30,7 +30,8 @@ export default function Login({ state }) {
         if (!user) {
             return;
         } else {
-            history.replace("/");
+            // history.replace("/");
+            history.goBack();
         }
     }, [user]);
 

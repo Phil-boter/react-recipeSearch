@@ -59,7 +59,7 @@ module.exports.saveFavoriteRecipe = (
     cautions,
     userId
 ) => {
-    const q = `INSERT INTO favorites (uri, label, url, source, image, ingredient, yield, healthLabels, cautions, userId) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING * `;
+    const q = `INSERT INTO favRecipe (uri, label, url, source, image, ingredient, yield, healthLabels, cautions, userId) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING * `;
     const params = [
         uri,
         label,
@@ -75,13 +75,13 @@ module.exports.saveFavoriteRecipe = (
     return db.query(q, params);
 };
 module.exports.getFavoriteRecipe = (userId) => {
-    const q = `SELECT * FROM favorites WHERE userid = $1`;
+    const q = `SELECT * FROM favRecipe WHERE userid = $1`;
     const query = [userId];
     return db.query(q, query);
 };
 
 module.exports.deleteRecipe = (id, userId) => {
-    const q = `DELETE FROM favorites WHERE (id = $1 AND userId = $2)`;
+    const q = `DELETE FROM favRecipe WHERE (id = $1 AND userId = $2)`;
     const query = [id, userId];
     return db.query(q, query);
 };
@@ -91,8 +91,9 @@ module.exports.deleteAccount = (userId) => {
     const query = [userId];
     return db.query(q, query);
 };
+
 module.exports.deleteFavs = (userId) => {
-    const q = `DELETE FROM favorites WHERE userId = $1`;
+    const q = `DELETE FROM favRecipe, favRestaurant WHERE userId = $1`;
     const query = [userId];
     return db.query(q, query);
 };

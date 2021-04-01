@@ -6,7 +6,6 @@ import RecipeModal from "../Components/RecipeModal";
 import "../css/SingleRecipe.css";
 
 export default function SingleRecipe({ recipe, index }) {
-    console.log("singleRecipe mounted");
     console.log("recipe, index", recipe, index);
 
     const [showModal, setShowModal] = useState(false);

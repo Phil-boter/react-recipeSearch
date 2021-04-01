@@ -1,11 +1,10 @@
 .navigation {
-    /* border: 3px solid yellow; */
     position: relative;
     background-color: rgb(37, 37, 37);
     top: 0;
     height: 3.5rem;
     width: 100%;
-    z-index: 3;
+    z-index: 1;
 }
 
 .navigation-burger {
@@ -15,27 +14,25 @@
     cursor: pointer;
 }
 .navigation-close {
-    color: black;
+    color: white;
     font-size: 2rem;
     padding: 0.3rem 0.8rem;
     cursor: pointer;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: rgb(37, 37, 37);
 }
 
-.navigation-container {
-    /* border: 1px solid yellowgreen; */
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.7);
-}
 .navigation-modal {
+    /* border: 3px solid yellow; */
     position: absolute;
     display: block;
-    height: 100vh;
-    width: 30vw;
+    height: auto;
+
+    width: 100vw;
     background-color: white;
-    animation: slide-in 2s;
+    animation: slide-in 1s;
+    top: 3.5rem;
 }
 .link-container {
     background-color: white;
@@ -58,10 +55,10 @@
 } */
 @keyframes slide-in {
     from {
-        width: 0;
+        visibility: hidden;
     }
     to {
-        width: 30vw;
+        visibility: visible;
     }
 }
 
@@ -79,10 +76,10 @@
     }
     @keyframes slide-in {
         from {
-            width: 0;
+            visibility: hidden;
         }
         to {
-            width: 100vw;
+            visibility: visible;
         }
     }
 }

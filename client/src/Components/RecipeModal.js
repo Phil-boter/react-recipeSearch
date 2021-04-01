@@ -1,4 +1,6 @@
-// import SaveFavorites from "./saveFavorites";
+import { useDispatch, useSelector } from "react-redux";
+import SaveRecipeButton from "./SaveRecipeButton";
+import { Link } from "react-router-dom";
 
 import "../css/RecipeModal.css";
 
@@ -11,7 +13,12 @@ export default function RecipeModal({
     renderFeeds,
     renderHealthLabels,
 }) {
-    console.log("modal mounted");
+    const user = useSelector((state) => {
+        console.log("state in RecipeModal", state);
+        return state.user;
+    });
+
+    console.log("modal mounted and state", user);
 
     return (
         <div className="recipe-modal-container" key={index}>
@@ -41,9 +48,9 @@ export default function RecipeModal({
                         <h4>Ingredients:</h4>
                         <ul>
                             {recipe.ingredients.map((ingredient, list) => (
-                                <>
-                                    <li key={list}>{ingredient.text}</li>
-                                </>
+                                <div key={list}>
+                                    <li>{ingredient.text}</li>
+                                </div>
                             ))}
                         </ul>
                     </div>
@@ -59,8 +66,15 @@ export default function RecipeModal({
                         {renderHealthLabels}
                     </div>
                     <div className="recipe-information">{renderCautions}</div>
-                    <div>
-                        {/* <SaveFavorites recipe={this.props.recipe} /> */}
+                    <div className="save-button-container">
+                        {user ? (
+                            <SaveRecipeButton recipe={recipe} />
+                        ) : (
+                            <p>
+                                To save to favorites please{" "}
+                                <Link to="/login">LOGIN</Link>
+                            </p>
+                        )}
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-// import SaveFavorites from "./saveFavorites";
+import SaveRestaurantButton from "./SaveRestaurantButton";
 
 import "../css/RecipeModal.css";
 
@@ -69,7 +69,14 @@ export default function RestaurantModal({
                         </a>
                     </div>
                     <div>
-                        {/* <SaveFavorites recipe={this.props.recipe} /> */}
+                        <SaveRestaurantButton
+                            restaurant={
+                                (restaurant,
+                                renderPhone,
+                                renderPrice,
+                                renderRating)
+                            }
+                        />
                     </div>
                 </div>
             </div>

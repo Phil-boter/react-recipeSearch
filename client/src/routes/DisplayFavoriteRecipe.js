@@ -1,7 +1,7 @@
 import BackToMainPage from "../Components/BackToMainPage";
 import TopLinks from "../Components/TopLinks";
 import NavigationComponent from "../Components/NavigationComponent";
-import FavouriteRecipeComponent from "../Components/FavouriteRecipeComponent";
+import FavoriteRecipeComponent from "../Components/FavoriteRecipeComponent";
 
 export default function DisplayFavouriteRecipe() {
     return (
@@ -9,7 +9,7 @@ export default function DisplayFavouriteRecipe() {
             <NavigationComponent />
             <TopLinks />
             <BackToMainPage />
-            <FavouriteRecipeComponent />
+            <FavoriteRecipeComponent />
         </>
     );
 }

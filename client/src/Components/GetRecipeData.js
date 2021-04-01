@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipe } from "../redux/actions";
-import { Link } from "react-router-dom";
 
 import "../css/GetRecipeData.css";
 import "../css/app.css";

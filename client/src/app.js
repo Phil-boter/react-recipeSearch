@@ -9,8 +9,8 @@ import "../src/css/app.css";
 import GetRecipeData from "./Components/GetRecipeData";
 import GetRestaurantData from "./Components/GetRestaurantData";
 import Login from "./Components/Login";
-import DisplayFavouriteRecipe from "./routes/DisplayFavouriteRecipe";
-import DisplayFavouriteRestaurant from "./routes/DisplayFavouriteRestaurant";
+import DisplayFavoriteRecipe from "./routes/DisplayFavoriteRecipe";
+import DisplayFavoriteRestaurant from "./routes/DisplayFavoriteRestaurant";
 
 export default function App() {
     return (
@@ -28,12 +28,12 @@ export default function App() {
             />
             <Route path="/login" render={() => <Login />} />
             <Route
-                path="/favouriteRecipe"
-                render={() => <DisplayFavouriteRecipe />}
+                path="/favoriteRecipe"
+                render={() => <DisplayFavoriteRecipe />}
             />
             <Route
-                path="/favouriteRestaurant"
-                render={() => <DisplayFavouriteRestaurant />}
+                path="/favoriteRestaurant"
+                render={() => <DisplayFavoriteRestaurant />}
             />
         </BrowserRouter>
     );

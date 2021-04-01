@@ -1,7 +1,7 @@
-import { Link, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getUser } from "../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import { useSelector } from "react-redux";
 
 import "../css/NavigationComponent.css";
 
@@ -28,48 +28,50 @@ export default function NavigationComponent() {
         <>
             <div className="navigation">
                 {visible === true ? (
-                    <div className="navigation-container">
-                        <div className="navigation-modal">
-                            <p
-                                className="navigation-close"
-                                onClick={() => closeNavbar()}
-                            >
-                                X
-                            </p>
-                            {!user ? (
-                                <div className="navigation-link">
-                                    <Link to="/login">My Account</Link>
-                                </div>
-                            ) : (
-                                <></>
-                            )}
-                            {user ? (
-                                <div className="navigation-link">
-                                    <Link to="/favouriteRecipe">
-                                        My Recipes
-                                    </Link>
-                                </div>
-                            ) : (
-                                <></>
-                            )}
-                            {user ? (
-                                <div className="navigation-link">
-                                    <Link to="/favouriteRestaurant">
-                                        My Restaurants
-                                    </Link>
-                                </div>
-                            ) : (
-                                <></>
-                            )}
-                            {user ? (
-                                <div className="navigation-link logout">
-                                    <a href="/logout">Logout</a>
-                                </div>
-                            ) : (
-                                <></>
-                            )}
+                    <>
+                        <p
+                            className="navigation-close"
+                            onClick={() => closeNavbar()}
+                        >
+                            X
+                        </p>
+                        <div className="navigation-container">
+                            <div className="navigation-modal">
+                                {!user ? (
+                                    <div className="navigation-link">
+                                        <Link to="/login">My Account</Link>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+                                {user ? (
+                                    <div className="navigation-link">
+                                        <Link to="/favoriteRecipe">
+                                            My Shopping lists
+                                        </Link>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+                                {user ? (
+                                    <div className="navigation-link">
+                                        <Link to="/favoriteRestaurant">
+                                            My Restaurants
+                                        </Link>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+                                {user ? (
+                                    <div className="navigation-link logout">
+                                        <a href="/logout">Logout</a>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+                            </div>
                         </div>
-                    </div>
+                    </>
                 ) : (
                     <p
                         className="navigation-burger"

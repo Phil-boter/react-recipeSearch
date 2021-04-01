@@ -32,5 +32,13 @@ export default function (state = {}, action) {
             user: action.user,
         };
     }
+
+    if (action.type == "SAVE_RECIPE") {
+        console.log("state in reducer save recipe", state);
+        state = {
+            ...state,
+            success: action.success,
+        };
+    }
     return state;
 }

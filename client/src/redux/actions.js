@@ -74,3 +74,26 @@ export async function getUser() {
         };
     }
 }
+
+export async function saveRestaurant(saveRest) {
+    console.log("actions in saveRestaurant", saveRest);
+    const { data } = await axios.post("/saveRestaurant", saveRest);
+    console.log("data in saveRestaurant", data);
+    if (data.success) {
+        return {
+            type: "SAVE_RESTAURANT",
+            success: data.success,
+        };
+    }
+}
+export async function saveRecipe(recipe) {
+    console.log("actions in saveRecipe", recipe);
+    const { data } = await axios.post("/saveRecipe", { recipe });
+    console.log("DATA in saverecipe", data);
+    if (data.success) {
+        return {
+            type: "SAVE_RECIPE",
+            success: data.success,
+        };
+    }
+}
