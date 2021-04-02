@@ -164,42 +164,77 @@ app.post("/deleteAccount", (req, res) => {
 
 app.post("/saveRestaurant", (req, res) => {
     console.log("post saveRestaurant");
-    console.log("req.body.recipe", req.body.restaurant);
+    console.log("req.body.restaurant", req.body);
     console.log("req query", req.query);
     console.log("req.session:", req.session.userId);
-    const { uri, label, url, source, image, yield } = req.body.recipe;
+    const { name, url, image_url, price, rating, categories, phone } = req.body;
     let userId = req.session.userId;
-    db.saveFavoriteRecipe(
-        uri,
-        label,
+    // let category;
+    // for (let i of req.body.categories) {
+    //     console.log("i", i);
+    //     category = i;
+    // }
+
+    // console.log("category", category.title);
+    db.saveFavoriteRestaurant(
+        name,
         url,
-        source,
-        image,
-        req.body.ingredient,
-        yield,
-        req.body.healthLabels,
-        req.body.cautions,
+        image_url,
+        price,
+        rating,
+        categories,
+        phone,
+        req.body.location.display_address,
         userId
     )
         .then(() => {
+            console.log("save restaurant success");
             res.json({
                 success: true,
+            }).send();
+        })
+        .catch((error) => {
+            console.log("error in saveFavoriteRestaurant", error);
+            res.json({ success: false }).send();
+        });
+});
+
+app.get("/getFavoriteRestaurant", (req, res) => {
+    console.log("getFavRestaurant");
+    let userId = req.session.userId;
+    db.getFavoriteRestaurant(userId)
+        .then(({ rows }) => {
+            // console.log("rows", rows);
+            res.json({
+                success: true,
+                favoriteRestaurant: rows,
             });
         })
         .catch((error) => {
-            console.log("error in saveFavoriteRecipe", error);
+            console.log("error in getFavoriteRestaurant", error);
             res.json({ success: false });
+        });
+});
+
+app.post("/deleteFavRestaurant", (req, res) => {
+    console.log("post deleteFavRecipe");
+
+    const { id } = req.body;
+    const { userId } = req.session;
+
+    db.deleteRestaurant(id, userId)
+        .then(() => {
+            console.log("deleted");
+            res.json({ successDelete: true }).send();
+        })
+        .catch((error) => {
+            console.log("error in deleteFavRecipe", error);
+            res.json({ successDelete: false }).send();
         });
 });
 
 app.post("/saveRecipe", (req, res) => {
     console.log("post saveRecipe");
-    console.log("req.body.recipe", req.body.recipe);
-    console.log("req.body.ingredientLine", req.body.ingredient);
-    console.log("req.body.ingredient", req.body.healthLabels);
-    console.log("req.body.ingredient", req.body.cautions);
-    console.log("req query", req.query);
-    console.log("req.session:", req.session.userId);
     const { uri, label, url, source, image, yield } = req.body.recipe;
     let userId = req.session.userId;
     db.saveFavoriteRecipe(
@@ -208,10 +243,10 @@ app.post("/saveRecipe", (req, res) => {
         url,
         source,
         image,
-        req.body.ingredient,
+        req.body.recipe.ingredientLines,
         yield,
-        req.body.healthLabels,
-        req.body.cautions,
+        req.body.recipe.healthLabels,
+        req.body.recipe.cautions,
         userId
     )
         .then(() => {
@@ -230,7 +265,7 @@ app.get("/getFavoriteRecipe", (req, res) => {
     let userId = req.session.userId;
     db.getFavoriteRecipe(userId)
         .then(({ rows }) => {
-            console.log("rows", rows);
+            // console.log("rows", rows);
             res.json({
                 success: true,
                 favoriteRecipe: rows,
@@ -243,20 +278,19 @@ app.get("/getFavoriteRecipe", (req, res) => {
 });
 
 app.post("/deleteFavRecipe", (req, res) => {
-    // console.log("post deleteFavRecipe");
-    // console.log("req params", req.params);
-    // console.log("req body", req.body);
-    // console.log("req query", req.query);
-    // console.log("req session", req.session);
+    console.log("post deleteFavRecipe");
+
     const { id } = req.body;
     const { userId } = req.session;
+
     db.deleteRecipe(id, userId)
         .then(() => {
-            res.json({ success: true });
+            console.log("deleted");
+            res.json({ successDelete: true }).send();
         })
         .catch((error) => {
             console.log("error in deleteFavRecipe", error);
-            res.json({ success: false });
+            res.json({ successDelete: false }).send();
         });
 });
 

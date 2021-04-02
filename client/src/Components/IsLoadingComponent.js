@@ -7,6 +7,13 @@ export default function IsLoadingComponent() {
                 <p>What do you think of poke bowl or maybe green curry?</p>
             </div>
         );
+    }
+    if (window.location.pathname == "/favoriteRecipe") {
+        return (
+            <div className="recipe-loading">
+                <p>Loading ...</p>
+            </div>
+        );
     } else {
         return (
             <div className="recipe-loading">

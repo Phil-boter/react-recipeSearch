@@ -7,7 +7,7 @@ import "../css/NavigationComponent.css";
 
 export default function NavigationComponent() {
     const user = useSelector((state) => {
-        console.log("state in login", state);
+        // console.log("state in login", state);
         return state.user;
     });
     const [visible, setIsVisible] = useState(false);
@@ -22,7 +22,7 @@ export default function NavigationComponent() {
         setIsVisible(false);
     };
     console.log("visible", visible);
-    console.log("user in navigationComp", user);
+    // console.log("user in navigationComp", user);
 
     return (
         <>

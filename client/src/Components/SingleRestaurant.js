@@ -6,8 +6,8 @@ import RestaurantModal from "../Components/RestaurantModal";
 import "../css/SingleRecipe.css";
 
 export default function SingleRestaurant({ restaurant, index }) {
-    console.log("singleRestaurantComponent mounted");
-    console.log("restaurant, index", restaurant, index);
+    // console.log("singleRestaurantComponent mounted");
+    // console.log("restaurant, index", restaurant, index);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -41,7 +41,12 @@ export default function SingleRestaurant({ restaurant, index }) {
     };
     const renderPrice = (price) => {
         if (!price) {
-            return;
+            return (
+                <>
+                    <p>Price:</p>
+                    <p>none provided</p>
+                </>
+            );
         } else {
             return (
                 <>
@@ -54,7 +59,12 @@ export default function SingleRestaurant({ restaurant, index }) {
 
     const renderRating = (rating) => {
         if (!rating) {
-            return;
+            return (
+                <>
+                    <p>Rating:</p>
+                    <p>none provided</p>
+                </>
+            );
         } else {
             return (
                 <>

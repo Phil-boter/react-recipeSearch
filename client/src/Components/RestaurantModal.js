@@ -69,14 +69,7 @@ export default function RestaurantModal({
                         </a>
                     </div>
                     <div>
-                        <SaveRestaurantButton
-                            restaurant={
-                                (restaurant,
-                                renderPhone,
-                                renderPrice,
-                                renderRating)
-                            }
-                        />
+                        <SaveRestaurantButton restaurant={restaurant} />
                     </div>
                 </div>
             </div>

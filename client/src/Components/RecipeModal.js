@@ -68,7 +68,7 @@ export default function RecipeModal({
                     <div className="recipe-information">{renderCautions}</div>
                     <div className="save-button-container">
                         {user ? (
-                            <SaveRecipeButton recipe={recipe} />
+                            <SaveRecipeButton recipe={recipe} index={index} />
                         ) : (
                             <p>
                                 To save to favorites please{" "}

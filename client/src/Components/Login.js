@@ -11,17 +11,17 @@ import NavigationComponent from "./NavigationComponent";
 import "../css/Login.css";
 import TopLinks from "./TopLinks";
 
-export default function Login({ state }) {
+export default function Login() {
     const dispatch = useDispatch();
     const history = useHistory();
 
     const user = useSelector((state) => {
-        console.log("state in login", state);
+        // console.log("state in login", state);
         return state.user;
     });
-    console.log("state in login", state);
+    // console.log("state in login", state);
 
-    console.log("user", user);
+    // console.log("user", user);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -36,14 +36,14 @@ export default function Login({ state }) {
     }, [user]);
 
     const handleEmail = (e) => {
-        console.log("event object name", e.target.name);
-        console.log("event object value", e.target.value);
+        // console.log("event object name", e.target.name);
+        // console.log("event object value", e.target.value);
         setEmail(e.target.value);
     };
 
     const handlePassword = (e) => {
-        console.log("event object name", e.target.name);
-        console.log("event object value", e.target.value);
+        // console.log("event object name", e.target.name);
+        // console.log("event object value", e.target.value);
         setPassword(e.target.value);
     };
 

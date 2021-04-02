@@ -3,7 +3,7 @@ import TopLinks from "../Components/TopLinks";
 import NavigationComponent from "../Components/NavigationComponent";
 import FavoriteRecipeComponent from "../Components/FavoriteRecipeComponent";
 
-export default function DisplayFavouriteRecipe() {
+export default function DisplayFavoriteRecipe() {
     return (
         <>
             <NavigationComponent />

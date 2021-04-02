@@ -97,3 +97,50 @@ module.exports.deleteFavs = (userId) => {
     const query = [userId];
     return db.query(q, query);
 };
+
+module.exports.saveFavoriteRestaurant = (
+    name,
+    url,
+    image,
+    price,
+    rating,
+    category,
+    phone,
+    address,
+    userId
+) => {
+    const q = `INSERT INTO favRestaurant (   
+        name,
+        url,
+        image,
+        price,
+        rating,
+        category,
+        phone,
+        address,
+        userId
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7,$8,$9) RETURNING * `;
+    const params = [
+        name,
+        url,
+        image,
+        price,
+        rating,
+        category,
+        phone,
+        address,
+        userId,
+    ];
+    return db.query(q, params);
+};
+module.exports.getFavoriteRestaurant = (userId) => {
+    const q = `SELECT * FROM favRestaurant WHERE userid = $1`;
+    const query = [userId];
+    return db.query(q, query);
+};
+
+module.exports.deleteRestaurant = (id, userId) => {
+    const q = `DELETE FROM favRestaurant WHERE (id = $1 AND userId = $2)`;
+    const query = [id, userId];
+    return db.query(q, query);
+};

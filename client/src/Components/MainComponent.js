@@ -7,7 +7,7 @@ export default function MainComponent() {
         <>
             <>
                 <div className="main-info-container">
-                    <h1 className="c">
+                    <h1>
                         Find new inspiration for cooking
                         <br /> or being cooked for
                     </h1>
