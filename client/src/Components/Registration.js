@@ -1,14 +1,18 @@
-import { Component } from "react";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 
-import { registration } from "../redux/actions";
+import { registration, getUser } from "../redux/actions";
 
 import "../css/Login.css";
 
 export default function Registration({ state }) {
     const dispatch = useDispatch();
+    const history = useHistory();
+
+    const user = useSelector((state) => {
+        return state.data;
+    });
 
     const [firstName, setFirst] = useState("");
     const [lastName, setLast] = useState("");
@@ -35,7 +39,20 @@ export default function Registration({ state }) {
         console.log("isVisible", register);
         setShowregister(false);
     };
-    console.log("state in register", state);
+
+    const Register = () => {
+        dispatch(registration(firstName, lastName, email, password));
+        console.log("disppatch getUser");
+        setTimeout(() => {
+            console.log("getuser");
+            dispatch(getUser());
+        }, 800);
+        setTimeout(() => {
+            console.log("history push");
+            history.push("/");
+        }, 1000);
+    };
+
     return (
         <>
             <div className="restaurant-container">
@@ -101,16 +118,7 @@ export default function Registration({ state }) {
                                     password.length < 1)
                                 }
                                 className="main-info-button main-info-button-recipe login-button"
-                                onClick={() =>
-                                    dispatch(
-                                        registration(
-                                            firstName,
-                                            lastName,
-                                            email,
-                                            password
-                                        )
-                                    )
-                                }
+                                onClick={() => Register()}
                             >
                                 Register
                             </button>

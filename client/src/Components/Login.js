@@ -16,22 +16,22 @@ export default function Login() {
     const history = useHistory();
 
     const user = useSelector((state) => {
-        // console.log("state in login", state);
+        console.log("state in login", state);
         return state.user;
     });
-    // console.log("state in login", state);
 
-    // console.log("user", user);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [text, setButtontext] = useState("Login");
 
     useEffect(() => {
         console.log("useEffect loginComponent");
-        if (!user) {
-            return;
-        } else {
-            // history.replace("/");
+        if (user && user.id) {
             history.goBack();
+        } else if (user && user.success == false) {
+            setButtontext("make account first");
+        } else {
+            return;
         }
     }, [user]);
 
@@ -55,9 +55,6 @@ export default function Login() {
                 <BackToMainPage />
             </div>
             <div className="restaurant-container">
-                {/* {error && (
-                    <h3 className="error">Ooops!! Something went wrong...</h3>
-                )} */}
                 <div className="log-header">
                     <h2>I AM ALREADY A CUSTOMER</h2>
                 </div>
@@ -86,7 +83,7 @@ export default function Login() {
                         className="main-info-button main-info-button-recipe login-button"
                         onClick={() => dispatch(login(email, password))}
                     >
-                        Login
+                        {text}
                     </button>
                 </div>
 

@@ -1,15 +1,21 @@
-import React, { Component } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { saveRestaurant } from "../redux/actions";
 
 export default function SaveRestaurantButton({ restaurant }) {
     const dispatch = useDispatch();
-    console.log("restaurant button runs");
+
+    const [text, setButtonText] = useState("");
 
     const SaveRestaurant = () => {
         console.log("click in save restaurant");
         dispatch(saveRestaurant(restaurant));
+        setButtonText("Saved");
     };
+
+    useEffect(() => {
+        setButtonText("Save to favorites");
+    }, []);
 
     return (
         <>
@@ -17,7 +23,7 @@ export default function SaveRestaurantButton({ restaurant }) {
                 className="main-info-button main-info-button-recipe"
                 onClick={() => SaveRestaurant()}
             >
-                Save to favorites
+                {text}
             </button>
         </>
     );

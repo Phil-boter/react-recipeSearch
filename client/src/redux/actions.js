@@ -2,45 +2,55 @@ import axios from "../Components/axios";
 
 export async function getRecipe(params) {
     // console.log("actions getrecipe", params);
-
-    const { data } = await axios.get(`/api/getRecipe/${params}`);
-    // console.log("data recipe", data);
-    if (data.success) {
-        return {
-            type: "GET_RECIPEDATA",
-            recipes: data.recipes,
-        };
+    try {
+        const { data } = await axios.get(`/api/getRecipe/${params}`);
+        // console.log("data recipe", data);
+        if (data.success) {
+            return {
+                type: "GET_RECIPEDATA",
+                recipes: data.recipes,
+            };
+        }
+    } catch (err) {
+        console.log("error in getRecipe", err);
     }
 }
 
 export async function getRestaurant(term, location) {
     // console.log("actions getRestaurant", term, location);
-
-    const { data } = await axios.get("/api/getRestaurant/", {
-        params: {
-            term: term,
-            location: location,
-            sortBy: "best_match",
-        },
-    });
-    // console.log("data recipe", data);
-    if (data.success) {
-        return {
-            type: "GET_RESTAURANTDATA",
-            restaurants: data.businesses,
-        };
+    try {
+        const { data } = await axios.get("/api/getRestaurant/", {
+            params: {
+                term: term,
+                location: location,
+                sortBy: "best_match",
+            },
+        });
+        // console.log("data recipe", data);
+        if (data.success) {
+            return {
+                type: "GET_RESTAURANTDATA",
+                restaurants: data.businesses,
+            };
+        }
+    } catch (err) {
+        console.log("error in getRestaurant", err);
     }
 }
 
 export async function login(email, password) {
     // console.log("actions in login", email, password);
-
     const { data } = await axios.post("/login", {
         email: email,
         password: password,
     });
-    // console.log("data in actions login", data);
+    console.log("data in actions login", data);
     if (data.success) {
+        return {
+            type: "GET_LOGIN",
+            user: data,
+        };
+    } else if (data.success == false) {
         return {
             type: "GET_LOGIN",
             user: data,
@@ -55,18 +65,18 @@ export async function registration(first, last, email, password) {
         email: email,
         password: password,
     });
-    // console.log("data in actions register", data);
+    console.log("data in actions register", data);
     if (data.success) {
         return {
             type: "GET_REGISTRATION",
-            user: data,
+            data: data,
         };
     }
 }
 
 export async function getUser() {
-    // const { data } = await axios.get("/user");
-    // console.log("data in getUser", data);
+    const { data } = await axios.get("/user");
+    console.log("data in getUser", data);
     if (data.success) {
         return {
             type: "GET_USER",
@@ -75,10 +85,20 @@ export async function getUser() {
     }
 }
 
+export async function deleteAccount() {
+    const data = await axios.post("/deleteAccount");
+    if (data.success) {
+        return {
+            type: "DELETE_ACCOUNT",
+            successDeleteAccount: data.successDeleteAccount,
+        };
+    }
+}
+
 export async function saveRestaurant(saveRest) {
-    console.log("actions in saveRestaurant", saveRest);
+    // console.log("actions in saveRestaurant", saveRest);
     const { data } = await axios.post("/saveRestaurant", saveRest);
-    console.log("data in saveRestaurant", data);
+    // console.log("data in saveRestaurant", data);
     if (data.success) {
         return {
             type: "SAVE_RESTAURANT",
@@ -88,9 +108,9 @@ export async function saveRestaurant(saveRest) {
 }
 
 export async function getFavoriteRestaurant() {
-    console.log("action in getRecipe");
+    // console.log("action in getRecipe");
     const { data } = await axios.get("/getFavoriteRestaurant");
-    console.log("data in getRecipe", data);
+    //console.log("data in getRecipe", data);
     if (data.success) {
         return {
             type: "GET_FAVREST",
@@ -102,12 +122,10 @@ export async function deleteRestaurant(id) {
     console.log("action in deleteRecipe");
 
     const { data } = await axios.post("/deleteFavRestaurant", { id: id });
-
-    console.log("data in deleteRecipe", data);
-
+    // console.log("data in deleteRecipe", data);
     return {
         type: "DELETE_RESTAURANT",
-        successDelete: data.successDelete,
+        successDeleteRest: data.successDelete,
     };
 }
 
@@ -136,9 +154,7 @@ export async function getFavoriteRecipe() {
 }
 export async function deleteRecipe(id) {
     // console.log("action in deleteRecipe");
-
     const { data } = await axios.post("/deleteFavRecipe", { id: id });
-
     // console.log("data in deleteRecipe", data);
 
     return {

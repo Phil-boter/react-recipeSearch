@@ -7,6 +7,7 @@ const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const { default: axios } = require("axios");
 const { hash, compare } = require("./bc");
+const { send } = require("process");
 
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
@@ -57,7 +58,10 @@ app.post("/registration", (req, res) => {
                 .then(({ rows }) => {
                     console.log("userdata is stored");
                     req.session.userId = rows[0].id;
-                    res.json({ success: true });
+                    res.json({
+                        success: true,
+                        userId: req.session.userId,
+                    });
                 })
                 .catch((error) => {
                     console.log("error registration", error);
@@ -104,16 +108,16 @@ app.post("/login", (req, res) => {
                     })
                     .catch((error) => {
                         console.log("error match", error);
-                        res.json({ success: false });
+                        res.json({ success: false }).send();
                     });
             })
             .catch((error) => {
                 console.log("error match", error);
-                res.json({ success: false });
+                res.json({ success: false }).send();
             });
     } else {
         console.log("error in logIn post");
-        res.json({ success: false });
+        res.json({ success: false }).send();
     }
 });
 
@@ -146,36 +150,42 @@ app.get("/logout", (req, res) => {
 
 app.post("/deleteAccount", (req, res) => {
     console.log("post delete Account");
-    console.log("req session", req.session);
     const { userId } = req.session;
-    db.deleteFavs(userId)
-        .then((res) => {
-            return db.deleteAccount(userId);
-        })
-        .then((response) => {
-            console.log("delete User resolved", response);
-            res.json({ success: true });
+    db.deleteFavRecipe(userId)
+        .then(() => {
+            console.log("all recipes deleted");
+            db.deleteFavRestaurant(userId)
+                .then(() => {
+                    console.log("all restaurants deleted");
+                    return db
+                        .deleteAccount(userId)
+                        .then((response) => {
+                            console.log("delete User resolved", response);
+                            res.json({ success: true });
+                        })
+                        .catch((error) => {
+                            console.log("error in deleteAccount", error);
+                            res.json({ success: false });
+                        });
+                })
+                .catch((error) => {
+                    console.log("error in delete restaurant", error);
+                    res.json({ success: false });
+                });
         })
         .catch((error) => {
-            console.log("error in deleteAccount", error);
+            console.log("error in deleterecipe", error);
             res.json({ success: false });
         });
 });
 
 app.post("/saveRestaurant", (req, res) => {
     console.log("post saveRestaurant");
-    console.log("req.body.restaurant", req.body);
-    console.log("req query", req.query);
-    console.log("req.session:", req.session.userId);
+    // console.log("req.body.restaurant", req.body);
+    // console.log("req query", req.query);
+    // console.log("req.session:", req.session.userId);
     const { name, url, image_url, price, rating, categories, phone } = req.body;
     let userId = req.session.userId;
-    // let category;
-    // for (let i of req.body.categories) {
-    //     console.log("i", i);
-    //     category = i;
-    // }
-
-    // console.log("category", category.title);
     db.saveFavoriteRestaurant(
         name,
         url,
@@ -265,7 +275,6 @@ app.get("/getFavoriteRecipe", (req, res) => {
     let userId = req.session.userId;
     db.getFavoriteRecipe(userId)
         .then(({ rows }) => {
-            // console.log("rows", rows);
             res.json({
                 success: true,
                 favoriteRecipe: rows,
@@ -318,7 +327,7 @@ app.get("/api/getRecipe/:input", (req, res) => {
             });
         } catch (error) {
             console.log("error in getRecipe", error);
-            res.json({ success: false });
+            res.json({ success: false }).send();
         }
         return response;
     }
@@ -354,7 +363,7 @@ app.get(`/api/getRestaurant/`, (req, res) => {
             });
         } catch (error) {
             console.log("error in getRecipe", error);
-            res.json({ success: false });
+            res.send({ success: false });
         }
         return response;
     }

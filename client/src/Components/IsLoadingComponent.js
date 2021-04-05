@@ -11,7 +11,14 @@ export default function IsLoadingComponent() {
     if (window.location.pathname == "/favoriteRecipe") {
         return (
             <div className="recipe-loading">
-                <p>Loading ...</p>
+                <p>You have no favorites</p>
+            </div>
+        );
+    }
+    if (window.location.pathname == "/favoriteRestaurant") {
+        return (
+            <div className="recipe-loading">
+                <p>You have no favorites</p>
             </div>
         );
     } else {

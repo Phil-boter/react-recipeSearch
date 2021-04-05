@@ -8,6 +8,7 @@ export default function RestaurantModal({
     renderPhone,
     renderPrice,
     renderRating,
+    renderImage,
     closeShowRecipe,
 }) {
     console.log("modal mounted");
@@ -20,7 +21,7 @@ export default function RestaurantModal({
                         className="recipe-close-modal"
                         onClick={closeShowRecipe}
                     >
-                        <p>close</p>
+                        <p>CLOSE</p>
                     </div>
                     <div>
                         <a
@@ -28,11 +29,7 @@ export default function RestaurantModal({
                             target="_blank"
                             className="recipe-modal-image"
                         >
-                            <img
-                                className="recipe-modal-image"
-                                src={restaurant.image_url}
-                                alt="imgae of food"
-                            />
+                            {renderImage}
                         </a>
                     </div>
                     <h2>{restaurant.name}</h2>
@@ -68,7 +65,7 @@ export default function RestaurantModal({
                             {`${restaurant.review_count} reviews`}
                         </a>
                     </div>
-                    <div>
+                    <div className="save-button-container">
                         <SaveRestaurantButton restaurant={restaurant} />
                     </div>
                 </div>

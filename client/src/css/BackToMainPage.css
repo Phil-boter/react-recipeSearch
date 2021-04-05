@@ -10,8 +10,9 @@
     letter-spacing: -2px;
     border-bottom: 1px solid rgba(37, 37, 37, 0.5);
 }
-.margin {
-    /* margin-bottom: 3rem; */
+.account {
+    border: none;
+    height: 10rem !important;
 }
 .back-to-main-page a {
     color: black;

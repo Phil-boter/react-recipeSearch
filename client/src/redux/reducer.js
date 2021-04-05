@@ -25,8 +25,16 @@ export default function (state = {}, action) {
         };
     }
 
+    if (action.type == "GET_REGISTRATION") {
+        console.log("state in reducer register", state);
+        state = {
+            ...state,
+            data: action.data,
+        };
+    }
+
     if (action.type == "GET_LOGIN") {
-        // console.log("state reducer login", state);
+        console.log("state reducer login", state);
         state = {
             ...state,
             user: action.user,
@@ -62,17 +70,24 @@ export default function (state = {}, action) {
         };
     }
     if (action.type == "GET_FAVREST") {
-        console.log("reducer get fav Restaurant");
+        // console.log("reducer get fav Restaurant");
         state = {
             ...state,
             data: action.data,
         };
     }
     if (action.type == "DELETE_RESTAURANT") {
-        console.log("state in reducer delete restaurant", state);
+        // console.log("state in reducer delete restaurant", state);
         state = {
             ...state,
-            successDelete: action.successDelete,
+            successDeleteRest: action.successDelete,
+        };
+    }
+    if (action == "DELETE_ACCOUNT") {
+        console.log("state in reducer delete account");
+        state = {
+            ...state,
+            successDeleteAccount: action.successDeleteAccount,
         };
     }
 

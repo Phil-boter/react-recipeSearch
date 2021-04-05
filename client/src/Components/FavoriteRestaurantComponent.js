@@ -1,10 +1,11 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavoriteRestaurant } from "../redux/actions";
 import { useEffect, useState } from "react";
 
 import IsLoadingComponent from "./IsLoadingComponent";
 import DeleteFavoriteRestaurantButton from "./DeleteFavoriteRestaurantButton";
+
+import "../css/FavComponent.css";
 
 export default function FavoriteRestaurantComponent() {
     // console.log("FavoriteRestaurantComponent mounted");
@@ -74,12 +75,33 @@ export default function FavoriteRestaurantComponent() {
         }
     };
 
+    const renderImage = (image) => {
+        if (!image) {
+            return (
+                <img
+                    className="recipe-modal-image"
+                    src="/images/rosemary640.jpg"
+                    alt="Image with food"
+                />
+            );
+        } else {
+            return (
+                <img
+                    className="recipe-modal-image"
+                    src={image}
+                    alt="Image with food"
+                />
+            );
+        }
+    };
+
     return (
-        <div className="single-recipe-container">
+        <>
             <h1 className="search-headline">Your Favorites</h1>
             <div className="main-display">
                 <div className="single-recipe-container">
-                    {!favoriteRestaurant ||
+                    {favoriteRestaurant === undefined ||
+                    favoriteRestaurant.favoriteRestaurant === undefined ||
                     favoriteRestaurant.favoriteRestaurant.length == 0 ? (
                         <div className="loading-container">
                             <IsLoadingComponent />
@@ -88,15 +110,13 @@ export default function FavoriteRestaurantComponent() {
                         favoriteRestaurant.favoriteRestaurant.map(
                             (restaurant, index) => (
                                 <div key={index}>
-                                    {restaurant.name}
+                                    <h2 className="fav-main-label">
+                                        {restaurant.name}
+                                    </h2>
                                     <div className="image-container">
-                                        <img
-                                            className="image"
-                                            src={restaurant.image}
-                                            alt="Image with food"
-                                        />
+                                        {renderImage(restaurant.image)}
                                     </div>
-                                    <h2>{restaurant.name}</h2>
+
                                     <div className="recipe-information">
                                         {renderPhone(restaurant.phone)}
                                     </div>
@@ -106,7 +126,7 @@ export default function FavoriteRestaurantComponent() {
                                     <div className="recipe-information">
                                         {renderRating(restaurant.rating)}
                                     </div>
-                                    <div>
+                                    <div className="delete-button">
                                         <DeleteFavoriteRestaurantButton
                                             restaurant={restaurant}
                                         />
@@ -117,9 +137,6 @@ export default function FavoriteRestaurantComponent() {
                     )}
                 </div>
             </div>
-        </div>
+        </>
     );
 }
-
-//     </div>
-// ));

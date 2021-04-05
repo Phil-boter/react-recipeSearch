@@ -24,7 +24,9 @@ export default function FavoriteRecipeComponent() {
             <h1 className="search-headline">Your Favorites</h1>
             <div className="main-display">
                 <div className="single-recipe-container">
-                    {!data || data.favoriteRecipe.length == 0 ? (
+                    {data === undefined ||
+                    data.favoriteRecipe === undefined ||
+                    data.favoriteRecipe.length == 0 ? (
                         <div className="loading-container">
                             <IsLoadingComponent />
                         </div>

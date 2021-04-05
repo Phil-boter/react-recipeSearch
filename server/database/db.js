@@ -92,8 +92,13 @@ module.exports.deleteAccount = (userId) => {
     return db.query(q, query);
 };
 
-module.exports.deleteFavs = (userId) => {
-    const q = `DELETE FROM favRecipe, favRestaurant WHERE userId = $1`;
+module.exports.deleteFavRecipe = (userId) => {
+    const q = `DELETE FROM favRecipe WHERE userId = $1`;
+    const query = [userId];
+    return db.query(q, query);
+};
+module.exports.deleteFavRestaurant = (userId) => {
+    const q = `DELETE FROM favRestaurant WHERE userId = $1`;
     const query = [userId];
     return db.query(q, query);
 };

@@ -7,24 +7,28 @@ export default function DeleteFavoriteRestaurantButtom({ restaurant }) {
     console.log("restaurant in delete", restaurant);
     const { id } = restaurant;
 
-    const [deletedRest, setDeletedRest] = useState(false);
+    const [text, setButtonText] = useState("");
 
     const Delete = () => {
         console.log("click in deleteRecipe");
-        setDeletedRest(true);
         dispatch(deleteRestaurant(id));
-        dispatch(getFavoriteRestaurant());
+        setButtonText("Deleted");
+        setTimeout(() => dispatch(getFavoriteRestaurant()), 700);
     };
 
-    useLayoutEffect(() => {
-        console.log("useEffect delete");
-        dispatch(getFavoriteRestaurant());
-    }, [deletedRest]);
+    useEffect(() => {
+        setButtonText("Delete");
+    }, [id]);
 
     return (
         <>
-            <div className="button-fav back delete">
-                <button onClick={() => Delete()}>delete</button>
+            <div className="delete-button">
+                <button
+                    className="main-info-button main-info-button-recipe delete"
+                    onClick={() => Delete()}
+                >
+                    {text}
+                </button>
             </div>
         </>
     );

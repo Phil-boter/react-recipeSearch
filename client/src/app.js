@@ -19,6 +19,7 @@ import GetRestaurantData from "./Components/GetRestaurantData";
 import Login from "./Components/Login";
 import DisplayFavoriteRecipe from "./routes/DisplayFavoriteRecipe";
 import DisplayFavoriteRestaurant from "./routes/DisplayFavoriteRestaurant";
+import DisplayDeleteAccount from "./routes/DisplayDeleteAccount";
 
 export default function App() {
     const { user } = useSelector((state) => {
@@ -50,6 +51,10 @@ export default function App() {
                     <Route
                         path="/favoriteRestaurant"
                         render={() => <DisplayFavoriteRestaurant />}
+                    />
+                    <Route
+                        path="/deleteAccount"
+                        render={() => <DisplayDeleteAccount />}
                     />
                 </>
             )}

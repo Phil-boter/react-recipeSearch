@@ -37,14 +37,14 @@ export default function NavigationComponent() {
                         </p>
                         <div className="navigation-container">
                             <div className="navigation-modal">
-                                {!user ? (
+                                {!user || !user.id ? (
                                     <div className="navigation-link">
                                         <Link to="/login">My Account</Link>
                                     </div>
                                 ) : (
                                     <></>
                                 )}
-                                {user ? (
+                                {user && user.id ? (
                                     <div className="navigation-link">
                                         <Link to="/favoriteRecipe">
                                             My Shopping lists
@@ -53,7 +53,7 @@ export default function NavigationComponent() {
                                 ) : (
                                     <></>
                                 )}
-                                {user ? (
+                                {user && user.id ? (
                                     <div className="navigation-link">
                                         <Link to="/favoriteRestaurant">
                                             My Restaurants
@@ -62,9 +62,18 @@ export default function NavigationComponent() {
                                 ) : (
                                     <></>
                                 )}
-                                {user ? (
+                                {user && user.id ? (
                                     <div className="navigation-link logout">
                                         <a href="/logout">Logout</a>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+                                {user && user.id ? (
+                                    <div className="navigation-link">
+                                        <Link to="/deleteAccount">
+                                            Delete Account
+                                        </Link>
                                     </div>
                                 ) : (
                                     <></>

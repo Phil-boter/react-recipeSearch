@@ -120,14 +120,30 @@ export default function SingleRecipe({ recipe, index }) {
         }
     };
 
+    const renderImage = (image) => {
+        if (!image || image == "") {
+            return (
+                <img
+                    className="recipe-modal-image"
+                    src="/images/rosemary640.jpg"
+                    alt="Image with food"
+                />
+            );
+        } else {
+            return (
+                <img
+                    className="recipe-modal-image"
+                    src={image}
+                    alt="Image with food"
+                />
+            );
+        }
+    };
+
     return (
         <div className="single-recipe-container" key={index}>
             <div className="image-container" onClick={() => toggleShowRecipe()}>
-                <img
-                    className="image"
-                    src={recipe.recipe.image}
-                    alt="Image with food"
-                />
+                {renderImage(recipe.recipe.image)}
             </div>
             <h2>{recipe.recipe.label}</h2>
             <div className="recipe-information">
@@ -156,6 +172,7 @@ export default function SingleRecipe({ recipe, index }) {
                     )}
                     renderCuisine={renderCuisine(recipe.recipe.cuisineType)}
                     renderDish={renderDish(recipe.recipe.dishType)}
+                    renderImage={renderImage(recipe.recipe.image)}
                 />
             )}
         </div>

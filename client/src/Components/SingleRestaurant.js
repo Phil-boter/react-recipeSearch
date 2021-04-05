@@ -75,14 +75,30 @@ export default function SingleRestaurant({ restaurant, index }) {
         }
     };
 
+    const renderImage = (image) => {
+        if (image == "") {
+            return (
+                <img
+                    className="recipe-modal-image"
+                    src="/images/rosemary640.jpg"
+                    alt="Image with food"
+                />
+            );
+        } else {
+            return (
+                <img
+                    className="recipe-modal-image"
+                    src={image}
+                    alt="Image with food"
+                />
+            );
+        }
+    };
+
     return (
         <div className="single-recipe-container" key={index}>
             <div className="image-container" onClick={() => toggleShowRecipe()}>
-                <img
-                    className="image"
-                    src={restaurant.image_url}
-                    alt="Image with food"
-                />
+                {renderImage(restaurant.image_url)}
             </div>
             <h2>{restaurant.name}</h2>
             <div className="recipe-information">
@@ -102,6 +118,7 @@ export default function SingleRestaurant({ restaurant, index }) {
                     renderPhone={renderPhone(restaurant.display_phone)}
                     renderPrice={renderPrice(restaurant.price)}
                     renderRating={renderRating(restaurant.rating)}
+                    renderImage={renderImage(restaurant.image_url)}
                 />
             )}
         </div>

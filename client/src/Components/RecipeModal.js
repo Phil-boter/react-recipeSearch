@@ -12,6 +12,7 @@ export default function RecipeModal({
     renderCautions,
     renderFeeds,
     renderHealthLabels,
+    renderImage,
 }) {
     const user = useSelector((state) => {
         console.log("state in RecipeModal", state);
@@ -28,7 +29,7 @@ export default function RecipeModal({
                         className="recipe-close-modal"
                         onClick={closeShowRecipe}
                     >
-                        <p>close</p>
+                        <p>CLOSE</p>
                     </div>
                     <div>
                         <a
@@ -36,11 +37,7 @@ export default function RecipeModal({
                             target="_blank"
                             className="recipe-modal-image"
                         >
-                            <img
-                                className="recipe-modal-image"
-                                src={recipe.image}
-                                alt="imgae of food"
-                            />
+                            {renderImage}
                         </a>
                     </div>
                     <h2>{recipe.label}</h2>
@@ -67,14 +64,7 @@ export default function RecipeModal({
                     </div>
                     <div className="recipe-information">{renderCautions}</div>
                     <div className="save-button-container">
-                        {user ? (
-                            <SaveRecipeButton recipe={recipe} index={index} />
-                        ) : (
-                            <p>
-                                To save to favorites please{" "}
-                                <Link to="/login">LOGIN</Link>
-                            </p>
-                        )}
+                        <SaveRecipeButton recipe={recipe} index={index} />
                     </div>
                 </div>
             </div>
