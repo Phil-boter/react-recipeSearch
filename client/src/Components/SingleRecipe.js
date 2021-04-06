@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import RecipeModal from "../Components/RecipeModal";
 
@@ -36,7 +35,6 @@ export default function SingleRecipe({ recipe, index }) {
     };
 
     const renderCautions = (cautions) => {
-        console.log("cautions", cautions);
         if (!cautions || cautions.length == "0") {
             return;
         } else {
