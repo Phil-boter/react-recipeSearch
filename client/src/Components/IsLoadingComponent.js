@@ -7,15 +7,19 @@ export default function IsLoadingComponent() {
                 <p>What do you think of poke bowl or maybe green curry?</p>
             </div>
         );
-    }
-    if (window.location.pathname == "/favoriteRecipe") {
+    } else if (window.location.pathname == "/displayRestaurant") {
+        return (
+            <div className="recipe-loading">
+                <p>French, Italian or Vietnamese?</p>
+            </div>
+        );
+    } else if (window.location.pathname == "/favoriteRecipe") {
         return (
             <div className="recipe-loading">
                 <p>You have no favorites</p>
             </div>
         );
-    }
-    if (window.location.pathname == "/favoriteRestaurant") {
+    } else if (window.location.pathname == "/favoriteRestaurant") {
         return (
             <div className="recipe-loading">
                 <p>You have no favorites</p>
@@ -24,7 +28,7 @@ export default function IsLoadingComponent() {
     } else {
         return (
             <div className="recipe-loading">
-                <p>French, Italian or Vietnamese?</p>
+                <p>Loading...</p>
             </div>
         );
     }

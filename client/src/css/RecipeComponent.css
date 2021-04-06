@@ -1,5 +1,7 @@
 /* border: 1px solid yellowgreen; */
-
+.recipe-main-container {
+    padding: 1rem;
+}
 .image-container {
     display: flex;
     justify-content: center;
