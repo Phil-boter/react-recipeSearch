@@ -133,10 +133,14 @@ export default function SingleRecipe({ recipe, index }) {
 
     return (
         <div className="single-recipe-container" key={index}>
-            <div className="image-container" onClick={() => toggleShowRecipe()}>
+            <div className="image-container">
                 {renderImage(recipe.recipe.image)}
             </div>
-            <h2>{recipe.recipe.label}</h2>
+            <h2 className="link">
+                <a href={recipe.recipe.url} target="_blank">
+                    {recipe.recipe.label}
+                </a>
+            </h2>
             <div className="recipe-information">
                 {renderDish(recipe.recipe.dishType)}
             </div>
@@ -149,7 +153,14 @@ export default function SingleRecipe({ recipe, index }) {
             <div className="recipe-information">
                 {renderFeeds(recipe.recipe.yield)}
             </div>
-
+            <div className="save-button-container more-info-button">
+                <button
+                    className="main-info-button click-for-modal main-info-button-recipe"
+                    onClick={() => toggleShowRecipe()}
+                >
+                    More information
+                </button>
+            </div>
             {showModal && (
                 <RecipeModal
                     recipe={recipe.recipe}

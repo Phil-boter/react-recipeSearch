@@ -2,7 +2,7 @@
     /* border: 2px dotted yellow; */
     position: absolute;
     top: 0;
-    height: 3rem;
+    height: 3.5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -14,22 +14,19 @@
 .link-button {
     background-color: rgb(37, 37, 37);
     border: none;
-    height: 2.5rem;
-    align-self: center;
 }
 .route-link {
-    font-family: "Times New Roman";
+    font-family: "Roboto";
     letter-spacing: -2px;
-    font-size: 2rem;
+    font-size: 1.3rem;
     color: whitesmoke;
     cursor: pointer;
-    height: 2.5rem;
 }
 .route-link:hover {
     color: tomato;
 }
 @media only screen and (max-width: 850px) {
     .route-link {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 }

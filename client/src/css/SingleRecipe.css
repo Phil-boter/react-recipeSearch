@@ -1,6 +1,7 @@
 .single-recipe-container {
     width: 17rem;
     margin-bottom: 2rem;
+    padding: 1rem;
 }
 .recipe-information {
     display: flex;
@@ -18,4 +19,9 @@
 .restaurant-address p {
     display: flex;
     flex-direction: column;
+}
+.click-info {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: -1rem;
 }

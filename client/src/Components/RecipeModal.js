@@ -36,7 +36,11 @@ export default function RecipeModal({
                             {renderImage}
                         </a>
                     </div>
-                    <h2>{recipe.label}</h2>
+                    <h2 className="link">
+                        <a href={recipe.url} target="_blank">
+                            {recipe.label}
+                        </a>
+                    </h2>
                     <div className="recipe-information">
                         <h4>Ingredients:</h4>
                         <ul>

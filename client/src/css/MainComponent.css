@@ -45,6 +45,19 @@
 .main-info-button-restaurant:hover {
     background-color: black;
 }
+.click-for-modal {
+    font-size: 1.2rem;
+    height: 3rem;
+    width: 13rem;
+    margin-bottom: 0rem;
+}
+.click-for-restaurant {
+    color: black;
+    border: solid black 1px;
+}
+.more-info-button {
+    padding: 0 !important;
+}
 
 @media only screen and (max-width: 850px) {
     .main-info-container {

@@ -9,7 +9,6 @@
 }
 
 .navigation-burger {
-    color: white;
     font-size: 2rem;
     padding: 0.3rem 0.8rem;
     cursor: pointer;
@@ -51,6 +50,12 @@
     font-size: 2rem;
     cursor: pointer;
     color: black;
+}
+.burger {
+    width: 30px;
+    height: 2px;
+    background-color: white;
+    margin: 9px 0;
 }
 /* .navigation-link > .logout {
     position: absolute;

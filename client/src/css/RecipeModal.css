@@ -26,6 +26,17 @@
     padding: 1.5rem;
 }
 
+.link {
+    font-family: "Times New Roman";
+    letter-spacing: -2px;
+    font-size: 2rem;
+    color: black;
+}
+.link a {
+    font-size: 2rem;
+    color: black;
+}
+
 @keyframes appear {
     from {
         opacity: 0;

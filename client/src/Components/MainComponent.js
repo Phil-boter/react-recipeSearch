@@ -19,7 +19,7 @@ export default function MainComponent() {
                     </Link>
                     <Link to="/displayRestaurant">
                         <button className="main-info-button main-info-button-restaurant">
-                            Find restaurants
+                            Find Restaurants
                             {/* <p className="main-icon">{">"}</p> */}
                         </button>
                     </Link>

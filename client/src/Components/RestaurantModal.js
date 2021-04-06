@@ -31,7 +31,11 @@ export default function RestaurantModal({
                     >
                         <div>{renderImage}</div>
                     </a>
-                    <h2>{restaurant.name}</h2>
+                    <h2 className="link">
+                        <a href={restaurant.url} target="_blank">
+                            {restaurant.name}
+                        </a>
+                    </h2>
                     <div className="recipe-information">{renderPhone}</div>
                     <div className="restaurant-address">
                         <h4>Address:</h4>

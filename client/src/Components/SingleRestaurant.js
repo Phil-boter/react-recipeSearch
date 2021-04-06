@@ -90,10 +90,14 @@ export default function SingleRestaurant({ restaurant, index }) {
 
     return (
         <div className="single-recipe-container" key={index}>
-            <div className="image-container" onClick={() => toggleShowRecipe()}>
+            <div className="image-container">
                 {renderImage(restaurant.image_url)}
             </div>
-            <h2>{restaurant.name}</h2>
+            <h2 className="link">
+                <a href={restaurant.url} target="_blank">
+                    {restaurant.name}
+                </a>
+            </h2>
             <div className="recipe-information">
                 {renderPhone(restaurant.display_phone)}
             </div>
@@ -102,6 +106,14 @@ export default function SingleRestaurant({ restaurant, index }) {
             </div>
             <div className="recipe-information">
                 {renderRating(restaurant.rating)}
+            </div>
+            <div className="save-button-container more-info-button">
+                <button
+                    className="main-info-button click-for-modal main-info-button-recipe"
+                    onClick={() => toggleShowRecipe()}
+                >
+                    More information
+                </button>
             </div>
             {showModal && (
                 <RestaurantModal
