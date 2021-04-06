@@ -25,7 +25,7 @@ export default function GetRestaurantData() {
                 <input
                     className="recipedata-input"
                     type="text"
-                    placeholder="what you want to eat"
+                    placeholder="What do you want to eat?"
                     onChange={(e) => handleRestaurant(e)}
                 />
             </div>

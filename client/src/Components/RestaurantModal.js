@@ -24,15 +24,13 @@ export default function RestaurantModal({
                     >
                         <p>CLOSE</p>
                     </div>
-                    <div>
-                        <a
-                            src={restaurant.url}
-                            target="_blank"
-                            className="recipe-modal-image"
-                        >
-                            {renderImage}
-                        </a>
-                    </div>
+                    <a
+                        href={restaurant.url}
+                        target="_blank"
+                        className="recipe-modal-image"
+                    >
+                        <div>{renderImage}</div>
+                    </a>
                     <h2>{restaurant.name}</h2>
                     <div className="recipe-information">{renderPhone}</div>
                     <div className="restaurant-address">
@@ -56,10 +54,7 @@ export default function RestaurantModal({
                         </ul>
                     </div>
                     <div className="recipe-information">{renderPrice}</div>
-                    <div className="recipe-information">
-                        <h4>Rating:</h4>
-                        {renderRating}
-                    </div>
+                    <div className="recipe-information">{renderRating}</div>
                     <div className="recipe-information">
                         <h4>Reviews:</h4>
                         <a href={restaurant.url} target="_blank">

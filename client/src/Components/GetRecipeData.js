@@ -19,7 +19,7 @@ export default function GetRecipeData() {
             <input
                 className="recipedata-input"
                 type="text"
-                placeholder=" type here"
+                placeholder="What do you want to eat?"
                 onChange={(e) => handleChange(e, input)}
             />
 
