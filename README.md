@@ -6,7 +6,7 @@ If everything fails it also has an implemented restaurant search for the nearest
 
 ## About
     This project is a further development of my final project 
-    I builded this project during my attendance to the Coding Bootcamp at Spiced Academy's in Berlin.
+    I builded during my attendance to the Coding Bootcamp at Spiced Academy's in Berlin.
 
     At the homepage the user can decide to search for shoppinglists or restaurants.
     It is also possible to make an user account. 
@@ -16,6 +16,8 @@ If everything fails it also has an implemented restaurant search for the nearest
     Finally the user can decide to logout or to delete the account.
     Two different server side API calls are made for the search functionality.
     Now the app is managed by redux and uses hooks instead of class-components.
+    
+    The app is optimized for mobile use.
     
 
 ## Technologies 
