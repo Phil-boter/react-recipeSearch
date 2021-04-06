@@ -15,7 +15,7 @@ If everything fails it also has an implemented restaurant search for the nearest
     It is also possible to store and delete favourite lists. 
     Finally the user can decide to logout or to delete the account.
     Two different server side API calls are made for the search functionality.
-    Now the app is managed by redux and uses hooks instead of class-components.
+    Now the app is managed by Redux and uses hooks instead of class-components.
     
     The app is optimized for mobile use.
     
