@@ -59,9 +59,13 @@ export default function RecipeModal({
                         {renderHealthLabels}
                     </div>
                     <div className="recipe-information">{renderCautions}</div>
-                    <div className="save-button-container">
-                        <SaveRecipeButton recipe={recipe} index={index} />
-                    </div>
+                    {user && user.id ? (
+                        <div className="save-button-container">
+                            <SaveRecipeButton recipe={recipe} index={index} />
+                        </div>
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
         </div>

@@ -1,6 +1,5 @@
 import SaveRestaurantButton from "./SaveRestaurantButton";
-
-// import "../css/RecipeModal.css";
+import { useSelector } from "react-redux";
 
 export default function RestaurantModal({
     restaurant,
@@ -11,7 +10,9 @@ export default function RestaurantModal({
     renderImage,
     closeShowRecipe,
 }) {
-    console.log("modal mounted");
+    const user = useSelector((state) => {
+        return state.user;
+    });
 
     return (
         <div className="recipe-modal-container" key={index}>
@@ -65,9 +66,13 @@ export default function RestaurantModal({
                             {`${restaurant.review_count} reviews`}
                         </a>
                     </div>
-                    <div className="save-button-container">
-                        <SaveRestaurantButton restaurant={restaurant} />
-                    </div>
+                    {user && user.id ? (
+                        <div className="save-button-container">
+                            <SaveRestaurantButton restaurant={restaurant} />
+                        </div>
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
         </div>
