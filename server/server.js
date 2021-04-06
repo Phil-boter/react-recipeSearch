@@ -182,7 +182,6 @@ app.post("/deleteAccount", (req, res) => {
 app.post("/saveRestaurant", (req, res) => {
     console.log("post saveRestaurant");
     // console.log("req.body.restaurant", req.body);
-    // console.log("req query", req.query);
     // console.log("req.session:", req.session.userId);
     const { name, url, image_url, price, rating, categories, phone } = req.body;
     let userId = req.session.userId;
@@ -336,8 +335,6 @@ app.get("/api/getRecipe/:input", (req, res) => {
 
 app.get(`/api/getRestaurant/`, (req, res) => {
     console.log("GET getRestaurant");
-    console.log("term restaurant:", req.query.term);
-    console.log("location restaurant:", req.query.location);
     const { term, location, sortBy } = req.query;
     const apiKey = secrets.apiKey;
     let response;
@@ -352,8 +349,8 @@ app.get(`/api/getRestaurant/`, (req, res) => {
                 }
             );
 
-            console.log("result getRecipe", response);
-            console.log("businesses:", response.data.businesses);
+            // console.log("result getRecipe", response);
+            // console.log("businesses:", response.data.businesses);
             res.json({
                 success: true,
                 businesses: response.data.businesses.map((obj) => ({

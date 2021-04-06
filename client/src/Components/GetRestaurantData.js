@@ -3,23 +3,19 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 
 import "../css/GetRestaurantData.css";
-import "../css/GetRecipeData.css";
-import "../css/app.css";
+// import "../css/GetRecipeData.css";
+// import "../css/app.css";
 
 export default function GetRestaurantData() {
-    console.log("GetRestaurantData component");
-
     const dispatch = useDispatch();
 
     const [term, setRestaurant] = useState("");
     const [location, setCity] = useState("");
 
     const handleRestaurant = (e) => {
-        console.log("input value restaurant", e.target.value);
         setRestaurant(e.target.value);
     };
     const handleCity = (e) => {
-        console.log("input value city", e.target.value);
         setCity(e.target.value);
     };
 

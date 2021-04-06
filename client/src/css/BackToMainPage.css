@@ -1,8 +1,10 @@
 .back-to-main-page {
     /* border: 1px solid green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 3rem;
-    text-align: center;
-    font-size: 2rem;
+    font-size: 1.6rem;
     padding: 0.5rem;
     color: black;
     cursor: pointer;
@@ -19,8 +21,6 @@
 }
 @media only screen and (max-width: 850px) {
     .back-to-main-page {
-        height: 3rem;
-        text-align: center;
         font-size: 1.4rem;
         padding: 0.8rem;
         color: black;

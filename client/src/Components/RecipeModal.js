@@ -1,6 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SaveRecipeButton from "./SaveRecipeButton";
-import { Link } from "react-router-dom";
 
 import "../css/RecipeModal.css";
 
@@ -15,11 +14,8 @@ export default function RecipeModal({
     renderImage,
 }) {
     const user = useSelector((state) => {
-        console.log("state in RecipeModal", state);
         return state.user;
     });
-
-    console.log("modal mounted and state", user);
 
     return (
         <div className="recipe-modal-container" key={index}>

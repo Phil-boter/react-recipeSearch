@@ -1,26 +1,19 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import RestaurantModal from "../Components/RestaurantModal";
 
 import "../css/SingleRecipe.css";
 
 export default function SingleRestaurant({ restaurant, index }) {
-    // console.log("singleRestaurantComponent mounted");
-    // console.log("restaurant, index", restaurant, index);
-
     const [showModal, setShowModal] = useState(false);
 
     const toggleShowRecipe = () => {
-        console.log("click toggle");
         setShowModal(true);
     };
 
     const closeShowRecipe = () => {
-        console.log("click close modal");
         setShowModal(false);
     };
-    console.log("show modal", showModal);
 
     const renderPhone = (phone) => {
         if (!phone) {

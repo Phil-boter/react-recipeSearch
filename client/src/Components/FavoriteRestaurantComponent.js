@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getFavoriteRestaurant } from "../redux/actions";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import IsLoadingComponent from "./IsLoadingComponent";
 import DeleteFavoriteRestaurantButton from "./DeleteFavoriteRestaurantButton";
@@ -8,17 +8,13 @@ import DeleteFavoriteRestaurantButton from "./DeleteFavoriteRestaurantButton";
 import "../css/FavComponent.css";
 
 export default function FavoriteRestaurantComponent() {
-    // console.log("FavoriteRestaurantComponent mounted");
-    // console.log("restaurant, index", restaurant, index);
     const dispatch = useDispatch();
 
     const favoriteRestaurant = useSelector((state) => {
-        console.log("state.data in RestaurantComponent", state.data);
         return state.data;
     });
-    console.log("favorite", favoriteRestaurant);
+    console.log("restaurant", favoriteRestaurant);
     useEffect(() => {
-        console.log("useEffect fav restaurant");
         dispatch(getFavoriteRestaurant());
     }, []);
 
@@ -114,7 +110,12 @@ export default function FavoriteRestaurantComponent() {
                                         {restaurant.name}
                                     </h2>
                                     <div className="image-container">
-                                        {renderImage(restaurant.image)}
+                                        <a
+                                            href={restaurant.url}
+                                            target="_blank"
+                                        >
+                                            {renderImage(restaurant.image)}
+                                        </a>
                                     </div>
 
                                     <div className="recipe-information">

@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipe } from "../redux/actions";
 
 import "../css/GetRecipeData.css";
-import "../css/app.css";
+// import "../css/app.css";
 
 export default function GetRecipeData() {
-    console.log("GetEecipeData component");
     const dispatch = useDispatch();
 
     const [input, setInput] = useState("");
 
     const handleChange = (e) => {
-        console.log("input value else", e.target.value);
         setInput(e.target.value);
     };
 

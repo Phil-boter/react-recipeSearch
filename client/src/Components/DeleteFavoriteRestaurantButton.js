@@ -1,16 +1,14 @@
-import { useEffect, useState, useLayoutEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { deleteRestaurant, getFavoriteRestaurant } from "../redux/actions";
 
 export default function DeleteFavoriteRestaurantButtom({ restaurant }) {
     const dispatch = useDispatch();
-    console.log("restaurant in delete", restaurant);
     const { id } = restaurant;
 
     const [text, setButtonText] = useState("");
 
     const Delete = () => {
-        console.log("click in deleteRecipe");
         dispatch(deleteRestaurant(id));
         setButtonText("Deleted");
         setTimeout(() => dispatch(getFavoriteRestaurant()), 700);

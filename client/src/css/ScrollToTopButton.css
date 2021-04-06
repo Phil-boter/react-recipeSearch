@@ -1,0 +1,12 @@
+.scroll-top-button-container {
+    position: sticky;
+    bottom: 3rem;
+}
+.scroll-top-button {
+    position: absolute;
+    right: 1rem;
+    border: none;
+    background-color: tomato;
+    height: 2rem;
+    color: white;
+}

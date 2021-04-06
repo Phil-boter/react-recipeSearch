@@ -1,20 +1,14 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import RecipeModal from "./RecipeModal";
-import IsLoadingComponent from "../Components/IsLoadingComponent";
+import { useSelector } from "react-redux";
 
-import "../css/RecipeComponent.css";
+import IsLoadingComponent from "../Components/IsLoadingComponent";
 import SingleRecipe from "./SingleRecipe";
 
-export default function RecipeComponent({ userId }) {
-    console.log("RecipeComponent mounted");
+import "../css/RecipeComponent.css";
 
+export default function RecipeComponent({ userId }) {
     const recipes = useSelector((state) => {
-        console.log("state in RecipeComponent");
         return state.recipes;
     });
-
-    console.log("recipes", recipes);
 
     return (
         <>

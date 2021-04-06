@@ -1,6 +1,6 @@
 import SaveRestaurantButton from "./SaveRestaurantButton";
 
-import "../css/RecipeModal.css";
+// import "../css/RecipeModal.css";
 
 export default function RestaurantModal({
     restaurant,

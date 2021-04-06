@@ -1,8 +1,6 @@
 import MainComponent from "../Components/MainComponent";
 import NavigationComponent from "../Components/NavigationComponent";
 
-import "../css/app.css";
-
 export default function Main() {
     return (
         <>

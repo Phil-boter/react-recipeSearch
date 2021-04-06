@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { saveRecipe } from "../redux/actions";
 
 export default function SaveRecipeButton({ recipe, index }) {
@@ -8,8 +8,6 @@ export default function SaveRecipeButton({ recipe, index }) {
     const [text, setButtonText] = useState("");
 
     const SaveRecipe = () => {
-        console.log("click in save recipe");
-        console.log("state saveFavorite");
         dispatch(saveRecipe(recipe));
         setButtonText("Saved");
     };

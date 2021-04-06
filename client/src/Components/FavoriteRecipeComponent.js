@@ -15,7 +15,6 @@ export default function FavoriteRecipeComponent() {
     });
 
     useEffect(() => {
-        console.log("useEffect fav");
         dispatch(getFavoriteRecipe());
     }, []);
 

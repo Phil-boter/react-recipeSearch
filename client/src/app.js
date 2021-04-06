@@ -1,12 +1,4 @@
-import ReactDOM from "react-dom";
-import {
-    BrowserRouter,
-    Redirect,
-    Route,
-    useHistory,
-    useLocation,
-} from "react-router-dom";
-import { useEffect } from "react";
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import Main from "./routes/Main";
@@ -14,6 +6,7 @@ import DisplayRecipe from "./routes/DisplayRecipe";
 import DisplayRestaurant from "./routes/DisplayRestaurant";
 
 import "../src/css/app.css";
+
 import GetRecipeData from "./Components/GetRecipeData";
 import GetRestaurantData from "./Components/GetRestaurantData";
 import Login from "./Components/Login";
@@ -23,7 +16,6 @@ import DisplayDeleteAccount from "./routes/DisplayDeleteAccount";
 
 export default function App() {
     const { user } = useSelector((state) => {
-        console.log("user", state);
         return state;
     });
     return (

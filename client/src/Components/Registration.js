@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { registration, getUser } from "../redux/actions";
 
@@ -36,19 +36,15 @@ export default function Registration({ state }) {
     };
 
     const showRegistration = () => {
-        console.log("isVisible", register);
         setShowregister(false);
     };
 
     const Register = () => {
         dispatch(registration(firstName, lastName, email, password));
-        console.log("disppatch getUser");
         setTimeout(() => {
-            console.log("getuser");
             dispatch(getUser());
         }, 800);
         setTimeout(() => {
-            console.log("history push");
             history.push("/");
         }, 1000);
     };
@@ -71,42 +67,44 @@ export default function Registration({ state }) {
                 ) : (
                     <>
                         <div>
-                            <div className="restaurant-input-container">
-                                <input
-                                    className="recipedata-input"
-                                    type="text"
-                                    name="first"
-                                    placeholder="First name"
-                                    onChange={(e) => handleFirst(e)}
-                                ></input>
-                            </div>
-                            <div className="restaurant-input-container">
-                                <input
-                                    className="recipedata-input"
-                                    type="text"
-                                    name="last"
-                                    placeholder="Last name"
-                                    onChange={(e) => handleLast(e)}
-                                ></input>
-                            </div>
-                            <div className="restaurant-input-container">
-                                <input
-                                    className="recipedata-input"
-                                    type="text"
-                                    name="email"
-                                    placeholder="Email"
-                                    onChange={(e) => handleEmail(e)}
-                                ></input>
-                            </div>
-                            <div className="restaurant-input-container">
-                                <input
-                                    className="recipedata-input"
-                                    type="password"
-                                    name="password"
-                                    placeholder="Password"
-                                    onChange={(e) => handlePassword(e)}
-                                ></input>
-                            </div>
+                            <form>
+                                <div className="restaurant-input-container">
+                                    <input
+                                        className="recipedata-input"
+                                        type="text"
+                                        name="first"
+                                        placeholder="First name"
+                                        onChange={(e) => handleFirst(e)}
+                                    ></input>
+                                </div>
+                                <div className="restaurant-input-container">
+                                    <input
+                                        className="recipedata-input"
+                                        type="text"
+                                        name="last"
+                                        placeholder="Last name"
+                                        onChange={(e) => handleLast(e)}
+                                    ></input>
+                                </div>
+                                <div className="restaurant-input-container">
+                                    <input
+                                        className="recipedata-input"
+                                        type="text"
+                                        name="email"
+                                        placeholder="Email"
+                                        onChange={(e) => handleEmail(e)}
+                                    ></input>
+                                </div>
+                                <div className="restaurant-input-container">
+                                    <input
+                                        className="recipedata-input"
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        onChange={(e) => handlePassword(e)}
+                                    ></input>
+                                </div>
+                            </form>
                         </div>
 
                         <div>

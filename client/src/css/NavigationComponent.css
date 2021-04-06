@@ -1,4 +1,5 @@
 .navigation {
+    /* border: 3px solid yellow; */
     position: relative;
     background-color: rgb(37, 37, 37);
     top: 0;
@@ -12,10 +13,12 @@
     font-size: 2rem;
     padding: 0.3rem 0.8rem;
     cursor: pointer;
+    margin: 0;
 }
 .navigation-close {
     color: white;
     font-size: 2rem;
+    margin: 0;
     padding: 0.3rem 0.8rem;
     cursor: pointer;
     width: 3.5rem;
@@ -24,15 +27,15 @@
 }
 
 .navigation-modal {
-    /* border: 3px solid yellow; */
     position: absolute;
     display: block;
     height: auto;
-
+    min-height: 10rem;
     width: 100vw;
     background-color: white;
     animation: slide-in 1s;
     top: 3.5rem;
+    border-bottom: 1px solid black;
 }
 .link-container {
     background-color: white;
