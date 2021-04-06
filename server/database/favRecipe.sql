@@ -1,5 +1,5 @@
 
-  DROP TABLE IF EXISTS favRecipe CASCADE;
+  DROP TABLE IF EXISTS favRecipe;
   
   CREATE TABLE favRecipe(
       id SERIAL PRIMARY KEY,
