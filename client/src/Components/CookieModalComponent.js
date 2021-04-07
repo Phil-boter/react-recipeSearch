@@ -32,7 +32,7 @@ export default function CookieModalComponent() {
                                 className="main-info-button click-for-modal main-info-button-recipe cookie"
                                 onClick={() => hideCookie()}
                             >
-                                I understand this
+                                I understand
                             </button>
                         </div>
                     </div>

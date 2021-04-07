@@ -29,7 +29,7 @@
     position: absolute;
     display: block;
     height: auto;
-    min-height: 10rem;
+    /* min-height: 10rem; */
     width: 100vw;
     background-color: white;
     animation: slide-in 1s;

@@ -21,6 +21,7 @@ export default function GetRestaurantData() {
 
     return (
         <div className="restaurant-container">
+            <h1 className="search-headline">Restaurant</h1>
             <div className="restaurant-input-container">
                 <input
                     className="recipedata-input"

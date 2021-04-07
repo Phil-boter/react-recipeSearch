@@ -15,21 +15,24 @@ export default function GetRecipeData() {
     };
 
     return (
-        <div className="recipedata-container">
-            <input
-                className="recipedata-input"
-                type="text"
-                placeholder="What do you want to eat?"
-                onChange={(e) => handleChange(e, input)}
-            />
+        <>
+            <div className="recipedata-container">
+                <h1 className="search-headline">Shopping list</h1>
+                <input
+                    className="recipedata-input"
+                    type="text"
+                    placeholder="What do you want to eat?"
+                    onChange={(e) => handleChange(e, input)}
+                />
 
-            <button
-                disabled={input.length < 1}
-                className="submit-button"
-                onClick={() => dispatch(getRecipe(input))}
-            >
-                start
-            </button>
-        </div>
+                <button
+                    disabled={input.length < 1}
+                    className="submit-button"
+                    onClick={() => dispatch(getRecipe(input))}
+                >
+                    start
+                </button>
+            </div>
+        </>
     );
 }
