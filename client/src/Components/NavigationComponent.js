@@ -79,14 +79,14 @@ export default function NavigationComponent() {
                         </div>
                     </>
                 ) : (
-                    <p
+                    <div
                         className="navigation-burger"
                         onClick={() => toggleNavbar()}
                     >
                         <div className="burger"></div>
                         <div className="burger"></div>
                         <div className="burger"></div>
-                    </p>
+                    </div>
                 )}
             </div>
         </>

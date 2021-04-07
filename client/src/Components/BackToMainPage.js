@@ -6,7 +6,7 @@ export default function BackToMainPage() {
     return (
         <>
             <div className="back-to-main-page margin">
-                <Link to="/">Back to main page</Link>
+                <Link to="/">Back to Mainpage</Link>
             </div>
         </>
     );

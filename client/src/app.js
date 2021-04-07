@@ -18,6 +18,7 @@ export default function App() {
     const { user } = useSelector((state) => {
         return state;
     });
+
     return (
         <BrowserRouter>
             <Route exact path="/" render={() => <Main />} />

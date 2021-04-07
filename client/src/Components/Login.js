@@ -57,6 +57,7 @@ export default function Login() {
                             className="recipedata-input"
                             type="text"
                             name="email"
+                            autoComplete="email"
                             placeholder="Email"
                             onChange={(e) => handleEmail(e)}
                         ></input>
@@ -67,6 +68,7 @@ export default function Login() {
                             type="password"
                             name="password"
                             placeholder="Password"
+                            autoComplete="current-password"
                             onChange={(e) => handlePassword(e)}
                         ></input>
                     </div>

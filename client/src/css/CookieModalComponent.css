@@ -1,0 +1,15 @@
+.cookie-container {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cookie-content {
+    background-color: white;
+    padding: 3rem;
+}
