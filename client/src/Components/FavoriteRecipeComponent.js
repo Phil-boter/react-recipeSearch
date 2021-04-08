@@ -41,6 +41,7 @@ export default function FavoriteRecipeComponent() {
                                             <img
                                                 className="recipe-modal-image fav-image"
                                                 src={item.image}
+                                                alt="image with food"
                                             />
                                         </a>
                                     </div>
