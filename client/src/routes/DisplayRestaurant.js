@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import TopLinks from "../Components/TopLinks";
 import GetRestaurantData from "../Components/GetRestaurantData";
 import NavigationComponent from "../Components/NavigationComponent";
@@ -5,7 +7,9 @@ import RestaurantComponent from "../Components/RestaurantComponent";
 import ScrollToTopButton from "../Components/ScrollToTopButton";
 
 export default function DisplayRestaurant({ setIsVisible, visible }) {
-    console.log("display");
+    useEffect(() => {
+        setIsVisible(false);
+    }, []);
     return (
         <>
             <NavigationComponent

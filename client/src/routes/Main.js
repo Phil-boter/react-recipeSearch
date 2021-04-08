@@ -12,7 +12,10 @@ export default function Main({ setIsVisible, visible }) {
                     visible={visible}
                 />
 
-                <CookieModalComponent />
+                <CookieModalComponent
+                    setIsVisible={setIsVisible}
+                    visible={visible}
+                />
                 <div
                     className="main-container"
                     onClick={() => setIsVisible(false)}

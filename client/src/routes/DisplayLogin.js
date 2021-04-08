@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import BackToMainPage from "../Components/BackToMainPage";
 import Registration from "../Components/Registration";
 import NavigationComponent from "../Components/NavigationComponent";
@@ -7,6 +9,9 @@ import Login from "../Components/Login";
 import "../css/Login.css";
 
 export default function Displaylogin({ setIsVisible, visible }) {
+    useEffect(() => {
+        setIsVisible(false);
+    }, []);
     return (
         <>
             <NavigationComponent
