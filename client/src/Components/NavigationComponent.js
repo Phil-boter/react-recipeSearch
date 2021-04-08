@@ -9,27 +9,14 @@ export default function NavigationComponent({ setIsVisible, visible }) {
     const user = useSelector((state) => {
         return state.user;
     });
-
-    // const [crossed, setCrossed] = useState(false);
-
-    // const toggleNavbar = () => {
-    //     setIsVisible(true);
-    //     // setCrossed(true);
-    // };
-
-    // const closeNavbar = () => {
-    //     setIsVisible(false);
-    //     // setCrossed(false);
-    // };
-
     const style1 = {
-        transform: "rotate(45deg) translate(10.5px, 13px)",
+        transform: "rotate(45deg) translate(10.5px, 7.5px)",
     };
     const style2 = {
         opacity: 0,
     };
     const style3 = {
-        transform: "rotate(-45deg) translate(2.5px, -5px)",
+        transform: "rotate(-45deg) translate(7.5px, -5px)",
     };
 
     return (
@@ -56,32 +43,39 @@ export default function NavigationComponent({ setIsVisible, visible }) {
                         </div>
                         <div className="navigation-container">
                             <div className="navigation-modal">
-                                {!user || !user.id ? (
-                                    <div className="navigation-link">
-                                        <Link to="/login">My Account</Link>
-                                    </div>
-                                ) : (
-                                    <>
-                                        <div className="navigation-link">
+                                <div className="link-container">
+                                    {!user || !user.id ? (
+                                        <Link to="/login">
+                                            <div className="navigation-link">
+                                                My Account
+                                            </div>
+                                        </Link>
+                                    ) : (
+                                        <>
                                             <Link to="/favoriteRecipe">
-                                                My Shopping lists
+                                                <div className="navigation-link">
+                                                    My Shopping lists
+                                                </div>
                                             </Link>
-                                        </div>
-                                        <div className="navigation-link">
                                             <Link to="/favoriteRestaurant">
-                                                My Restaurants
+                                                <div className="navigation-link">
+                                                    My Restaurants
+                                                </div>
                                             </Link>
-                                        </div>{" "}
-                                        <div className="navigation-link">
+
                                             <Link to="/deleteAccount">
-                                                Delete Account
+                                                <div className="navigation-link">
+                                                    Delete Account
+                                                </div>
                                             </Link>
-                                        </div>
-                                        <div className="navigation-link logout">
-                                            <a href="/logout">Logout</a>
-                                        </div>
-                                    </>
-                                )}
+                                            <a href="/logout">
+                                                <div className="navigation-link logout">
+                                                    Logout
+                                                </div>
+                                            </a>
+                                        </>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </>

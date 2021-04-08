@@ -43,7 +43,7 @@ export default function GetRestaurantData() {
                     className="submit-button restaurant-button-container"
                     onClick={() => dispatch(getRestaurant(term, location))}
                 >
-                    submit
+                    start
                 </button>
             </div>
         </div>

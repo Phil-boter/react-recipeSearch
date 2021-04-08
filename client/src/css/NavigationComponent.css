@@ -8,17 +8,6 @@
     z-index: 2 !important;
 }
 
-/* .navigation-close {
-    color: white;
-    font-size: 2rem;
-    margin: 0;
-    padding: 0.3rem 0.8rem;
-    cursor: pointer;
-    width: 3.5rem;
-    height: 3.5rem;
-    background-color: rgb(37, 37, 37);
-} */
-
 .navigation-modal {
     position: absolute;
     display: block;
@@ -34,30 +23,24 @@
 .link-container {
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    height: 6rem;
 }
-.navigation-link {
-    padding: 2rem;
-}
-.navigation-link a {
+.link-container a {
+    text-decoration: none;
+    /* border: 3px solid red; */
     font-size: 2rem;
+    padding: 1.6rem 0 1.6rem 2rem;
     cursor: pointer;
     color: black;
-    text-decoration: none;
-}
-/* .burger {
-    width: 30px;
-    height: 2px;
+    font-weight: 500;
+    height: 100%;
     background-color: white;
-    margin: 9px 0;
-    
-} */
+}
 
 .navigation-burger {
     font-size: 2rem;
-    padding: 0.3rem 0.8rem;
+    padding: 0.6rem 0.8rem;
     cursor: pointer;
     /* margin: 0; */
     display: inline-block;
@@ -72,10 +55,10 @@
     transition: 0.5s;
 }
 
-.navigation-link:hover {
+.link-container a:hover {
     background-color: lightgrey;
 }
-.navigation-link:active {
+.link-container a:active {
     background-color: lightgrey;
 }
 @keyframes slide-in {
@@ -96,9 +79,10 @@
     .navigation-modal {
         width: 100%;
     }
-    .navigation-burger {
+    /* .navigation-burger {
         font-size: 2rem;
-    }
+    } */
+
     @keyframes slide-in {
         from {
             left: -30rem;
