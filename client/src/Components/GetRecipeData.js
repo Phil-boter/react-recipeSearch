@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { getRecipe } from "../redux/actions";
 
 import "../css/GetRecipeData.css";
-// import "../css/app.css";
 
 export default function GetRecipeData() {
     const dispatch = useDispatch();
@@ -17,7 +16,7 @@ export default function GetRecipeData() {
     return (
         <>
             <div className="recipedata-container">
-                <h1 className="search-headline">Shopping list</h1>
+                {/* <h1 className="search-headline">Shopping list</h1> */}
                 <input
                     className="recipedata-input"
                     type="text"

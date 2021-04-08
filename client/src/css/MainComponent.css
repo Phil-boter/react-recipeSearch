@@ -8,8 +8,8 @@
 }
 .main-info-container h1 {
     font-size: 4.2rem;
-    font-family: "Times New Roman";
-    letter-spacing: -2px;
+    font-family: "Vollkorn", serif;
+    letter-spacing: -1px;
     color: white;
 }
 /* .main-icon {
@@ -20,7 +20,7 @@
 } */
 
 .main-info-button {
-    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-family: "Montserrat", "Open Sans", "Roboto", sans-serif;
     font-weight: bold;
     font-size: 1.9rem;
     height: 5rem;

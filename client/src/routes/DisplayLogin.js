@@ -1,9 +1,12 @@
 import BackToMainPage from "../Components/BackToMainPage";
-import TopLinks from "../Components/TopLinks";
+import Registration from "../Components/Registration";
 import NavigationComponent from "../Components/NavigationComponent";
-import DeleteAccountComponent from "../Components/DeleteAccountComponent";
+import TopLinks from "../Components/TopLinks";
+import Login from "../Components/Login";
 
-export default function DisplayDeleteAccount({ setIsVisible, visible }) {
+import "../css/Login.css";
+
+export default function Displaylogin({ setIsVisible, visible }) {
     return (
         <>
             <NavigationComponent
@@ -13,7 +16,8 @@ export default function DisplayDeleteAccount({ setIsVisible, visible }) {
             <div onClick={() => setIsVisible(false)}>
                 <TopLinks />
                 <BackToMainPage />
-                <DeleteAccountComponent />
+                <Login />
+                <Registration />
             </div>
         </>
     );

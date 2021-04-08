@@ -2,9 +2,7 @@ import { getRestaurant } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
-import "../css/GetRestaurantData.css";
-// import "../css/GetRecipeData.css";
-// import "../css/app.css";
+import "../css/GetRecipeData.css";
 
 export default function GetRestaurantData() {
     const dispatch = useDispatch();
@@ -20,8 +18,8 @@ export default function GetRestaurantData() {
     };
 
     return (
-        <div className="restaurant-container">
-            <h1 className="search-headline">Restaurant</h1>
+        <div className="recipedata-container">
+            {/* <h1 className="search-headline">Restaurant</h1> */}
             <div className="restaurant-input-container">
                 <input
                     className="recipedata-input"

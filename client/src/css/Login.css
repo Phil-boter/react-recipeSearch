@@ -1,3 +1,10 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-button {
     width: 500px;
 }
@@ -9,7 +16,6 @@
 }
 .log-header h2 {
     font-size: 1.5rem;
-    letter-spacing: 0px;
 }
 @media only screen and (max-width: 850px) {
     .login-button {

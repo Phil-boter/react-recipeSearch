@@ -1,12 +1,15 @@
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Vollkorn', serif; */
 html,
 body {
-    font-family: Arial, Helvetica, Verdana, sans-serif;
-    margin: 0px;
-    padding: 0px;
+    font-family: "Montserrat", "Open Sans", "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     background-color: white;
 }
-
 .main-container {
     position: absolute;
     top: 0;
@@ -25,8 +28,8 @@ body {
 
 .search-headline {
     text-align: center;
-    font-family: "Times New Roman";
-    letter-spacing: -2px;
+    font-family: "Vollkorn", serif;
+    letter-spacing: -1px;
 }
 .main-image {
     background-image: url("/images/rosemary640.jpg");
@@ -34,6 +37,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
+    width: 100%;
 }
 .submit-button {
     width: 10rem;
@@ -41,7 +45,7 @@ body {
     border-radius: 0;
     border: 2px solid black;
     background-color: transparent;
-    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-family: "Montserrat", "Open Sans", "Roboto", sans-serif;
     letter-spacing: 1.3px;
     font-weight: bolder;
     color: black;

@@ -8,9 +8,10 @@
     padding: 0.5rem;
     color: black;
     cursor: pointer;
-    font-family: "Roboto";
-    letter-spacing: -2px;
+    font-family: "Vollkorn", serif;
+    letter-spacing: -1px;
     border-bottom: 1px solid rgba(37, 37, 37, 0.5);
+    margin-top: 3.5rem;
 }
 .account {
     border: none;

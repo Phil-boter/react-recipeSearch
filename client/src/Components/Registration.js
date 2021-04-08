@@ -51,7 +51,7 @@ export default function Registration({ state }) {
 
     return (
         <>
-            <div className="restaurant-container">
+            <div className="restaurant-container login-container">
                 <div className="log-header">
                     <h2>I AM A NEW CUSTOMER</h2>
                 </div>

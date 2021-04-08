@@ -4,14 +4,20 @@ import NavigationComponent from "../Components/NavigationComponent";
 import RestaurantComponent from "../Components/RestaurantComponent";
 import ScrollToTopButton from "../Components/ScrollToTopButton";
 
-export default function DisplayRecipe() {
+export default function DisplayRestaurant({ setIsVisible, visible }) {
+    console.log("display");
     return (
         <>
-            <NavigationComponent />
-            <TopLinks />
-            <GetRestaurantData />
-            <RestaurantComponent />
-            <ScrollToTopButton />
+            <NavigationComponent
+                setIsVisible={setIsVisible}
+                visible={visible}
+            />
+            <div onClick={() => setIsVisible(false)}>
+                <TopLinks />
+                <GetRestaurantData />
+                <RestaurantComponent />
+                <ScrollToTopButton />
+            </div>
         </>
     );
 }

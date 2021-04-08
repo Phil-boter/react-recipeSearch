@@ -4,14 +4,19 @@ import NavigationComponent from "../Components/NavigationComponent";
 import FavoriteRecipeComponent from "../Components/FavoriteRecipeComponent";
 import ScrollToTopButton from "../Components/ScrollToTopButton";
 
-export default function DisplayFavoriteRecipe() {
+export default function DisplayFavoriteRecipe({ setIsVisible, visible }) {
     return (
         <>
-            <NavigationComponent />
-            <TopLinks />
-            <BackToMainPage />
-            <FavoriteRecipeComponent />
-            <ScrollToTopButton />
+            <NavigationComponent
+                setIsVisible={setIsVisible}
+                visible={visible}
+            />
+            <div onClick={() => setIsVisible(false)}>
+                <TopLinks />
+                <BackToMainPage />
+                <FavoriteRecipeComponent />
+                <ScrollToTopButton />
+            </div>
         </>
     );
 }

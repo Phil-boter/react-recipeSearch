@@ -93,7 +93,7 @@ export default function FavoriteRestaurantComponent() {
 
     return (
         <>
-            <h1 className="search-headline">Your Favorites</h1>
+            <h1 className="search-headline">Your favourite Restaurants</h1>
             <div className="main-display">
                 <div className="single-recipe-container">
                     {favoriteRestaurant === undefined ||

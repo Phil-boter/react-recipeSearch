@@ -20,7 +20,7 @@ export default function FavoriteRecipeComponent() {
 
     return (
         <>
-            <h1 className="search-headline">Your Favorites</h1>
+            <h1 className="search-headline">Your favourite Shopping Lists</h1>
             <div className="main-display">
                 <div className="single-recipe-container">
                     {data === undefined ||
