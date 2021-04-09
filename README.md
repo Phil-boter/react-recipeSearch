@@ -13,6 +13,8 @@ If everything fails it also has an implemented restaurant search for the nearest
     Setting up an user the account offers the possibility
     to save shopping list and restaurants in a favourites list.
     It is also possible to store and delete favourite lists. 
+    A search function for special restaurants or shopping lists
+    inside the favourites is also available.
     Finally the user can decide to logout or to delete the account.
     Two different server side API calls are made for the search functionality.
     Now the app is managed by Redux and uses hooks instead of class-components.
