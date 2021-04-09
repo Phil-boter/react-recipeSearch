@@ -13,7 +13,7 @@ export default function SaveRecipeButton({ recipe, index }) {
     };
 
     useEffect(() => {
-        setButtonText("Save to favorites");
+        setButtonText("Save to favourites");
     }, []);
 
     return (

@@ -14,7 +14,7 @@ export default function SaveRestaurantButton({ restaurant }) {
     };
 
     useEffect(() => {
-        setButtonText("Save to favorites");
+        setButtonText("Save to favourites");
     }, []);
 
     return (
