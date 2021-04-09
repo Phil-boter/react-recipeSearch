@@ -16,42 +16,43 @@ export default function SingleFavRecipe({ item }) {
                             />
                         </a>
                     </div>
-                </div>
-                <div className="recipe-information">
-                    <h4>Recipe on :</h4>
-                    <a href={item.url} target="_blank">
-                        {item.source}
-                    </a>
-                </div>
-                <div className="recipe-information">
-                    <h4>Feeds :</h4>
-                    {`${item.yield} persons`}
-                </div>
-                <div>
-                    <h4>Shopping list :</h4>
-                    <ul>
-                        {item.ingredient.map((list, bucket) => {
-                            return (
-                                <div key={bucket}>
-                                    <li>{list}</li>
-                                </div>
-                            );
-                        })}
-                    </ul>
-                </div>
-                <div>
-                    <h4>Healthlabels :</h4>
-                    <ul>
-                        {item.healthlabels.map((label, list) => {
-                            return (
-                                <div key={list}>
-                                    <li>{label}</li>
-                                </div>
-                            );
-                        })}
-                    </ul>{" "}
+
+                    <div className="recipe-information">
+                        <h4>Recipe on :</h4>
+                        <a href={item.url} target="_blank">
+                            {item.source}
+                        </a>
+                    </div>
+                    <div className="recipe-information">
+                        <h4>Feeds :</h4>
+                        {`${item.yield} persons`}
+                    </div>
                     <div>
-                        <DeleteFavRecipeButton item={item} />
+                        <h4>Shopping list :</h4>
+                        <ul>
+                            {item.ingredient.map((list, bucket) => {
+                                return (
+                                    <div key={bucket}>
+                                        <li>{list}</li>
+                                    </div>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Healthlabels :</h4>
+                        <ul>
+                            {item.healthlabels.map((label, list) => {
+                                return (
+                                    <div key={list}>
+                                        <li>{label}</li>
+                                    </div>
+                                );
+                            })}
+                        </ul>{" "}
+                        <div>
+                            <DeleteFavRecipeButton item={item} />
+                        </div>
                     </div>
                 </div>
             </div>
