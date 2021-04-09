@@ -3,11 +3,16 @@ import axios from "./axios";
 import { useState, useEffect } from "react";
 import SingleFavRecipe from "./SingleFavRecipe";
 import SearchInput from "./SearchInput";
+import Found from "./NothingFound";
 
 export default function SearchFavRecipe() {
     const [searchResult, setSearchResult] = useState([]);
     const [input, setInput] = useState("");
     const [error, setError] = useState();
+
+    const style = {
+        textAlign: "center",
+    };
 
     useEffect(() => {
         if (input) {
@@ -37,22 +42,24 @@ export default function SearchFavRecipe() {
 
     return (
         <>
-            {error && <h1>Sorry! Something went wrong...</h1>}
+            <div>
+                {error && <h1>Sorry! Something went wrong...</h1>}
 
-            <SearchInput
-                placeholder={"find special shopping list"}
-                setInput={setInput}
-            />
+                <SearchInput
+                    placeholder={"find special shopping list"}
+                    setInput={setInput}
+                />
 
-            {!input.length && input && <li>Nothing Found</li>}
+                {!input.length && input && <Found />}
 
-            {input &&
-                searchResult.map((item, index) => (
-                    <div key={index}>
-                        <SingleFavRecipe item={item} />
-                    </div>
-                ))}
-            {!searchResult.length && input && <h3>Nothing Found</h3>}
+                {input &&
+                    searchResult.map((item, index) => (
+                        <div key={index}>
+                            <SingleFavRecipe item={item} />
+                        </div>
+                    ))}
+                {!searchResult.length && input && <Found />}
+            </div>
         </>
     );
 }

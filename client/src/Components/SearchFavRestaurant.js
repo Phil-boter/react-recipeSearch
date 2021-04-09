@@ -3,11 +3,16 @@ import axios from "./axios";
 import { useState, useEffect } from "react";
 import SingleFavRestaurant from "./SingleFavRestaurant";
 import SearchInput from "./SearchInput";
+import Found from "./NothingFound";
 
 export default function SearchFavRestaurant() {
     const [searchRestaurant, setSearchRestaurant] = useState([]);
     const [input, setInput] = useState("");
     const [error, setError] = useState();
+
+    const style = {
+        textAlign: "center",
+    };
 
     useEffect(() => {
         if (input) {
@@ -43,7 +48,7 @@ export default function SearchFavRestaurant() {
                 setInput={setInput}
             />
 
-            {!input.length && input && <li>Nothing Found</li>}
+            {!input.length && input && <Found />}
 
             {input &&
                 searchRestaurant.map((restaurant, index) => (
@@ -51,7 +56,7 @@ export default function SearchFavRestaurant() {
                         <SingleFavRestaurant restaurant={restaurant} />
                     </div>
                 ))}
-            {!searchRestaurant.length && input && <h3>Nothing Found</h3>}
+            {!searchRestaurant.length && input && <Found />}
         </>
     );
 }

@@ -23,6 +23,12 @@ export default function Login({ setIsVisble, visible }) {
             history.goBack();
         } else if (user && user.success == false) {
             setButtontext("Please create an account first");
+            setTimeout(() => {
+                setButtontext("check email/ password");
+                setTimeout(() => {
+                    setButtontext("Login");
+                }, 2000);
+            }, 2000);
         } else {
             return;
         }
