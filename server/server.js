@@ -302,6 +302,45 @@ app.post("/deleteFavRecipe", (req, res) => {
         });
 });
 
+app.get("/searchForRecipe/:input", (req, res) => {
+    console.log("get request searechForRecipe");
+    // console.log("req.params :", req.params);
+    // console.log("req.session.userId", req.session.userId);
+    let input = req.params.input;
+    let userId = req.session.userId;
+    db.searchForRecipe(userId, input)
+        .then(({ rows }) => {
+            res.json({
+                success: true,
+                searchResult: rows,
+            });
+        })
+        .catch((error) => {
+            console.log("error in searchForRecipe", error);
+            res.json({ success: false }).send();
+        });
+});
+
+app.get("/searchForRestaurant/:input", (req, res) => {
+    console.log("get request searechForRestaurant");
+    // console.log("req.params :", req.params);
+    // console.log("req.session.userId", req.session.userId);
+    let input = req.params.input;
+    let userId = req.session.userId;
+    db.searchForRestaurant(userId, input)
+        .then(({ rows }) => {
+            console.log("rows", rows);
+            res.json({
+                success: true,
+                searchRestaurant: rows,
+            });
+        })
+        .catch((error) => {
+            console.log("error in searchForRestaurant", error);
+            res.json({ success: false }).send();
+        });
+});
+
 // ------  api call dont touch--------------------------------------------------------------------------
 
 app.get("/api/getRecipe/:input", (req, res) => {

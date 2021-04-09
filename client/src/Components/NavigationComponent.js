@@ -67,7 +67,6 @@ export default function NavigationComponent({ setIsVisible, visible }) {
                                                     My Restaurants
                                                 </div>
                                             </Link>
-
                                             <Link to="/deleteAccount">
                                                 <div className="navigation-link">
                                                     Delete Account
@@ -78,6 +77,11 @@ export default function NavigationComponent({ setIsVisible, visible }) {
                                                     Logout
                                                 </div>
                                             </a>
+                                            <Link to="/about">
+                                                <div className="navigation-link">
+                                                    About
+                                                </div>
+                                            </Link>
                                         </>
                                     )}
                                 </div>

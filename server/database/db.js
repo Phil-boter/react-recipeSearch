@@ -149,3 +149,14 @@ module.exports.deleteRestaurant = (id, userId) => {
     const query = [id, userId];
     return db.query(q, query);
 };
+
+module.exports.searchForRecipe = (userId, input) => {
+    const q = `SELECT * FROM favRecipe WHERE (userId = $1 AND label ILIKE $2) LIMIT 10;`;
+    const query = [userId, input + "%"];
+    return db.query(q, query);
+};
+module.exports.searchForRestaurant = (userId, input) => {
+    const q = `SELECT * FROM favRestaurant WHERE (userId = $1 AND name ILIKE $2) LIMIT 10;`;
+    const query = [userId, input + "%"];
+    return db.query(q, query);
+};
