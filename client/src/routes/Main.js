@@ -1,6 +1,7 @@
 import CookieModalComponent from "../Components/CookieModalComponent";
 import MainComponent from "../Components/MainComponent";
 import NavigationComponent from "../Components/NavigationComponent";
+import FooterComponent from "../Components/FooterComponent";
 import { useState } from "react";
 
 export default function Main({ setIsVisible, visible }) {
@@ -23,6 +24,7 @@ export default function Main({ setIsVisible, visible }) {
                     <div className="main-image"></div>
 
                     <MainComponent />
+                    <FooterComponent />
                 </div>
             </>
         </>

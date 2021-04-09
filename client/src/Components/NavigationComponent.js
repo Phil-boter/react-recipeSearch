@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
 import { useSelector } from "react-redux";
 
 import "../css/NavigationComponent.css";
@@ -45,11 +43,18 @@ export default function NavigationComponent({ setIsVisible, visible }) {
                             <div className="navigation-modal">
                                 <div className="link-container">
                                     {!user || !user.id ? (
-                                        <Link to="/login">
-                                            <div className="navigation-link">
-                                                My Account
-                                            </div>
-                                        </Link>
+                                        <>
+                                            <Link to="/login">
+                                                <div className="navigation-link">
+                                                    My Account
+                                                </div>
+                                            </Link>
+                                            <Link to="/about">
+                                                <div className="navigation-link">
+                                                    About
+                                                </div>
+                                            </Link>
+                                        </>
                                     ) : (
                                         <>
                                             <Link to="/favoriteRecipe">

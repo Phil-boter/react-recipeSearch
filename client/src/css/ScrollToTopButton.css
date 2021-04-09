@@ -7,6 +7,7 @@
     /* right: 1rem; */
     border: none;
     background-color: tomato;
-    height: 2rem;
+    height: 48px;
     color: white;
+    width: 48px;
 }

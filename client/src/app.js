@@ -6,14 +6,14 @@ import Main from "./routes/Main";
 import DisplayRecipe from "./routes/DisplayRecipe";
 import DisplayRestaurant from "./routes/DisplayRestaurant";
 import DisplayLogin from "./routes/DisplayLogin";
-
-import "../src/css/app.css";
-
-import GetRecipeData from "./Components/GetRecipeData";
-import GetRestaurantData from "./Components/GetRestaurantData";
+// import GetRecipeData from "./Components/GetRecipeData";
+// import GetRestaurantData from "./Components/GetRestaurantData";
 import DisplayFavoriteRecipe from "./routes/DisplayFavoriteRecipe";
 import DisplayFavoriteRestaurant from "./routes/DisplayFavoriteRestaurant";
 import DisplayDeleteAccount from "./routes/DisplayDeleteAccount";
+import DisplayAbout from "./routes/DisplayAbout";
+
+import "../src/css/app.css";
 
 export default function App() {
     const { user } = useSelector((state) => {
@@ -31,7 +31,7 @@ export default function App() {
                         <Main setIsVisible={setIsVisible} visible={visible} />
                     )}
                 />
-                <Route
+                {/* <Route
                     path="/searchRecipe"
                     render={() => (
                         <GetRecipeData
@@ -43,7 +43,7 @@ export default function App() {
                 <Route
                     path="/searchRestaurant"
                     render={() => <GetRestaurantData />}
-                />
+                /> */}
                 <Route
                     path="/displayRecipe"
                     render={() => (
@@ -66,6 +66,15 @@ export default function App() {
                     path="/login"
                     render={() => (
                         <DisplayLogin
+                            setIsVisible={setIsVisible}
+                            visible={visible}
+                        />
+                    )}
+                />
+                <Route
+                    path="/about"
+                    render={() => (
+                        <DisplayAbout
                             setIsVisible={setIsVisible}
                             visible={visible}
                         />

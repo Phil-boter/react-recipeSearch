@@ -1,0 +1,10 @@
+.about-container {
+    padding: 3rem;
+}
+.about-headline {
+    font-family: "Vollkorn", serif;
+    letter-spacing: -1px;
+}
+.github-link {
+    color: tomato;
+}
