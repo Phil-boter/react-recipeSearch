@@ -6,7 +6,7 @@ If everything fails it also has an implemented restaurant search for the nearest
 
 ## About
     This project is a further development of my final project 
-    I builded during my attendance to the Coding Bootcamp at Spiced Academy's in Berlin.
+    I builded during my attendance to the Coding Bootcamp at Spiced Academy in Berlin.
 
     At the homepage the user can decide to search for shoppinglists or restaurants.
     It is also possible to make an user account. 
