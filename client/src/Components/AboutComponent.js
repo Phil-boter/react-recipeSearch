@@ -14,12 +14,13 @@ export default function AboutComponent() {
                     also possible to make an user account. Setting up an user
                     the account offers the possibility to save shopping list and
                     restaurants in a favourites list. It is also possible to
-                    store and delete favourite lists. Finally the user can
-                    decide to logout or to delete the account. Two different
-                    server side API calls are made for the search functionality.
-                    Now the app is managed by Redux and uses hooks instead of
-                    class-components.<br></br> The app is optimized for mobile
-                    use.
+                    store and delete favourite lists. A search function for
+                    special restaurants or shopping lists inside the favourites
+                    is also available. Finally the user candecide to logout or
+                    to delete the account. Two different server side API calls
+                    are made for the search functionality. Now the app is
+                    managed by Redux and uses hooks instead of class-components.
+                    <br></br> The app is optimized for mobile use.
                 </section>
                 <h2 className="about-headline">Technologies and Frameworks:</h2>
                 <section>
