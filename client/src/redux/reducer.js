@@ -51,7 +51,7 @@ export default function (state = {}, action) {
     if (action.type == "DELETE_RECIPE") {
         state = {
             ...state,
-            successDelete: action.successDelete,
+            data: action.data,
         };
     }
     if (action.type == "SAVE_RESTAURANT") {
@@ -78,6 +78,18 @@ export default function (state = {}, action) {
             successDeleteAccount: action.successDeleteAccount,
         };
     }
+    // if (action.type == "SEND_RECIPE_NOTE") {
+    //     state = {
+    //         ...state,
+    //         recipeNote: action.recipeNote,
+    //     };
+    // }
+    // if (action.type == "GET_RECIPE_NOTE") {
+    //     state = {
+    //         ...state,
+    //         recipeNote: action.recipeNote,
+    //     };
+    // }
 
     return state;
 }

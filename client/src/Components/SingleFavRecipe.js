@@ -1,4 +1,7 @@
 import DeleteFavRecipeButton from "./DeleteFavRecipeButton";
+// import AddNote from "./AddNote";
+// import ShowRecipeNote from "./ShowRecipeNote";
+
 import "../css/FavComponent.css";
 
 export default function SingleFavRecipe({ item }) {
@@ -51,6 +54,8 @@ export default function SingleFavRecipe({ item }) {
                             })}
                         </ul>{" "}
                         <div>
+                            {/* <ShowRecipeNote item={item} />
+                            <AddNote item={item} /> */}
                             <DeleteFavRecipeButton item={item} />
                         </div>
                     </div>

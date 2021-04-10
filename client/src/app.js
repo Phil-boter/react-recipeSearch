@@ -6,8 +6,6 @@ import Main from "./routes/Main";
 import DisplayRecipe from "./routes/DisplayRecipe";
 import DisplayRestaurant from "./routes/DisplayRestaurant";
 import DisplayLogin from "./routes/DisplayLogin";
-// import GetRecipeData from "./Components/GetRecipeData";
-// import GetRestaurantData from "./Components/GetRestaurantData";
 import DisplayFavoriteRecipe from "./routes/DisplayFavoriteRecipe";
 import DisplayFavoriteRestaurant from "./routes/DisplayFavoriteRestaurant";
 import DisplayDeleteAccount from "./routes/DisplayDeleteAccount";
@@ -31,19 +29,6 @@ export default function App() {
                         <Main setIsVisible={setIsVisible} visible={visible} />
                     )}
                 />
-                {/* <Route
-                    path="/searchRecipe"
-                    render={() => (
-                        <GetRecipeData
-                            setIsVisible={setIsVisible}
-                            visible={visible}
-                        />
-                    )}
-                />
-                <Route
-                    path="/searchRestaurant"
-                    render={() => <GetRestaurantData />}
-                /> */}
                 <Route
                     path="/displayRecipe"
                     render={() => (

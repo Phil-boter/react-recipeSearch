@@ -3,7 +3,6 @@ import DeleteFavoriteRestaurantButton from "./DeleteFavoriteRestaurantButton";
 import "../css/FavComponent.css";
 
 export default function FavoriteRestaurantComponent({ restaurant }) {
-    console.log("restaurant", restaurant);
     const renderPhone = (phone) => {
         if (!phone) {
             return (

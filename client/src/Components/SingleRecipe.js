@@ -20,7 +20,7 @@ export default function SingleRecipe({ recipe, index }) {
                 <>
                     <>
                         <h4>Time:</h4>
-                        <p>no preparation time provided</p>
+                        <p>no time provided</p>
                     </>
                 </>
             );
@@ -113,6 +113,7 @@ export default function SingleRecipe({ recipe, index }) {
 
     const renderImage = (image) => {
         if (!image || image == "") {
+            console.log("no image");
             return (
                 <img
                     className="recipe-modal-image"

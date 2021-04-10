@@ -1,5 +1,5 @@
 import axios from "../Components/axios";
-
+// ---------------------  API ------------------------------
 export async function getRecipe(params) {
     try {
         const { data } = await axios.get(`/api/getRecipe/${params}`);
@@ -33,6 +33,8 @@ export async function getRestaurant(term, location) {
         console.log("error in getRestaurant", err);
     }
 }
+
+// ------------------------  USER ----------------------------------
 
 export async function login(email, password) {
     const { data } = await axios.post("/login", {
@@ -87,6 +89,8 @@ export async function deleteAccount() {
     }
 }
 
+//---------------------   RESTAURANT ----------------------------------
+
 export async function saveRestaurant(saveRest) {
     const { data } = await axios.post("/saveRestaurant", saveRest);
     if (data.success) {
@@ -114,6 +118,8 @@ export async function deleteRestaurant(id) {
     };
 }
 
+// ------------------------  RECIPE ------------------------------
+
 export async function saveRecipe(recipe) {
     const { data } = await axios.post("/saveRecipe", { recipe });
     if (data.success) {
@@ -135,8 +141,37 @@ export async function getFavoriteRecipe() {
 }
 export async function deleteRecipe(id) {
     const { data } = await axios.post("/deleteFavRecipe", { id: id });
-    return {
-        type: "DELETE_RECIPE",
-        successDelete: data.successDelete,
-    };
+    console.log("data in delete ", data);
+    if (data.success) {
+        return {
+            type: "DELETE_RECIPE",
+            data: data,
+        };
+    }
 }
+
+// export async function sendNoteRecipe(note, id) {
+//     const { data } = await axios.post("/sendNoteRecipe", {
+//         note: note,
+//         recipeId: id,
+//     });
+//     // console.log("data", data);
+//     if (data.success) {
+//         return {
+//             type: "SEND_RECIPE_NOTE",
+//             recipeNote: data.recipeNote,
+//         };
+//     }
+// }
+// export async function getNoteRecipe(id) {
+//     const { data } = await axios.get("/getRecipeNote", {
+//         params: { recipeId: id },
+//     });
+//     // console.log("data getNoteRecipe", data.recipeNote);
+//     if (data.success) {
+//         return {
+//             type: "GET_RECIPE_NOTE",
+//             recipeNote: data.recipeNote,
+//         };
+//     }
+// }

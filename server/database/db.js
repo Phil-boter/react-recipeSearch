@@ -145,7 +145,7 @@ module.exports.getFavoriteRestaurant = (userId) => {
 };
 
 module.exports.deleteRestaurant = (id, userId) => {
-    const q = `DELETE FROM favRestaurant WHERE (id = $1 AND userId = $2)`;
+    const q = `DELETE FROM favRestaurant WHERE (id = $1 AND userId = $2) RETURNING *`;
     const query = [id, userId];
     return db.query(q, query);
 };
@@ -160,3 +160,20 @@ module.exports.searchForRestaurant = (userId, input) => {
     const query = [userId, input + "%"];
     return db.query(q, query);
 };
+
+// module.exports.saveNoteRecipe = (note, userId, recipeId) => {
+//     const q = `INSERT INTO recipeNotes (note, userId, recipeId) VALUES ($1, $2, $3) RETURNING *`;
+//     const params = [note, userId, recipeId];
+//     return db.query(q, params);
+// };
+// module.exports.getRecipeNote = (recipeId) => {
+//     const q = "SELECT * FROM recipeNotes WHERE recipeId = $1";
+//     const params = [recipeId];
+//     return db.query(q, params);
+// };
+
+// module.exports.deleteRecipeNote = (userId) => {
+//     const q = `DELETE FROM recipeNotes WHERE userId = $1 RETURNING *`;
+//     const query = [userId];
+//     return db.query(q, query);
+// };

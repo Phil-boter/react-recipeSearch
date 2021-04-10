@@ -8,6 +8,7 @@ const csurf = require("csurf");
 const { default: axios } = require("axios");
 const { hash, compare } = require("./bc");
 const { send } = require("process");
+const { truncate } = require("fs");
 
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
@@ -65,13 +66,11 @@ app.post("/registration", (req, res) => {
                 })
                 .catch((error) => {
                     console.log("error registration", error);
-                    // res.redirect("/registration");
                     res.json({ success: false });
                 });
         })
         .catch((error) => {
             console.log("error registration", error);
-            // res.redirect("/registration");
             res.json({ success: false });
         });
 });
@@ -123,7 +122,6 @@ app.post("/login", (req, res) => {
 
 app.get("/user", (req, res) => {
     console.log("get user");
-    // console.log("req session", req.session);
     db.getUserData(req.session.userId)
         .then(({ rows }) => {
             res.json({
@@ -181,8 +179,6 @@ app.post("/deleteAccount", (req, res) => {
 
 app.post("/saveRestaurant", (req, res) => {
     console.log("post saveRestaurant");
-    // console.log("req.body.restaurant", req.body);
-    // console.log("req.session:", req.session.userId);
     const { name, url, image_url, price, rating, categories, phone } = req.body;
     let userId = req.session.userId;
     db.saveFavoriteRestaurant(
@@ -227,10 +223,8 @@ app.get("/getFavoriteRestaurant", (req, res) => {
 
 app.post("/deleteFavRestaurant", (req, res) => {
     console.log("post deleteFavRecipe");
-
     const { id } = req.body;
     const { userId } = req.session;
-
     db.deleteRestaurant(id, userId)
         .then(() => {
             console.log("deleted");
@@ -292,20 +286,25 @@ app.post("/deleteFavRecipe", (req, res) => {
     const { userId } = req.session;
 
     db.deleteRecipe(id, userId)
-        .then(() => {
-            console.log("deleted");
-            res.json({ successDelete: true }).send();
+        // .then(() => {
+        //     db.deleteRecipeNote(userId)
+        .then(({ rows }) => {
+            console.log("deleted", rows);
+            res.json({ successDelete: true, favoriteRecipe: rows });
         })
         .catch((error) => {
-            console.log("error in deleteFavRecipe", error);
-            res.json({ successDelete: false }).send();
+            console.log("error in delete recipe note", error);
+            res.json({ success: false }).send();
         });
+    // })
+    // .catch((error) => {
+    //     console.log("error in deleteFavRecipe", error);
+    //     res.json({ successDelete: false }).send();
+    // });
 });
 
 app.get("/searchForRecipe/:input", (req, res) => {
     console.log("get request searechForRecipe");
-    // console.log("req.params :", req.params);
-    // console.log("req.session.userId", req.session.userId);
     let input = req.params.input;
     let userId = req.session.userId;
     db.searchForRecipe(userId, input)
@@ -323,8 +322,6 @@ app.get("/searchForRecipe/:input", (req, res) => {
 
 app.get("/searchForRestaurant/:input", (req, res) => {
     console.log("get request searechForRestaurant");
-    // console.log("req.params :", req.params);
-    // console.log("req.session.userId", req.session.userId);
     let input = req.params.input;
     let userId = req.session.userId;
     db.searchForRestaurant(userId, input)
@@ -341,11 +338,50 @@ app.get("/searchForRestaurant/:input", (req, res) => {
         });
 });
 
+// app.post("/sendNoteRecipe", (req, res) => {
+//     console.log("post sendNote");
+//     console.log("req.body", req.body);
+//     console.log("userId ", req.session.userId);
+//     let note = req.body.note;
+//     let userId = req.session.userId;
+//     let recipeId = req.body.recipeId;
+
+//     db.saveNoteRecipe(note, userId, recipeId)
+//         .then(({ rows }) => {
+//             console.log("note saved");
+//             res.json({
+//                 success: true,
+//                 recipeNote: rows,
+//             });
+//         })
+//         .catch((error) => {
+//             console.log("error in saveNoteRecipe", error);
+//             res.json({
+//                 success: false,
+//             });
+//         });
+// });
+
+// app.get("/getRecipeNote", (req, res) => {
+//     let recipeId = req.query.recipeId;
+//     db.getRecipeNote(recipeId)
+//         .then(({ rows }) => {
+//             console.log("rows in getRecipeNotes", rows);
+//             res.json({
+//                 success: true,
+//                 recipeNote: rows,
+//             });
+//         })
+//         .catch((error) => {
+//             console.log("error in get recipe note", error);
+//             res.json({ success: false }).send();
+//         });
+// });
+
 // ------  api call dont touch--------------------------------------------------------------------------
 
 app.get("/api/getRecipe/:input", (req, res) => {
     console.log("GET getRecipe");
-    // console.log("req:", req);
     let response;
     async function getRecipes(input) {
         console.log("input", input);
@@ -353,9 +389,6 @@ app.get("/api/getRecipe/:input", (req, res) => {
             response = await axios.get(
                 `https://api.edamam.com/search?q=${input}&app_id=${secrets.APP_ID}&app_key=${secrets.APP_KEY}`
             );
-
-            // console.log("result getRecipe", response);
-            // console.log("hits:", response.data.hits);
             res.json({
                 success: true,
                 recipes: response.data.hits.map((obj) => ({
@@ -387,9 +420,6 @@ app.get(`/api/getRestaurant/`, (req, res) => {
                     },
                 }
             );
-
-            // console.log("result getRecipe", response);
-            // console.log("businesses:", response.data.businesses);
             res.json({
                 success: true,
                 businesses: response.data.businesses.map((obj) => ({

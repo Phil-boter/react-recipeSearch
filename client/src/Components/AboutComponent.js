@@ -25,7 +25,7 @@ export default function AboutComponent() {
                 <h2 className="about-headline">Technologies and Frameworks:</h2>
                 <section>
                     The technologies used to build the website are React.js and
-                    Redux on the client-side. And Node/Express.js and postgreSQl
+                    Redux on the client-side. And Node.js/Express and postgreSQl
                     on the server-side.
                 </section>
                 <h2 className="about-headline">Code:</h2>
