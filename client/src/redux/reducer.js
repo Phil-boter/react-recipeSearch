@@ -51,7 +51,7 @@ export default function (state = {}, action) {
     if (action.type == "DELETE_RECIPE") {
         state = {
             ...state,
-            data: action.data,
+            successDelete: action.deleteRecipe,
         };
     }
     if (action.type == "SAVE_RESTAURANT") {
@@ -69,7 +69,7 @@ export default function (state = {}, action) {
     if (action.type == "DELETE_RESTAURANT") {
         state = {
             ...state,
-            successDeleteRest: action.successDelete,
+            data: action.deleteRestaurant,
         };
     }
     if (action == "DELETE_ACCOUNT") {
@@ -78,18 +78,23 @@ export default function (state = {}, action) {
             successDeleteAccount: action.successDeleteAccount,
         };
     }
-    // if (action.type == "SEND_RECIPE_NOTE") {
-    //     state = {
-    //         ...state,
-    //         recipeNote: action.recipeNote,
-    //     };
-    // }
-    // if (action.type == "GET_RECIPE_NOTE") {
-    //     state = {
-    //         ...state,
-    //         recipeNote: action.recipeNote,
-    //     };
-    // }
-
+    if (action.type == "SEND_RECIPE_NOTE") {
+        state = {
+            ...state,
+            recipeNote: [...state.recipeNote, action.NewRecipeNote],
+        };
+    }
+    if (action.type == "GET_RECIPE_NOTE") {
+        state = {
+            ...state,
+            recipeNote: action.recipeNote,
+        };
+    }
+    if (action.type == "DELETE_RECIPENOTE") {
+        state = {
+            ...state,
+            recipeNote: [...state.recipeNote, action.deleteRecipeNote],
+        };
+    }
     return state;
 }

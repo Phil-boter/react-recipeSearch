@@ -12,9 +12,11 @@ export default function FavoriteRestaurantComponent() {
     const dispatch = useDispatch();
 
     const favoriteRestaurant = useSelector((state) => {
+        console.log("state in fav restaurant", state);
+        console.log("state.data", state.data);
         return state.data;
     });
-
+    console.log("fav restaurnat ", favoriteRestaurant);
     useEffect(() => {
         dispatch(getFavoriteRestaurant());
     }, []);

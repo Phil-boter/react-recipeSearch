@@ -9,6 +9,7 @@ const { default: axios } = require("axios");
 const { hash, compare } = require("./bc");
 const { send } = require("process");
 const { truncate } = require("fs");
+const { ServerlessApplicationRepository } = require("aws-sdk");
 
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
@@ -151,24 +152,38 @@ app.post("/deleteAccount", (req, res) => {
     const { userId } = req.session;
     db.deleteFavRecipe(userId)
         .then(() => {
-            console.log("all recipes deleted");
-            db.deleteFavRestaurant(userId)
+            console.log("recipe deleted");
+            db.deleteAllUserNotes(userId)
                 .then(() => {
-                    console.log("all restaurants deleted");
-                    return db
-                        .deleteAccount(userId)
-                        .then((response) => {
-                            console.log("delete User resolved", response);
-                            res.json({ success: true });
+                    console.log("all recipes deleted");
+                    db.deleteFavRestaurant(userId)
+                        .then(() => {
+                            console.log("all restaurants deleted");
+                            return db
+                                .deleteAccount(userId)
+                                .then((response) => {
+                                    console.log(
+                                        "delete User resolved",
+                                        response
+                                    );
+                                    res.json({ success: true });
+                                })
+                                .catch((error) => {
+                                    console.log(
+                                        "error in deleteAccount",
+                                        error
+                                    );
+                                    res.json({ success: false });
+                                });
                         })
                         .catch((error) => {
-                            console.log("error in deleteAccount", error);
+                            console.log("error in delete restaurant", error);
                             res.json({ success: false });
                         });
                 })
                 .catch((error) => {
-                    console.log("error in delete restaurant", error);
-                    res.json({ success: false });
+                    console.log("error in delete recipe note", error);
+                    res.json({ successDelete: false }).send();
                 });
         })
         .catch((error) => {
@@ -192,10 +207,11 @@ app.post("/saveRestaurant", (req, res) => {
         req.body.location.display_address,
         userId
     )
-        .then(() => {
+        .then(({ rows }) => {
             console.log("save restaurant success");
             res.json({
                 success: true,
+                favoriteRestaurant: rows,
             }).send();
         })
         .catch((error) => {
@@ -222,17 +238,17 @@ app.get("/getFavoriteRestaurant", (req, res) => {
 });
 
 app.post("/deleteFavRestaurant", (req, res) => {
-    console.log("post deleteFavRecipe");
+    console.log("post deleteFavRestaurnat", req.body.id);
     const { id } = req.body;
     const { userId } = req.session;
     db.deleteRestaurant(id, userId)
-        .then(() => {
-            console.log("deleted");
-            res.json({ successDelete: true }).send();
+        .then(({ rows }) => {
+            console.log("deleted", rows);
+            res.json({ success: true }).send();
         })
         .catch((error) => {
             console.log("error in deleteFavRecipe", error);
-            res.json({ successDelete: false }).send();
+            res.json({ success: false }).send();
         });
 });
 
@@ -281,26 +297,26 @@ app.get("/getFavoriteRecipe", (req, res) => {
 
 app.post("/deleteFavRecipe", (req, res) => {
     console.log("post deleteFavRecipe");
-
+    console.log("recipeId ", req.body.id);
     const { id } = req.body;
     const { userId } = req.session;
 
     db.deleteRecipe(id, userId)
-        // .then(() => {
-        //     db.deleteRecipeNote(userId)
-        .then(({ rows }) => {
-            console.log("deleted", rows);
-            res.json({ successDelete: true, favoriteRecipe: rows });
+        .then(() => {
+            db.deleteRecipeNote(id, userId)
+                .then(({ rows }) => {
+                    console.log("deleted", rows);
+                    res.json({ successDelete: true }).send();
+                })
+                .catch((error) => {
+                    console.log("error in delete recipe note", error);
+                    res.json({ successDelete: false }).send();
+                });
         })
         .catch((error) => {
-            console.log("error in delete recipe note", error);
-            res.json({ success: false }).send();
+            console.log("error in deleteFavRecipe", error);
+            res.json({ successDelete: false }).send();
         });
-    // })
-    // .catch((error) => {
-    //     console.log("error in deleteFavRecipe", error);
-    //     res.json({ successDelete: false }).send();
-    // });
 });
 
 app.get("/searchForRecipe/:input", (req, res) => {
@@ -338,45 +354,65 @@ app.get("/searchForRestaurant/:input", (req, res) => {
         });
 });
 
-// app.post("/sendNoteRecipe", (req, res) => {
-//     console.log("post sendNote");
-//     console.log("req.body", req.body);
-//     console.log("userId ", req.session.userId);
-//     let note = req.body.note;
-//     let userId = req.session.userId;
-//     let recipeId = req.body.recipeId;
+app.post("/sendNoteRecipe", (req, res) => {
+    console.log("post sendNote");
+    console.log("req.body", req.body);
+    console.log("userId ", req.session.userId);
+    let note = req.body.note;
+    let userId = req.session.userId;
+    let recipeId = req.body.recipeId;
 
-//     db.saveNoteRecipe(note, userId, recipeId)
-//         .then(({ rows }) => {
-//             console.log("note saved");
-//             res.json({
-//                 success: true,
-//                 recipeNote: rows,
-//             });
-//         })
-//         .catch((error) => {
-//             console.log("error in saveNoteRecipe", error);
-//             res.json({
-//                 success: false,
-//             });
-//         });
-// });
+    db.saveNoteRecipe(note, userId, recipeId)
+        .then(({ rows }) => {
+            console.log("note saved");
+            res.json({
+                success: true,
+                recipeNote: rows,
+            });
+        })
+        .catch((error) => {
+            console.log("error in saveNoteRecipe", error);
+            res.json({
+                success: false,
+            });
+        });
+});
 
-// app.get("/getRecipeNote", (req, res) => {
-//     let recipeId = req.query.recipeId;
-//     db.getRecipeNote(recipeId)
-//         .then(({ rows }) => {
-//             console.log("rows in getRecipeNotes", rows);
-//             res.json({
-//                 success: true,
-//                 recipeNote: rows,
-//             });
-//         })
-//         .catch((error) => {
-//             console.log("error in get recipe note", error);
-//             res.json({ success: false }).send();
-//         });
-// });
+app.get("/getRecipeNote", (req, res) => {
+    let recipeId = req.query.recipeId;
+    db.getRecipeNote(recipeId)
+        .then(({ rows }) => {
+            console.log("rows in getRecipeNotes", rows);
+            res.json({
+                success: true,
+                recipeNote: rows,
+            });
+        })
+        .catch((error) => {
+            console.log("error in get recipe note", error);
+            res.json({ success: false }).send();
+        });
+});
+
+app.post("/deleteSingleRecipeNote", (req, res) => {
+    console.log("post deleteSingleRecipeNote");
+    console.log("req.body", req.body);
+    let recipeNotesId = req.body.recipeNotesId;
+    db.deleteSingleRecipeNote(recipeNotesId)
+        .then(({ rows }) => {
+            console.log("delete note success", rows);
+            res.json({
+                success: true,
+                recipeNote: rows,
+            }).send();
+        })
+        .catch((error) => {
+            console.log("error in deleteSingleRecipe", error);
+            res.json({
+                success: false,
+            });
+        });
+});
 
 // ------  api call dont touch--------------------------------------------------------------------------
 

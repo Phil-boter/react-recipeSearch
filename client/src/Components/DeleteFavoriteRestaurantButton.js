@@ -8,7 +8,9 @@ export default function DeleteFavoriteRestaurantButtom({ restaurant }) {
 
     const [text, setButtonText] = useState("");
 
-    const Delete = () => {
+    const Delete = (e) => {
+        console.log("click in delete");
+        e.preventDefault();
         dispatch(deleteRestaurant(id));
         setButtonText("Deleted");
         setTimeout(() => dispatch(getFavoriteRestaurant()), 700);
@@ -23,7 +25,7 @@ export default function DeleteFavoriteRestaurantButtom({ restaurant }) {
             <div className="delete-button">
                 <button
                     className="main-info-button main-info-button-recipe delete"
-                    onClick={() => Delete()}
+                    onClick={(e) => Delete(e)}
                 >
                     {text}
                 </button>

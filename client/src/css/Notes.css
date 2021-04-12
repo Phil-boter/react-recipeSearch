@@ -1,0 +1,76 @@
+.notes-container {
+    width: 95%;
+}
+.add-note-container {
+    width: 90%;
+    display: inline-flex;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.note-text-area {
+    width: 18rem;
+    height: 80px;
+    font-size: 1.5rem;
+}
+.add-note-button {
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    border: 1px solid black;
+    font-size: 3rem;
+    margin-left: 0.5rem;
+}
+
+.delete-note-button {
+    min-width: 2rem;
+    font-size: 1.5rem;
+    height: 2rem;
+    background-color: tomato;
+    margin: 1rem;
+}
+
+.delete-note-button:hover {
+    background-color: red;
+}
+.delete-note-button-content {
+    width: 15px;
+    height: 2.5px;
+    color: black;
+    background-color: black;
+}
+.add-note-button:hover {
+    background-color: tomato;
+}
+
+.note-list {
+    border-bottom: 1px solid gray;
+    width: 90%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+@media only screen and (max-width: 850px) {
+    .add-note-button {
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
+    }
+    .note-text-area {
+        width: 16rem;
+    }
+    .add-note-container {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .note-text-area {
+        width: 13rem;
+    }
+}

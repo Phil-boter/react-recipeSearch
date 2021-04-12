@@ -1,32 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { getNoteRecipe } from "../redux/actions";
+
+import { deleteSingleRecipeNote, getNoteRecipe } from "../redux/actions";
+
+import DeleteSingleRecipeNote from "./DeleteSingleRecipeNote";
 
 export default function ShowRecipeNote({ item }) {
     const dispatch = useDispatch();
 
     const note = useSelector((state) => {
-        // console.log("state", state);
+        console.log("state.recipeNote", state.recipeNote);
+        console.log("state", state);
         return state.recipeNote;
     });
-    console.log("note", note);
+    // console.log("note", note);
+
     useEffect(() => {
         dispatch(getNoteRecipe(item.id));
     }, []);
 
-    const filterNote = (singleNote) => {
-        // console.log("function", singleNote);
-        for (const recipeid in singleNote[recipeid]) {
-            console.log(`${recipeid}: ${singleNote[recipeid]}`);
-        }
-    };
-
     return (
         <>
             <h2>Notes:</h2>
+
             {note &&
-                note.map((singleNote) => (
-                    <div key={singleNote.recipeid}>{singleNote.note}</div>
+                note.map((singleNote, index) => (
+                    <div key={index} className="note-list">
+                        <p>{singleNote.note}</p>
+                        <DeleteSingleRecipeNote
+                            singleNote={singleNote}
+                            item={item}
+                        />
+                    </div>
                 ))}
         </>
     );

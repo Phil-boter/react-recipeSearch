@@ -25,6 +25,9 @@
     overflow: auto;
     padding: 1.5rem;
 }
+.restaurant {
+    width: 95%;
+}
 
 .link {
     font-family: "Vollkorn", serif;

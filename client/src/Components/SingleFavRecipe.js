@@ -1,10 +1,22 @@
+import { useState } from "react";
+
 import DeleteFavRecipeButton from "./DeleteFavRecipeButton";
-// import AddNote from "./AddNote";
-// import ShowRecipeNote from "./ShowRecipeNote";
+import FavRecipeModal from "./FavRecipeModal";
 
 import "../css/FavComponent.css";
 
 export default function SingleFavRecipe({ item }) {
+    const [showModal, setShowModal] = useState(false);
+
+    const toggleShowModal = () => {
+        console.log("click");
+        setShowModal(true);
+    };
+
+    const closeShowModal = () => {
+        setShowModal(false);
+    };
+
     return (
         <>
             <div className="main-display">
@@ -26,38 +38,22 @@ export default function SingleFavRecipe({ item }) {
                             {item.source}
                         </a>
                     </div>
-                    <div className="recipe-information">
-                        <h4>Feeds :</h4>
-                        {`${item.yield} persons`}
+                    <div className="delete-button">
+                        <button
+                            className="main-info-button main-info-button-recipe delete"
+                            onClick={() => toggleShowModal()}
+                        >
+                            More Information
+                        </button>
                     </div>
+                    {showModal && (
+                        <FavRecipeModal
+                            closeShowModal={closeShowModal}
+                            item={item}
+                        />
+                    )}
                     <div>
-                        <h4>Shopping list :</h4>
-                        <ul>
-                            {item.ingredient.map((list, bucket) => {
-                                return (
-                                    <div key={bucket}>
-                                        <li>{list}</li>
-                                    </div>
-                                );
-                            })}
-                        </ul>
-                    </div>
-                    <div>
-                        <h4>Healthlabels :</h4>
-                        <ul>
-                            {item.healthlabels.map((label, list) => {
-                                return (
-                                    <div key={list}>
-                                        <li>{label}</li>
-                                    </div>
-                                );
-                            })}
-                        </ul>{" "}
-                        <div>
-                            {/* <ShowRecipeNote item={item} />
-                            <AddNote item={item} /> */}
-                            <DeleteFavRecipeButton item={item} />
-                        </div>
+                        <DeleteFavRecipeButton item={item} />
                     </div>
                 </div>
             </div>

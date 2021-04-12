@@ -161,19 +161,29 @@ module.exports.searchForRestaurant = (userId, input) => {
     return db.query(q, query);
 };
 
-// module.exports.saveNoteRecipe = (note, userId, recipeId) => {
-//     const q = `INSERT INTO recipeNotes (note, userId, recipeId) VALUES ($1, $2, $3) RETURNING *`;
-//     const params = [note, userId, recipeId];
-//     return db.query(q, params);
-// };
-// module.exports.getRecipeNote = (recipeId) => {
-//     const q = "SELECT * FROM recipeNotes WHERE recipeId = $1";
-//     const params = [recipeId];
-//     return db.query(q, params);
-// };
+module.exports.saveNoteRecipe = (note, userId, recipeId) => {
+    const q = `INSERT INTO recipeNotes (note, userId, recipeId) VALUES ($1, $2, $3) RETURNING *`;
+    const params = [note, userId, recipeId];
+    return db.query(q, params);
+};
+module.exports.getRecipeNote = (recipeId) => {
+    const q = "SELECT * FROM recipeNotes WHERE recipeId = $1";
+    const params = [recipeId];
+    return db.query(q, params);
+};
 
-// module.exports.deleteRecipeNote = (userId) => {
-//     const q = `DELETE FROM recipeNotes WHERE userId = $1 RETURNING *`;
-//     const query = [userId];
-//     return db.query(q, query);
-// };
+module.exports.deleteRecipeNote = (recipeId, userId) => {
+    const q = `DELETE FROM recipeNotes WHERE (recipeId = $1 AND userId = $2) RETURNING *`;
+    const query = [recipeId, userId];
+    return db.query(q, query);
+};
+module.exports.deleteAllUserNotes = (userId) => {
+    const q = `DELETE FROM recipeNotes WHERE userId = $1`;
+    const query = [userId];
+    return db.query(q, query);
+};
+module.exports.deleteSingleRecipeNote = (recipeNotesId) => {
+    const q = `DELETE FROM recipeNotes WHERE id = $1 RETURNING *`;
+    const query = [recipeNotesId];
+    return db.query(q, query);
+};
