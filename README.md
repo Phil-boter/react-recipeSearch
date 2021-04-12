@@ -12,6 +12,8 @@ If everything fails it also has an implemented restaurant search for the nearest
     It is also possible to make an user account. 
     Setting up an user the account offers the possibility
     to save shopping list and restaurants in a favourites list.
+    after adding to one of the favourite lists, 
+    the user can also add and delete notes to his favourites.
     It is also possible to store and delete favourite lists. 
     A search function for special restaurants or shopping lists
     inside the favourites is also available.
