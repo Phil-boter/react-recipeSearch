@@ -2,16 +2,12 @@ import { useState } from "react";
 
 import DeleteFavRecipeButton from "./DeleteFavRecipeButton";
 import FavRecipeModal from "./FavRecipeModal";
+import ToggleModalButton from "./ToggleModalButton";
 
 import "../css/FavComponent.css";
 
 export default function SingleFavRecipe({ item }) {
     const [showModal, setShowModal] = useState(false);
-
-    const toggleShowModal = () => {
-        console.log("click");
-        setShowModal(true);
-    };
 
     const closeShowModal = () => {
         setShowModal(false);
@@ -39,12 +35,7 @@ export default function SingleFavRecipe({ item }) {
                         </a>
                     </div>
                     <div className="delete-button">
-                        <button
-                            className="main-info-button main-info-button-recipe delete"
-                            onClick={() => toggleShowModal()}
-                        >
-                            More Information
-                        </button>
+                        <ToggleModalButton setShowModal={setShowModal} />
                     </div>
                     {showModal && (
                         <FavRecipeModal

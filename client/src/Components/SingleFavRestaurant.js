@@ -1,8 +1,18 @@
+import { useState } from "react";
+
 import DeleteFavoriteRestaurantButton from "./DeleteFavoriteRestaurantButton";
+import FavRestaurantModal from "./FavRestaurantModal";
+import ToggleModalButton from "./ToggleModalButton";
 
 import "../css/FavComponent.css";
 
 export default function FavoriteRestaurantComponent({ restaurant }) {
+    const [showModal, setShowModal] = useState(false);
+
+    const closeShowModal = () => {
+        setShowModal(false);
+    };
+
     const renderPhone = (phone) => {
         if (!phone) {
             return (
@@ -16,41 +26,6 @@ export default function FavoriteRestaurantComponent({ restaurant }) {
                 <>
                     <h4>Phone:</h4>
                     {phone}
-                </>
-            );
-        }
-    };
-    const renderPrice = (price) => {
-        if (!price) {
-            return (
-                <>
-                    <h4>Price:</h4>
-                    <p>none provided</p>
-                </>
-            );
-        } else {
-            return (
-                <>
-                    <h4>Price:</h4>
-                    {price}
-                </>
-            );
-        }
-    };
-
-    const renderRating = (rating) => {
-        if (!rating) {
-            return (
-                <>
-                    <h4>Rating:</h4>
-                    <p>none provided</p>
-                </>
-            );
-        } else {
-            return (
-                <>
-                    <h4>Rating:</h4>
-                    {`${rating} Stars`}
                 </>
             );
         }
@@ -90,20 +65,17 @@ export default function FavoriteRestaurantComponent({ restaurant }) {
                     <div className="recipe-information">
                         {renderPhone(restaurant.phone)}
                     </div>
-                    <div className="restaurant-address">
-                        <h4>Address:</h4>
-                        <ul>
-                            <li>{restaurant.address[0]}</li>
-                            <li>{restaurant.address[1]}</li>
-                            <li>{restaurant.address[2]}</li>
-                        </ul>
+                    <div className="delete-button">
+                        <ToggleModalButton setShowModal={setShowModal} />
                     </div>
-                    <div className="recipe-information">
-                        {renderPrice(restaurant.price)}
-                    </div>
-                    <div className="recipe-information">
-                        {renderRating(restaurant.rating)}
-                    </div>
+                    {showModal && (
+                        <FavRestaurantModal
+                            renderImage={renderImage(restaurant.image)}
+                            renderPhone={renderPhone(restaurant.phone)}
+                            closeShowModal={closeShowModal}
+                            restaurant={restaurant}
+                        />
+                    )}
                     <div className="delete-button">
                         <DeleteFavoriteRestaurantButton
                             restaurant={restaurant}

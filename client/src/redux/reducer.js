@@ -96,5 +96,26 @@ export default function (state = {}, action) {
             recipeNote: [...state.recipeNote, action.deleteRecipeNote],
         };
     }
+    if (action.type == "SEND_RESTAURANT_NOTE") {
+        state = {
+            ...state,
+            restaurantNote: [...state.restaurantNote, action.NewRestaurantNote],
+        };
+    }
+    if (action.type == "GET_RESTAURANT_NOTE") {
+        state = {
+            ...state,
+            restaurantNote: action.restaurantNote,
+        };
+    }
+    if (action.type == "DELETE_RESTAURANTNOTE") {
+        state = {
+            ...state,
+            restaurantNote: [
+                ...state.restaurantNote,
+                action.deleteRestaurantNote,
+            ],
+        };
+    }
     return state;
 }

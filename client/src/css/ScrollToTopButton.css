@@ -1,6 +1,7 @@
 .scroll-top-button-container {
     position: sticky;
     bottom: 3rem;
+    z-index: 100000 !important;
 }
 .scroll-top-button {
     position: absolute;

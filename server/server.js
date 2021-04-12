@@ -158,19 +158,29 @@ app.post("/deleteAccount", (req, res) => {
                     console.log("all recipes deleted");
                     db.deleteFavRestaurant(userId)
                         .then(() => {
-                            console.log("all restaurants deleted");
-                            return db
-                                .deleteAccount(userId)
-                                .then((response) => {
-                                    console.log(
-                                        "delete User resolved",
-                                        response
-                                    );
-                                    res.json({ success: true });
+                            db.deleteAllUserNotesRestaurant(userId)
+                                .then(() => {
+                                    console.log("all restaurants deleted");
+                                    return db
+                                        .deleteAccount(userId)
+                                        .then((response) => {
+                                            console.log(
+                                                "delete User resolved",
+                                                response
+                                            );
+                                            res.json({ success: true });
+                                        })
+                                        .catch((error) => {
+                                            console.log(
+                                                "error in deleteAccount",
+                                                error
+                                            );
+                                            res.json({ success: false });
+                                        });
                                 })
                                 .catch((error) => {
                                     console.log(
-                                        "error in deleteAccount",
+                                        "error in delete restaurantNotes",
                                         error
                                     );
                                     res.json({ success: false });
@@ -355,9 +365,6 @@ app.get("/searchForRestaurant/:input", (req, res) => {
 });
 
 app.post("/sendNoteRecipe", (req, res) => {
-    console.log("post sendNote");
-    console.log("req.body", req.body);
-    console.log("userId ", req.session.userId);
     let note = req.body.note;
     let userId = req.session.userId;
     let recipeId = req.body.recipeId;
@@ -395,12 +402,10 @@ app.get("/getRecipeNote", (req, res) => {
 });
 
 app.post("/deleteSingleRecipeNote", (req, res) => {
-    console.log("post deleteSingleRecipeNote");
-    console.log("req.body", req.body);
     let recipeNotesId = req.body.recipeNotesId;
     db.deleteSingleRecipeNote(recipeNotesId)
         .then(({ rows }) => {
-            console.log("delete note success", rows);
+            console.log("delete recipe note success", rows);
             res.json({
                 success: true,
                 recipeNote: rows,
@@ -408,6 +413,66 @@ app.post("/deleteSingleRecipeNote", (req, res) => {
         })
         .catch((error) => {
             console.log("error in deleteSingleRecipe", error);
+            res.json({
+                success: false,
+            });
+        });
+});
+
+app.post("/sendNoteRestaurant", (req, res) => {
+    console.log("post sendNote");
+    console.log("req.body", req.body);
+    console.log("userId ", req.session.userId);
+    let note = req.body.note;
+    let userId = req.session.userId;
+    let restaurantId = req.body.restaurantId;
+
+    db.saveNoteRestaurant(note, userId, restaurantId)
+        .then(({ rows }) => {
+            console.log("note restaurant saved");
+            res.json({
+                success: true,
+                restaurantNote: rows,
+            });
+        })
+        .catch((error) => {
+            console.log("error in saveNoteRestaurant", error);
+            res.json({
+                success: false,
+            });
+        });
+});
+
+app.get("/getRestaurantNote", (req, res) => {
+    let restaurantId = req.query.restaurantId;
+    db.getRestaurantNote(restaurantId)
+        .then(({ rows }) => {
+            console.log("rows in getRestaurantNotes", rows);
+            res.json({
+                success: true,
+                restaurantNote: rows,
+            });
+        })
+        .catch((error) => {
+            console.log("error in get restaurant note", error);
+            res.json({ success: false }).send();
+        });
+});
+
+app.post("/deleteSingleRestaurantNote", (req, res) => {
+    console.log("post deleteSingleRestaurantNote");
+    console.log("req.body", req.body);
+    let restaurantNotesId = req.body.restaurantNotesId;
+    db.deleteSingleRestaurantNote(restaurantNotesId)
+        .then(({ rows }) => {
+            console.log("delete restaurant note success", rows);
+            res.json({
+                success: true,
+                restaurantNote: rows,
+            }).send();
+        })
+        .catch((error) => {
+            console.log("error in deleteSingleRestaurant", error);
             res.json({
                 success: false,
             });

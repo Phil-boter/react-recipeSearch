@@ -189,7 +189,7 @@ export async function deleteRecipe(id) {
     }
 }
 
-// ----------------------   Notes ----------------------------
+// ----------------------   Notes Recipe ----------------------------
 
 export async function sendNoteRecipe(note, id) {
     try {
@@ -236,5 +236,56 @@ export async function deleteSingleRecipeNote(id) {
         }
     } catch (error) {
         console.log("error ion deleteSingleRecipeNote", error);
+    }
+}
+
+// -------------- NOTES Restaurant ---------------------
+
+export async function sendNoteRestaurant(note, id) {
+    try {
+        const { data } = await axios.post("/sendNoteRestaurant", {
+            note: note,
+            restaurantId: id,
+        });
+        if (data.success) {
+            return {
+                type: "SEND_RESTAURANT_NOTE",
+                NewRestaurantNote: data.restaurantNote,
+            };
+        }
+    } catch (error) {
+        console.log("error in sendNoteRestaurant", error);
+    }
+}
+export async function getNoteRestaurant(id) {
+    try {
+        const { data } = await axios.get("/getRestaurantNote", {
+            params: { restaurantId: id },
+        });
+        if (data.success) {
+            return {
+                type: "GET_RESTAURANT_NOTE",
+                restaurantNote: data.restaurantNote,
+            };
+        }
+    } catch (error) {
+        console.log("error in getNoteRestaurant", error);
+    }
+}
+
+export async function deleteSingleRestaurantNote(id) {
+    try {
+        console.log("id", id);
+        const { data } = await axios.post("/deleteSingleRestaurantNote", {
+            restaurantNotesId: id,
+        });
+        if (data.success) {
+            return {
+                type: "DELETE_RESTAURANTNOTE",
+                deleteRestaurantNote: data.restaurantNote,
+            };
+        }
+    } catch (error) {
+        console.log("error in  delete NoteRestaurant", error);
     }
 }

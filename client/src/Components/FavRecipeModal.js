@@ -1,9 +1,22 @@
+import { useSelector } from "react-redux";
+
 import AddNote from "./AddNote";
-import ShowRecipeNote from "./ShowRecipeNote";
+import ShowNote from "./ShowNote";
+import ScrollToTopButton from "./ScrollToTopButton";
+
+import {
+    deleteSingleRecipeNote,
+    sendNoteRecipe,
+    getNoteRecipe,
+} from "../redux/actions";
 
 import "../css/FavComponent.css";
 
 export default function FavRecipeModal({ item, closeShowModal }) {
+    const note = useSelector((state) => {
+        return state.recipeNote;
+    });
+
     return (
         <>
             <div className="recipe-modal-container">
@@ -61,13 +74,22 @@ export default function FavRecipeModal({ item, closeShowModal }) {
                                 })}
                             </ul>{" "}
                             <div className="notes-container">
-                                <ShowRecipeNote item={item} />
-                                <AddNote item={item} />
+                                <ShowNote
+                                    item={item}
+                                    note={note}
+                                    getNote={getNoteRecipe}
+                                    deleteNote={deleteSingleRecipeNote}
+                                />
+                                <AddNote
+                                    item={item}
+                                    sendNote={sendNoteRecipe}
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <ScrollToTopButton />
         </>
     );
 }

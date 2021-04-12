@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { sendNoteRecipe } from "../redux/actions";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import "../css/Notes.css";
 
-export default function AddNote({ item }) {
+export default function AddNote({ item, sendNote }) {
     const dispatch = useDispatch();
+
     const [note, setNote] = useState("");
 
-    const handleNote = (e) => {
-        console.log("note entered");
-        setNote(e.target.value);
+    console.log("note", note);
+    // const handleNote = (e) => {
+    //     setNote(e.target.value);
+    // };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(sendNote(note, item.id));
+        setNote("");
     };
 
     return (
@@ -19,11 +24,12 @@ export default function AddNote({ item }) {
             <div className="add-note-container">
                 <textarea
                     className="note-text-area"
-                    onChange={(e) => handleNote(e)}
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
                 ></textarea>
                 <button
+                    onClick={(e) => handleSubmit(e)}
                     className="add-note-button"
-                    onClick={() => dispatch(sendNoteRecipe(note, item.id))}
                 >
                     +
                 </button>

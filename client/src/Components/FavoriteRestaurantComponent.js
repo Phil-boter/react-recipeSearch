@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import IsLoadingComponent from "./IsLoadingComponent";
 import SearchFavRestaurant from "./SearchFavRestaurant";
 import SingleFavRestaurant from "./SingleFavRestaurant";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 import "../css/FavComponent.css";
 
@@ -12,11 +13,11 @@ export default function FavoriteRestaurantComponent() {
     const dispatch = useDispatch();
 
     const favoriteRestaurant = useSelector((state) => {
-        console.log("state in fav restaurant", state);
-        console.log("state.data", state.data);
+        // console.log("state in fav restaurant", state);
+        // console.log("state.data", state.data);
         return state.data;
     });
-    console.log("fav restaurnat ", favoriteRestaurant);
+    // console.log("fav restaurnat ", favoriteRestaurant);
     useEffect(() => {
         dispatch(getFavoriteRestaurant());
     }, []);
