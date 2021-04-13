@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 
 import AddNote from "./AddNote";
 import ShowNote from "./ShowNote";
-import ScrollToTopButton from "./ScrollToTopButton";
 
 import {
     deleteSingleRestaurantNote,
@@ -106,7 +105,6 @@ export default function FavRestaurantModal({
                             />
                         </div>
                     </div>
-                    <ScrollToTopButton />
                 </div>
             </div>
         </>

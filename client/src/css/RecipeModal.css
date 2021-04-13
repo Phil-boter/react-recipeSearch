@@ -59,10 +59,10 @@
 
 .recipe-close-modal {
     position: relative;
-    margin: 0.5rem;
-    text-decoration: none;
+    margin-bottom: 3rem;
+
     color: black;
-    z-index: 300;
+    z-index: 6;
     cursor: pointer;
 }
 

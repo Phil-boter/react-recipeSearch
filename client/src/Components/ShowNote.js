@@ -20,7 +20,7 @@ export default function ShowNote({ item, note, getNote, deleteNote }) {
 
     return (
         <>
-            <h2>Notes:</h2>
+            <h2 className="fav-main-label">Notes</h2>
 
             {note &&
                 note.map((singleNote, index) => (
