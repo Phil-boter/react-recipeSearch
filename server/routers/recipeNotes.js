@@ -3,77 +3,55 @@ const router = express.Router();
 
 const db = require("../database/db");
 
-router.get("/searchForRestaurant/:input", (req, res) => {
-    console.log("get request searechForRestaurant");
-    let input = req.params.input;
-    let userId = req.session.userId;
-    db.searchForRestaurant(userId, input)
-        .then(({ rows }) => {
-            console.log("rows", rows);
-            res.json({
-                success: true,
-                searchRestaurant: rows,
-            });
-        })
-        .catch((error) => {
-            console.log("error in searchForRestaurant", error);
-            res.json({ success: false }).send();
-        });
-});
-
-router.post("/sendNoteRecipe", (req, res) => {
+router.post("/sendNoteRecipe", async (req, res) => {
     let note = req.body.note;
     let userId = req.session.userId;
     let recipeId = req.body.recipeId;
-
-    db.saveNoteRecipe(note, userId, recipeId)
-        .then(({ rows }) => {
-            console.log("note saved");
-            res.json({
-                success: true,
-                recipeNote: rows,
-            });
-        })
-        .catch((error) => {
-            console.log("error in saveNoteRecipe", error);
-            res.json({
-                success: false,
-            });
+    console.log("note", note);
+    try {
+        const recipeNote = await db.saveNoteRecipe(note, userId, recipeId);
+        res.json({
+            success: true,
+            recipeNote: recipeNote.rows,
         });
+    } catch (error) {
+        console.log("error in saveNoteRecipe", error);
+        res.json({
+            success: false,
+        });
+    }
 });
 
-router.get("/getRecipeNote", (req, res) => {
+router.get("/getRecipeNote", async (req, res) => {
     let recipeId = req.query.recipeId;
-    db.getRecipeNote(recipeId)
-        .then(({ rows }) => {
-            console.log("rows in getRecipeNotes", rows);
-            res.json({
-                success: true,
-                recipeNote: rows,
-            });
-        })
-        .catch((error) => {
-            console.log("error in get recipe note", error);
-            res.json({ success: false }).send();
+
+    try {
+        const recipeNote = await db.getRecipeNote(recipeId);
+        res.json({
+            success: true,
+            recipeNote: recipeNote.rows,
         });
+    } catch (error) {
+        console.log("error in get recipe note", error);
+        res.json({ success: false });
+    }
 });
 
-router.post("/deleteSingleRecipeNote", (req, res) => {
+router.post("/deleteSingleRecipeNote", async (req, res) => {
     let recipeNotesId = req.body.recipeNotesId;
-    db.deleteSingleRecipeNote(recipeNotesId)
-        .then(({ rows }) => {
-            console.log("delete recipe note success", rows);
-            res.json({
-                success: true,
-                recipeNote: rows,
-            }).send();
-        })
-        .catch((error) => {
-            console.log("error in deleteSingleRecipe", error);
-            res.json({
-                success: false,
-            });
+
+    try {
+        const { rows } = await db.deleteSingleRecipeNote(recipeNotesId);
+        res.json({
+            success: true,
+            recipeNote: rows,
         });
+    } catch (error) {
+        console.log("error in deleteSingleRecipe", error);
+        res.json({
+            success: false,
+        });
+    }
 });
 
 module.exports = router;
