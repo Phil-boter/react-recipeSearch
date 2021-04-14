@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-import DeleteFavRecipeButton from "./DeleteFavRecipeButton";
 import FavRecipeModal from "./FavRecipeModal";
 import ToggleModalButton from "./ToggleModalButton";
+import DeleteFavouriteButton from "./DeleteFavouriteButton";
+
+import { deleteRecipe, getFavoriteRecipe } from "../redux/actions";
 
 import "../css/FavComponent.css";
 
@@ -44,7 +46,11 @@ export default function SingleFavRecipe({ item }) {
                         />
                     )}
                     <div>
-                        <DeleteFavRecipeButton item={item} />
+                        <DeleteFavouriteButton
+                            id={item.id}
+                            getFavourite={getFavoriteRecipe}
+                            deleteFavourite={deleteRecipe}
+                        />
                     </div>
                 </div>
             </div>

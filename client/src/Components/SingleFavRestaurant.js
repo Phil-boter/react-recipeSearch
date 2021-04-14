@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-import DeleteFavoriteRestaurantButton from "./DeleteFavoriteRestaurantButton";
 import FavRestaurantModal from "./FavRestaurantModal";
 import ToggleModalButton from "./ToggleModalButton";
+import DeleteFavouriteButton from "./DeleteFavouriteButton";
+
+import { deleteRestaurant, getFavoriteRestaurant } from "../redux/actions";
 
 import "../css/FavComponent.css";
 
@@ -77,8 +79,10 @@ export default function FavoriteRestaurantComponent({ restaurant }) {
                         />
                     )}
                     <div className="delete-button">
-                        <DeleteFavoriteRestaurantButton
-                            restaurant={restaurant}
+                        <DeleteFavouriteButton
+                            id={restaurant.id}
+                            deleteFavourite={deleteRestaurant}
+                            getFavourite={getFavoriteRestaurant}
                         />
                     </div>
                 </div>

@@ -134,11 +134,10 @@ export async function getFavoriteRestaurant() {
 }
 export async function deleteRestaurant(id) {
     try {
-        const { data } = await axios.post("/deleteFavRestaurant", { id: id });
-        console.log("data indelete ", data.favoriteRestaurant);
+        const success = await axios.post("/deleteFavRestaurant", { id: id });
         return {
             type: "DELETE_RESTAURANT",
-            deleteRestaurant: data.favoriteRestaurant,
+            successDelete: success,
         };
     } catch (error) {
         console.log("error in delete fav restaurant", error);
@@ -177,12 +176,17 @@ export async function getFavoriteRecipe() {
 
 export async function deleteRecipe(id) {
     try {
-        const { data } = await axios.post("/deleteFavRecipe", { id: id });
-        if (data.success) {
+        const success = await axios.post("/deleteFavRecipe", {
+            id: id,
+        });
+        // console.log("data indelete ", success);
+        if (success) {
             return {
                 type: "DELETE_RECIPE",
-                deleteRecipe: data,
+                successDelete: success,
             };
+        } else {
+            return (data = { success: false });
         }
     } catch (error) {
         console.log("error in delete Recipe", error);

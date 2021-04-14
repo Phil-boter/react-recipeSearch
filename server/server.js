@@ -28,7 +28,7 @@ app.use(cookieSessionMiddleware);
 app.use(csurf());
 
 app.use(function (req, res, next) {
-    res.cookie("mytoken", req.csrfToken());
+    res.cookie("SameSite", req.csrfToken());
     next();
 });
 

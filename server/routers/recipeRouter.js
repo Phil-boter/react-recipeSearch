@@ -55,10 +55,10 @@ router.post("/deleteFavRecipe", async (req, res) => {
     try {
         await db.deleteRecipe(id, userId);
         await db.deleteRecipeNote(id, userId);
-        res.json({ successDelete: true });
+        res.json({ success: true });
     } catch (error) {
         console.log("error in deleteFavRecipe", error);
-        res.json({ successDelete: false });
+        res.json({ success: false });
     }
 });
 
