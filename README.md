@@ -14,7 +14,6 @@ If everything fails it also has an implemented restaurant search for the nearest
     to save shopping list and restaurants in a favourites list.
     After adding to one of the favourite lists, 
     the user can also add and delete notes to his favourites.
-    It is also possible to store and delete favourite lists. 
     A search function for special restaurants or shopping lists
     inside the favourites is also available.
     Finally the user can decide to logout or to delete the account.
