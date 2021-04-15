@@ -45,7 +45,7 @@ export default function (state = {}, action) {
     if (action.type == "GET_FAVREC") {
         state = {
             ...state,
-            data: action.data,
+            data: action.favoriteRecipe,
         };
     }
     if (action.type == "DELETE_RECIPE") {

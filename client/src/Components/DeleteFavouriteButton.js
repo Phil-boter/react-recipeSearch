@@ -7,7 +7,8 @@ export default function DeleteFavouriteButton({
 }) {
     const dispatch = useDispatch();
 
-    const Delete = async () => {
+    const Delete = async (e) => {
+        e.preventDefault();
         try {
             await dispatch(deleteFavourite(id));
             await dispatch(getFavourite());

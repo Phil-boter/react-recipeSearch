@@ -163,10 +163,11 @@ export async function saveRecipe(recipe) {
 export async function getFavoriteRecipe() {
     try {
         const { data } = await axios.get("/getFavoriteRecipe");
+        console.log("data", data);
         if (data.success) {
             return {
                 type: "GET_FAVREC",
-                data: data,
+                favoriteRecipe: data,
             };
         }
     } catch (error) {

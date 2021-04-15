@@ -5,6 +5,7 @@ const compression = require("compression");
 const db = require("./database/db.js");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
+const cors = require("cors");
 
 const accountRouter = require("./routers/accountRouter");
 const apiRouter = require("./routers/apiRouter");
@@ -16,6 +17,7 @@ const recipeNotes = require("./routers/recipeNotes");
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 app.use(compression());
+app.options("*", cors()); // include before other routes
 
 const cookieSessionMiddleware = cookieSession({
     secret: `I'm always angry.`,
