@@ -113,7 +113,6 @@ export default function SingleRecipe({ recipe, index }) {
 
     const renderImage = (image) => {
         if (!image || image == "") {
-            console.log("no image");
             return (
                 <img
                     className="recipe-modal-image"

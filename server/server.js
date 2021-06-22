@@ -17,7 +17,7 @@ const recipeNotes = require("./routers/recipeNotes");
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 app.use(compression());
-app.options("*", cors()); // include before other routes
+app.options("*", cors()); // include before other routes pre-flight
 
 const cookieSessionMiddleware = cookieSession({
     secret: `I'm always angry.`,

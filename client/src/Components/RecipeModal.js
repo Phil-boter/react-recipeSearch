@@ -32,12 +32,13 @@ export default function RecipeModal({
                             href={recipe.url}
                             target="_blank"
                             className="recipe-modal-image"
+                            rel="noreferrer"
                         >
                             {renderImage}
                         </a>
                     </div>
                     <h2 className="link">
-                        <a href={recipe.url} target="_blank">
+                        <a href={recipe.url} target="_blank" rel="noreferrer">
                             {recipe.label}
                         </a>
                     </h2>
@@ -53,7 +54,7 @@ export default function RecipeModal({
                     </div>
                     <div className="recipe-information">
                         <h4>Recipe on:</h4>
-                        <a href={recipe.url} target="_blank">
+                        <a href={recipe.url} target="_blank" rel="noreferrer">
                             {recipe.source}
                         </a>
                     </div>
