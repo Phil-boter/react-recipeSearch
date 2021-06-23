@@ -1,3 +1,5 @@
+![elheffe1](https://user-images.githubusercontent.com/68227335/123140198-4d5b3b80-d457-11eb-8803-c19157cff85e.png)
+
 # react-recipeSearch
 
 This app will help you, when you are in the supermarket still not knowing what to eat or cook,
@@ -21,10 +23,14 @@ If everything fails it also has an implemented restaurant search for the nearest
     Now the app is managed by Redux and uses hooks instead of class-components.
     
     The app is optimized for mobile use.
-    
+ 
+![elheffe3](https://user-images.githubusercontent.com/68227335/123140570-b9d63a80-d457-11eb-9ec9-a48cb4878abf.png)
+
 
 ## Technologies 
-    HTML5, CSS3, React.js/Hooks, Redux, Node/Express, postgreSQL, 
+    HTML5, CSS3, React.js/Hooks, Redux, Node/Express, postgreSQL,
+    
+![elheffe6](https://user-images.githubusercontent.com/68227335/123140419-8c898c80-d457-11eb-97b7-73bbe3b9be8f.png)
     
 
 ## Development
