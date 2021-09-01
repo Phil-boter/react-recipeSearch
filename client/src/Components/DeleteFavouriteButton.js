@@ -9,12 +9,8 @@ export default function DeleteFavouriteButton({
 
     const Delete = async (e) => {
         e.preventDefault();
-        try {
-            await dispatch(deleteFavourite(id));
-            await dispatch(getFavourite());
-        } catch (error) {
-            throw error;
-        }
+        await dispatch(deleteFavourite(id));
+        await dispatch(getFavourite());
     };
 
     return (

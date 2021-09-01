@@ -1,6 +1,5 @@
 export default function ToggleModalButton({ setShowModal }) {
     const toggleShowModal = () => {
-        console.log("click");
         setShowModal(true);
     };
 

@@ -73,7 +73,7 @@ export default function FavRestaurantModal({
 
                         <h2 className="fav-main-label">{item.name}</h2>
                         <div className="image-container">
-                            <a href={item.url} target="_blank">
+                            <a href={item.url} target="_blank" rel="noreferrer">
                                 {renderImage}
                             </a>
                         </div>

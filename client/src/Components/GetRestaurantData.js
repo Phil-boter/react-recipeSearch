@@ -38,8 +38,7 @@ export default function GetRestaurantData() {
             </div>
             <div className="restaurant-button-container">
                 <button
-                    disabled={location.length < 1}
-                    disabled={term.length < 1}
+                    disabled={(location.length, term.length < 1)}
                     className="submit-button restaurant-button-container"
                     onClick={() => dispatch(getRestaurant(term, location))}
                 >

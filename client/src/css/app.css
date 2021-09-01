@@ -24,6 +24,7 @@ body {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    /* height: 100vh; */
 }
 
 .search-headline {
@@ -71,6 +72,7 @@ body {
         height: 2.5rem;
         width: 12rem;
     }
+
     .main-display {
         display: flex;
         flex-direction: column;

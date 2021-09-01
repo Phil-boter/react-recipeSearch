@@ -1,24 +1,32 @@
 .navigation {
     /* border: 3px solid yellow; */
-    position: relative;
+    position: sticky;
     background-color: rgb(37, 37, 37);
     top: 0;
     height: 3.5rem;
     width: 100%;
     z-index: 2 !important;
 }
-
-.navigation-modal {
+.navigation-container {
     position: absolute;
-    display: block;
-    height: auto;
-    /* min-height: 10rem; */
-    width: 40%;
     background-color: white;
-    animation: slide-in 0.7s;
+    height: 93vh;
+    width: 50%;
     top: 3.5rem;
+    animation: slide-in 0.7s;
+}
+.navigation-modal {
+    /* position: absolute; */
+    /* display: block; */
+    /* height: auto; */
+    /* min-height: 10rem; */
+    background-color: white;
+
     border-bottom: 1px solid black;
     z-index: 1;
+}
+.link-container.active {
+    transition: all 2sec ease-in-out;
 }
 .link-container {
     background-color: white;
@@ -75,10 +83,15 @@
         /* border: 1px solid yellowgreen; */
         height: 3.5rem;
     }
-
-    .navigation-modal {
+    .navigation-container {
+        /* position: sticky;
+        background-color: white; */
+        height: 87vh;
         width: 100%;
     }
+    /* .navigation-modal {
+        width: 100%;
+    } */
     /* .navigation-burger {
         font-size: 2rem;
     } */

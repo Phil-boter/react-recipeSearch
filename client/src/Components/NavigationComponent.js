@@ -1,12 +1,18 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import "../css/NavigationComponent.css";
 
-export default function NavigationComponent({ setIsVisible, visible }) {
-    const user = useSelector((state) => {
-        return state.user;
-    });
+export default function NavigationComponent({ setIsVisible, visible, auth }) {
+    const [click, setClick] = useState(false);
+    const handleClick = () => {
+        // setClick(!click);
+        setIsVisible(true);
+    };
+    const closeMenu = () => {
+        // setClick(false);
+        setIsVisible(false);
+    };
     const style1 = {
         transform: "rotate(45deg) translate(10.5px, 7.5px)",
     };
@@ -23,7 +29,7 @@ export default function NavigationComponent({ setIsVisible, visible }) {
                 {visible ? (
                     <>
                         <div
-                            onClick={() => setIsVisible(false)}
+                            onClick={(e) => closeMenu(e)}
                             className="navigation-burger"
                         >
                             <div
@@ -42,16 +48,11 @@ export default function NavigationComponent({ setIsVisible, visible }) {
                         <div className="navigation-container">
                             <div className="navigation-modal">
                                 <div className="link-container">
-                                    {!user || !user.id ? (
+                                    {!auth ? (
                                         <>
                                             <Link to="/login">
                                                 <div className="navigation-link">
                                                     My Account
-                                                </div>
-                                            </Link>
-                                            <Link to="/about">
-                                                <div className="navigation-link">
-                                                    About
                                                 </div>
                                             </Link>
                                         </>
@@ -72,27 +73,29 @@ export default function NavigationComponent({ setIsVisible, visible }) {
                                                     Delete Account
                                                 </div>
                                             </Link>
-                                            <a href="/logout">
+                                            <a
+                                                href="/logout"
+                                                onClick={() =>
+                                                    window.localStorage.clear()
+                                                }
+                                            >
                                                 <div className="navigation-link logout">
                                                     Logout
                                                 </div>
                                             </a>
-                                            <Link to="/about">
-                                                <div className="navigation-link">
-                                                    About
-                                                </div>
-                                            </Link>
                                         </>
                                     )}
+                                    <Link to="/about">
+                                        <div className="navigation-link">
+                                            About
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
                     </>
                 ) : (
-                    <div
-                        onClick={() => setIsVisible(true)}
-                        className="navigation-burger"
-                    >
+                    <div onClick={handleClick} className="navigation-burger">
                         <div className="burger bar1"></div>
                         <div className="burger bar2"></div>
                         <div className="burger bar3"></div>

@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import axios from "./axios";
 
 import { deleteAccount } from "../redux/actions";
@@ -9,25 +9,20 @@ export default function DeleteAccountComponent() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const account = useSelector((state) => {
-        return state.successDeleteAccount;
-    });
-
-    const [text, setButtonText] = useState("");
+    // const account = useSelector((state) => {
+    //     return state.successDeleteAccount;
+    // });
 
     const logout = () => {
         axios.get("/logout").then(() => history.push("/"));
     };
 
     const Delete = () => {
-        console.log("click in deleteAccount");
+        // console.log("click in deleteAccount");
         dispatch(deleteAccount());
-        setButtonText("Deleted");
+        window.localStorage.clear();
         logout();
     };
-    useEffect(() => {
-        setButtonText("Delete");
-    }, []);
 
     return (
         <>
@@ -37,7 +32,7 @@ export default function DeleteAccountComponent() {
             <div className="delete-button">
                 <a href="/" onClick={() => Delete()}>
                     <button className="main-info-button main-info-button-recipe delete">
-                        DELETE
+                        Delete
                     </button>
                 </a>
             </div>

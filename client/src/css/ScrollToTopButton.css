@@ -1,6 +1,7 @@
 .scroll-top-button-container {
     position: sticky;
-    bottom: 3rem;
+    bottom: 5rem;
+    margin-bottom: 1.2rem;
 }
 
 .scroll-top-button {

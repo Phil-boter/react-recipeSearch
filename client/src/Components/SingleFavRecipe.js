@@ -21,7 +21,7 @@ export default function SingleFavRecipe({ item }) {
                 <div className="single-recipe-container">
                     <h2 className="fav-main-label">{item.label}</h2>
                     <div className="image-container">
-                        <a href={item.url} target="_blank">
+                        <a href={item.url} target="_blank" rel="noreferrer">
                             <img
                                 className="recipe-modal-image fav-image"
                                 src={item.image}
@@ -32,7 +32,7 @@ export default function SingleFavRecipe({ item }) {
 
                     <div className="recipe-information">
                         <h4>Recipe on :</h4>
-                        <a href={item.url} target="_blank">
+                        <a href={item.url} target="_blank" rel="noreferrer">
                             {item.source}
                         </a>
                     </div>

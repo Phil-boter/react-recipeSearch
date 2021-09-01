@@ -28,11 +28,16 @@ export default function RestaurantModal({
                         href={restaurant.url}
                         target="_blank"
                         className="recipe-modal-image"
+                        rel="noreferrer"
                     >
                         <div>{renderImage}</div>
                     </a>
                     <h2 className="link">
-                        <a href={restaurant.url} target="_blank">
+                        <a
+                            href={restaurant.url}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             {restaurant.name}
                         </a>
                     </h2>
@@ -61,7 +66,11 @@ export default function RestaurantModal({
                     <div className="recipe-information">{renderRating}</div>
                     <div className="recipe-information">
                         <h4>Reviews:</h4>
-                        <a href={restaurant.url} target="_blank">
+                        <a
+                            href={restaurant.url}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             {`${restaurant.review_count} reviews`}
                         </a>
                     </div>

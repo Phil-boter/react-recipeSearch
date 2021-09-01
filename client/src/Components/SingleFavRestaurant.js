@@ -59,7 +59,11 @@ export default function FavoriteRestaurantComponent({ restaurant }) {
                 <div className="single-recipe-container">
                     <h2 className="fav-main-label">{restaurant.name}</h2>
                     <div className="image-container">
-                        <a href={restaurant.url} target="_blank">
+                        <a
+                            href={restaurant.url}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             {renderImage(restaurant.image)}
                         </a>
                     </div>

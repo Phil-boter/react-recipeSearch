@@ -8,7 +8,7 @@ export default function SaveRestaurantButton({ restaurant }) {
     const [text, setButtonText] = useState("");
 
     const SaveRestaurant = () => {
-        console.log("click in save restaurant");
+        // console.log("click in save restaurant");
         dispatch(saveRestaurant(restaurant));
         setButtonText("Saved");
     };

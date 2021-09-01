@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveRecipe } from "../redux/actions";
 
-export default function SaveRecipeButton({ recipe, index }) {
+export default function SaveRecipeButton({ recipe }) {
     const dispatch = useDispatch();
 
     const [text, setButtonText] = useState("");

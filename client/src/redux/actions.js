@@ -43,6 +43,7 @@ export async function login(email, password) {
             password: password,
         });
         if (data.success) {
+            localStorage.setItem("user", JSON.stringify(data));
             return {
                 type: "GET_LOGIN",
                 user: data,
@@ -67,6 +68,7 @@ export async function registration(first, last, email, password) {
             password: password,
         });
         if (data.success) {
+            localStorage.setItem("user", JSON.stringify(data));
             return {
                 type: "GET_REGISTRATION",
                 data: data,
@@ -163,7 +165,7 @@ export async function saveRecipe(recipe) {
 export async function getFavoriteRecipe() {
     try {
         const { data } = await axios.get("/getFavoriteRecipe");
-        console.log("data", data);
+        // console.log("data", data);
         if (data.success) {
             return {
                 type: "GET_FAVREC",
@@ -187,7 +189,7 @@ export async function deleteRecipe(id) {
                 successDelete: success,
             };
         } else {
-            return (data = { success: false });
+            return { success: false };
         }
     } catch (error) {
         console.log("error in delete Recipe", error);
@@ -280,7 +282,7 @@ export async function getNoteRestaurant(id) {
 
 export async function deleteSingleRestaurantNote(id) {
     try {
-        console.log("id", id);
+        // console.log("id", id);
         const { data } = await axios.post("/deleteSingleRestaurantNote", {
             restaurantNotesId: id,
         });

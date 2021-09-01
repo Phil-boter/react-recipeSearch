@@ -1,5 +1,5 @@
 export default function (state = {}, action) {
-    console.log("reducer running");
+    // console.log("reducer running");
 
     if (action.type == "GET_RECIPEDATA") {
         state = {

@@ -4,11 +4,22 @@ import "../css/CookieModalComponent.css";
 
 export default function CookieModalComponent() {
     const [show, setShowCookie] = useState(true);
+    const [accepted, setAccepted] = useState(true);
 
     const hideCookie = () => {
-        console.log("click");
+        setAccepted(true);
+        window.localStorage.setItem("cookie", accepted);
         setShowCookie(false);
     };
+
+    useEffect(() => {
+        const cookie = window.localStorage.getItem("cookie");
+        if (cookie === "true") {
+            setShowCookie(false);
+        } else {
+            return;
+        }
+    }, []);
     return (
         <>
             {show && (

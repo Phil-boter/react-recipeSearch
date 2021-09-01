@@ -9,7 +9,6 @@ export default function ShowNote({ item, note, getNote, deleteNote }) {
     const [deleted, setDeleted] = useState(false);
 
     const deleteSingleNote = (id) => {
-        console.log("click in delete");
         dispatch(deleteNote(id));
         setDeleted(true);
     };

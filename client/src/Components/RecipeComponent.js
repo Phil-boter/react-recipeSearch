@@ -5,7 +5,7 @@ import SingleRecipe from "./SingleRecipe";
 
 import "../css/RecipeComponent.css";
 
-export default function RecipeComponent({ userId }) {
+export default function RecipeComponent() {
     const recipes = useSelector((state) => {
         return state.recipes;
     });

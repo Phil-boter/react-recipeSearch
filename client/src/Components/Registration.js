@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { registration, getUser } from "../redux/actions";
 
 import "../css/Login.css";
 
-export default function Registration({ state }) {
+export default function Registration() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const user = useSelector((state) => {
-        return state.data;
-    });
+    // const user = useSelector((state) => {
+    //     return state.data;
+    // });
 
     const [firstName, setFirst] = useState("");
     const [lastName, setLast] = useState("");

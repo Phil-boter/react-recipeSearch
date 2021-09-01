@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import RestaurantModal from "../Components/RestaurantModal";
 
@@ -94,7 +93,7 @@ export default function SingleRestaurant({ restaurant, index }) {
                 {renderImage(restaurant.image_url)}
             </div>
             <h2 className="link">
-                <a href={restaurant.url} target="_blank">
+                <a href={restaurant.url} target="_blank" rel="noreferrer">
                     {restaurant.name}
                 </a>
             </h2>

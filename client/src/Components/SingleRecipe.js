@@ -137,7 +137,7 @@ export default function SingleRecipe({ recipe, index }) {
                 {renderImage(recipe.recipe.image)}
             </div>
             <h2 className="link">
-                <a href={recipe.recipe.url} target="_blank">
+                <a href={recipe.recipe.url} target="_blank" rel="noreferrer">
                     {recipe.recipe.label}
                 </a>
             </h2>

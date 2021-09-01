@@ -6,7 +6,7 @@ import ScrollToTopButton from "../Components/ScrollToTopButton";
 import AboutComponent from "../Components/AboutComponent";
 import BackToMainPage from "../Components/BackToMainPage";
 
-export default function DisplayRecipe({ setIsVisible, visible }) {
+export default function DisplayRecipe({ setIsVisible, visible, auth }) {
     useEffect(() => {
         setIsVisible(false);
     }, []);
@@ -15,6 +15,7 @@ export default function DisplayRecipe({ setIsVisible, visible }) {
             <NavigationComponent
                 setIsVisible={setIsVisible}
                 visible={visible}
+                auth={auth}
             />
             <div onClick={() => setIsVisible(false)}>
                 <TopLinks />

@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "./axios";
 import { useState, useEffect } from "react";
 import SingleFavRecipe from "./SingleFavRecipe";
@@ -10,10 +9,6 @@ export default function SearchFavRecipe() {
     const [input, setInput] = useState("");
     const [error, setError] = useState();
 
-    const style = {
-        textAlign: "center",
-    };
-
     useEffect(() => {
         if (input) {
             let abort = false;
@@ -21,20 +16,14 @@ export default function SearchFavRecipe() {
                 .get(`/searchForrecipe/` + input)
                 .then(({ data }) => {
                     if (!abort) {
-                        console.log("data find searched user:", data);
                         setSearchResult(data.searchResult);
-                        console.log("searchResult:", data.searchResult);
                     } else {
                         return () => {
-                            console.log(
-                                `About to replace ${input} with a new value`
-                            );
                             abort = true;
                         };
                     }
                 })
                 .catch((error) => {
-                    console.log("error in get/searchForRecipe", error);
                     setError(error);
                 });
         }

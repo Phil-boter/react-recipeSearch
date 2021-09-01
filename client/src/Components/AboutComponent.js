@@ -21,7 +21,8 @@ export default function AboutComponent() {
                     Finally the user candecide to logout or to delete the
                     account. Two different server side API calls are made for
                     the search functionality. Now the app is managed by Redux
-                    and uses hooks instead of class-components.
+                    and uses hooks instead of class-components. To keep the user
+                    logged in even after a page refresh, I used localstorage.
                     <br></br> The app is optimized for mobile use.
                 </section>
                 <h2 className="about-headline">Technologies and Frameworks:</h2>
@@ -37,6 +38,7 @@ export default function AboutComponent() {
                         className="github-link"
                         href="https://github.com/Phil-boter/react-recipeSearch"
                         target="_blank"
+                        rel="noreferrer"
                     >
                         Github.
                     </a>

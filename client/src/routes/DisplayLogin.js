@@ -8,7 +8,7 @@ import Login from "../Components/Login";
 
 import "../css/Login.css";
 
-export default function Displaylogin({ setIsVisible, visible }) {
+export default function Displaylogin({ setIsVisible, visible, auth }) {
     useEffect(() => {
         setIsVisible(false);
     }, []);
@@ -17,6 +17,7 @@ export default function Displaylogin({ setIsVisible, visible }) {
             <NavigationComponent
                 setIsVisible={setIsVisible}
                 visible={visible}
+                auth={auth}
             />
             <div onClick={() => setIsVisible(false)}>
                 <TopLinks />

@@ -77,10 +77,12 @@ router.get("/user", async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-    console.log("userId logout before", req.session.userId);
-    req.session = null;
-    console.log("userId logout after", req.session);
-    res.redirect("/");
+    try {
+        req.session = null;
+        res.redirect("/");
+    } catch (error) {
+        console.log("error", error);
+    }
 });
 
 router.post("/deleteAccount", async (req, res) => {

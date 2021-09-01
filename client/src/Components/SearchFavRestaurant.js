@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "./axios";
 import { useState, useEffect } from "react";
 import SingleFavRestaurant from "./SingleFavRestaurant";
@@ -10,10 +9,6 @@ export default function SearchFavRestaurant() {
     const [input, setInput] = useState("");
     const [error, setError] = useState();
 
-    const style = {
-        textAlign: "center",
-    };
-
     useEffect(() => {
         if (input) {
             let abort = false;
@@ -21,7 +16,6 @@ export default function SearchFavRestaurant() {
                 .get(`/searchForRestaurant/` + input)
                 .then(({ data }) => {
                     if (!abort) {
-                        console.log("data find searched restaurant:", data);
                         setSearchRestaurant(data.searchRestaurant);
                     } else {
                         return () => {

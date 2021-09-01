@@ -8,7 +8,7 @@ export default function AddNote({ item, sendNote }) {
 
     const [note, setNote] = useState("");
 
-    console.log("note", note);
+    // console.log("note", note);
     // const handleNote = (e) => {
     //     setNote(e.target.value);
     // };

@@ -6,7 +6,7 @@ import { login } from "../redux/actions";
 
 import "../css/Login.css";
 
-export default function Login({ setIsVisble, visible }) {
+export default function Login() {
     const dispatch = useDispatch();
     const history = useHistory();
 
